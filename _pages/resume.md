@@ -4,7 +4,6 @@ title: Resume
 permlink: /resume/
 subtitle: Summary of my professional career
 icon: fa-book
-order: 3
 author_profile: true
 ---
 
