@@ -3,11 +3,11 @@ main:
   - title: "Publications"
     url: /Publications/
   - title: "Resume"
-    url: /resume/
+    url: /resume.md
   - title: "Projects"
-    url: /Projects.md/
+    url: /Projects.md
   - title: "About"
-    url: /about/
+    url: /about.md
   - title: tests
     url: https://www.linkedin.com/in/aminehy/
   # - title: "Sample Collections"
