@@ -1,7 +1,7 @@
 ---
 layout: "archive"
 title: Resume
-permlink: /resume/
+permalink: /resume/
 subtitle: Summary of my professional career
 icon: fa-book
 author_profile: true
