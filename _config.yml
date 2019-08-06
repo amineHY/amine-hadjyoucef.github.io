@@ -16,10 +16,10 @@ minimal_mistakes_skin    : "default" # "air", "aqua", "contrast", "dark", "dirt"
 
 # Site Settings
 locale                   : "en-US"
-title                    : "M-A Hadj-Youcef"
+title                    : "M A Hadj Youcef"
 title_separator          : "-"
 subtitle                 : # site tagline that appears below site title in masthead
-name                     : "Hadj-Youcef"s website"
+name                     : "Hadj-Youcef's website"
 description              : "Data scientist profolio."
 url                      : "https://aminehy.github.io/"
 baseurl                  : # the subpath of your site, e.g. "/blog"
