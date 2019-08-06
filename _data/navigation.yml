@@ -2,14 +2,21 @@
 main:
   - title: "Publications"
     url: /Publications/
+
   - title: "Resume"
     url: /resume.md
+
   - title: "Projects"
     url: /projects/
+
   - title: "About"
-    url: /about.md
-  - title: tests
-    url: https://www.linkedin.com/in/aminehy/
+    url: /about/
+
+  - title: Socials
+    subfolderitems:
+    - page: LinkedIn
+      url: "https://www.linkedin.com/in/aminehy/"
+
   # - title: "Sample Collections"
   #   url: /collection-archive/
   # - title: "Sitemap"
