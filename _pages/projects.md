@@ -5,9 +5,10 @@ permalink: /projects/
 subtitle: Summary of my professional career
 icon: fa-book
 order: 3
-
 ---
 
+
+# List of my Projects
 I love books! Here are some I'm reading now:
 
 1. Robert Burton: *The Anatomy of Melancholy*

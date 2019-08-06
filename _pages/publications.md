@@ -1,5 +1,5 @@
 ---
-layout: "page"
+layout: "archive"
 title: Resume
 subtitle: Summary of my professional career
 icon: fa-book
