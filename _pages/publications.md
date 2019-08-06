@@ -8,7 +8,6 @@ author_profile: true
 header:
   image: assets/images/banner_publications.png
 ---
-<!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
 
 - [International journals with peer review](#international-journals-with-peer-review)
 		- [Convolution kernels for multi-wavelength imaging](#convolution-kernels-for-multi-wavelength-imaging)
@@ -20,8 +19,6 @@ header:
 		- [Restauration d’objets astrophysiques à partir de données multi-spectrales floues et d’une réponse instrument non-stationnaire](#restauration-dobjets-astrophysiques-partir-de-donnes-multi-spectrales-floues-et-dune-rponse-instrument-non-stationnaire)
 - [Seminars](#seminars)
 - [Talks](#talks)
-
-<!-- /TOC -->
 
 # International journals with peer review  
 
