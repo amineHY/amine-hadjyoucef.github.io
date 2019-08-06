@@ -30,7 +30,7 @@ Read the full paper [here](/assets/pdf/A_&_A.pdf).
 
 # International conferences with peer review
 
-### Spatio-Spectral Multichannel Reconstruction from few Low-Resolution Multispectral Data
+### Spatio-Spectral Multichannel Reconstruction from few Low-Resolution multi-spectral Data
 **Authors**: MA Hadj-Youcef, François Orieux, Aurélia Fraysse, Alain Abergel  
 **Publication date**: 2018/9/3  
 **Conference**: 2018 26th European Signal Processing Conference (EUSIPCO)  
@@ -39,13 +39,13 @@ Read the full paper [here](/assets/pdf/A_&_A.pdf).
 **Link**: https://ieeexplore.ieee.org/abstract/document/8553166  
 
 **Abstract**
-This paper deals with the reconstruction of a 3-D spatio-spectral object observed by a multi-spectral imaging system, where the original object is blurred with a spectral-variant PSF (Point Spread Function) and integrated over few broad spectral bands. In order to tackle this ill-posed problem, we propose a linear forward model that accounts for direct (or auto) channels and between (or cross) channels degradation, by modeling the imaging system response and the spectral distribution of the object with a piecewise linear function. Reconstruction based on regularization method is proposed, by enforcing spatial and spectral smoothness of the object. We test our approach on simulated data of the Mid-InfraRed Instrument (MIRI) Imager of the James Webb Space Telescope (JWST). Results on simulated multispectral data show a significant improvement over the conventional multichannel method.  
+This paper deals with the reconstruction of a 3-D spatio-spectral object observed by a multi-spectral imaging system, where the original object is blurred with a spectral-variant PSF (Point Spread Function) and integrated over few broad spectral bands. In order to tackle this ill-posed problem, we propose a linear forward model that accounts for direct (or auto) channels and between (or cross) channels degradation, by modeling the imaging system response and the spectral distribution of the object with a piecewise linear function. Reconstruction based on regularization method is proposed, by enforcing spatial and spectral smoothness of the object. We test our approach on simulated data of the Mid-InfraRed Instrument (MIRI) Imager of the James Webb Space Telescope (JWST). Results on simulated multi-spectral data show a significant improvement over the conventional multichannel method.  
 
 Read the full paper [here](/assets/pdf/eusipco_2018.pdf).  
 
 <br/><br/>
 
-### Restoration from multispectral blurred data with non-stationary instrument response  
+### Restoration from multi-spectral blurred data with non-stationary instrument response  
 **Authors**: M. A. Hadj-Youcef, François Orieux, Aurélia Fraysse, Alain Abergel  
 **Publication date**: 2017/8/28  
 **Conference**: 2017 25th European Signal Processing Conference (EUSIPCO)  
@@ -53,10 +53,9 @@ Read the full paper [here](/assets/pdf/eusipco_2018.pdf).
 **Pages**: 503-507  
 **Publisher**: IEEE  
 **Link**: https://ieeexplore.ieee.org/abstract/document/8081258  
-**Link**: [pdf file](/assets/pdf/PensarSDK.pdf)
 
 **Abstract**
-In this paper we propose an approach of image restoration from multispectral data provided by an imaging system. We specifically address two topics: (i) Development of a multi-wavelength direct model for non-stationary instrument response that includes a spatial convolution and a spectral integration, (ii) Implementation of multispectral image restoration using a regularized least-square, based on a quadratic criterion and minimized by a gradient algorithm. We test our approach on simulated data of the Mid-InfraRed Instrument IMager (MIRIM) of the James Webb Space Telescope (JWST). Our method shows a clear increase of spatial resolution compare to conventional methods.
+In this paper we propose an approach of image restoration from multi-spectral data provided by an imaging system. We specifically address two topics: (i) Development of a multi-wavelength direct model for non-stationary instrument response that includes a spatial convolution and a spectral integration, (ii) Implementation of multi-spectral image restoration using a regularized least-square, based on a quadratic criterion and minimized by a gradient algorithm. We test our approach on simulated data of the Mid-InfraRed Instrument IMager (MIRIM) of the James Webb Space Telescope (JWST). Our method shows a clear increase of spatial resolution compare to conventional methods.
 
 Read the full paper [here](/assets/pdf/eusipco-20171.pdf).
 
@@ -81,21 +80,18 @@ Read the full paper [here](/assets/pdf/WOSSPA_2013.pdf).
 
 # National conferences with peer review  
 
-### Restauration d’objets astrophysiques à partir de données multispectrales floues et d’une réponse instrument non-stationnaire  
+### Restauration d’objets astrophysiques à partir de données multi-spectrales floues et d’une réponse instrument non-stationnaire  
 
 **Authors**: M. A. Hadj-Youcef, François Orieux, Aurélia Fraysse, Alain Abergel  
 **Publication date**: 2017/9/5  
 **Conference**: 26eme Colloque GRETSI Traitement du Signal & des Images, GRETSI 2017  
 **Location**: Juan Les Pins, France.  
 **Link**: https://jeannicod.ccsd.cnrs.fr/SUP_LSS/hal-01596257v1  
-***Keywords:*** ...  
 
 **Absract (in French)**  
-  Cet article traite de la restauration du flux lumineux à partir de données multispectrales fournies par un imageur à bord d’un télescope spatial. Les problèmes abordés concernent la limitation de la résolution spatiale causée par la réponse optique variant spectralement et l’intégration spectrale de l’objet sur une large bande. Nous avons développé un modèle instrument prenant en compte ces effets et proposé un modèle direct qui exploite conjointement l’ensemble des données à différentes bandes spectrales. Nous avons mis en œuvre la restauration de l’objet inconnu en utilisant la méthode des moindres carrés régularisés et la solution est calculée par l’algorithme du gradient conjugué.
+In this paper we deal with the restoration of astrophysical objects from multi-spectral data acquired by an imager on board of a space telescope. The problems we address are the spatial resolution limitation caused by the spectral varying optical response and the broadband spectral integration of the object. Indeed, we develop an instrument model that takes into account these effects, and we propose a direct model by exploiting all the data from different spectral band jointly. The restoration of the object is implemented using the regularized least squares method, and the solution is computed by the conjugate gradient algorithm. We test our approach on simulated imagery data from the Mid-InfraRed Instrument (MIRI) on board the future James Webb Space Telescope (JWST). Our method shows a significant increase in spatial and spectral resolution compared to conventional methods.
 
-  Nous avons testé notre approche sur des données simulées de l’imageur de Mid-InfraRed Instrument (MIRI) à bord du futur télescope spatial James Webb (JWST). Notre méthode montre une nette augmentation des résolutions spatiale et spectrale par rapport aux méthodes conventionnelles
-
-  Read the full paper [here](https://jeannicod.ccsd.cnrs.fr/SUP_LSS/hal-01596257v1).
+  Read the full paper [here](/assets/pdf/GRETSI_2017.pdf).
 
 <br/><br/>
 <br/><br/>
