@@ -5,7 +5,7 @@ permalink: /about/
 icon: fa-home
 author_profile: true
 header:
-  image: "/assets/images/tamnature.jpeg"
+  image: "/assets/images/nature.jpeg"
 ---
 
 
