@@ -8,7 +8,7 @@ icon: fa-home
 order: 1
 permlink: /about/
 header:
-  image: "/assets/images/nature.jpeg"
+  image: "/assets/images/tamanraset.jpg"
 ---
 
 
