@@ -12,10 +12,8 @@ main:
   - title: "About"
     url: /about/
 
-  - title: Socials
-    subfolderitems:
-    - page: LinkedIn
-      url: "https://www.linkedin.com/in/aminehy/"
+  - title: LinkedIn
+    url: "https://www.linkedin.com/in/aminehy/"
 
   # - title: "Sample Collections"
   #   url: /collection-archive/
