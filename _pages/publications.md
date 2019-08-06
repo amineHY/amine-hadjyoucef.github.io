@@ -27,6 +27,13 @@ Astrophysical images issued from different instruments and/or spectral bands oft
 Read the full paper [here](https://www.researchgate.net/publication/313504808_Convolution_kernels_for_multi-wavelength_imaging).
 
 
+$-$
+$-$
+$-$
+$-$
+$-$
+$-$
+
 
 
 # International conferences with peer review
@@ -71,6 +78,12 @@ In this paper the problematic of epileptic detection is treated. An algorithm of
 
 Read the full paper [here](https://www.researchgate.net/publication/256995933_Detection_of_epileptics_during_seizure_free_periods).
 
+$-$
+$-$
+$-$
+$-$
+$-$
+$-$
 
 # National conferences with peer review  
 
