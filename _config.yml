@@ -145,7 +145,7 @@ footer:
   links:
 
     - label: "LinkedIn"
-      icon: "fas fa-fw fa-link"
+      icon: "fa-linkedin-in"
       url: "https://www.linkedin.com/in/aminehy/"
 
     - label: "GitHub"

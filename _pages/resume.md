@@ -9,9 +9,9 @@ header:
   image: assets/images/banner_publications.jpg
 ---
 
-<!-- #####################################################################
-##########################################################################################################################################
- -->
+
+
+
 
 # Work Experience
 <!--
@@ -71,7 +71,6 @@ Dates:
 
 ► Computer language taught:
   *  MATLAB
-
 
 <br/><br/>
 
@@ -138,9 +137,9 @@ Dates: 02/2012 - 02/2013
 ### University of Paris-Saclay
 Doctor of Philosophy (PhD), Signal and Image Processing, Machine Learning
 Dates: 2015 - 2018
-website: https://www.universite-paris-saclay.fr/en
+Website: https://www.universite-paris-saclay.fr/en
 
-◆ Published of papers in national and international conferences:
+◆ Scientific publications in national and international conferences:
   * 28th and 28th EUSIPCO (European Signal and Image Processing Conference).
   * 27th and 28th EUSIPCO (European Signal and Image Processing Conference).
   * 25th Colloque GRETSI (Groupe d'Etudes du Traitement du Signal et des Images).
@@ -152,12 +151,9 @@ website: https://www.universite-paris-saclay.fr/en
 
 
 ### University of Bordeaux
-Master's degree, Signal and Image Processing
-Dates: 2013 - 2015
-website: https://www.u-bordeaux.com/
+Master's degree, Signal and Image Processing [(Website)](https://www.u-bordeaux.com/)
+2013 - 2015
 
-
-◆ Two years of training:
   * Master 1: 2013-2014
   * Master 2: 2014-2015
 
@@ -170,13 +166,13 @@ website: https://www.u-bordeaux.com/
 
 
 ### Ecole Polytechnique
-Engineer degree, Electrical engineering
-Dates: 2007 - 2012
-website: http://www.enp.edu.dz/
+Engineer degree, Electrical engineering [(Website)](http://www.enp.edu.dz/)
+2007 - 2012
 
-◆ Five years of training:
+
+
   * Fundamental Engineering: 2007-2009
   * Electrical and Electronics Engineering: 2009-2012
 
-◆ Publication in an international conference:
+◆ Scientific Publication in an international conference:
   * WOSSPA 2013 (Workshop on Systems, Signal Processing, and their Applications)
