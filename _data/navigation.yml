@@ -5,7 +5,7 @@ main:
   - title: "Resume"
     url: /resume.md
   - title: "Projects"
-    url: /Projects.md
+    url: /projetcs/
   - title: "About"
     url: /about.md
   - title: tests

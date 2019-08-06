@@ -1,10 +1,10 @@
 ---
-layout: "page"
+layout: "posts"
 title: Resume
 subtitle: Summary of my professional career
 icon: fa-book
 order: 3
-permlink: /resume/
+permlink: /projects/
 ---
 
 I love books! Here are some I'm reading now:
