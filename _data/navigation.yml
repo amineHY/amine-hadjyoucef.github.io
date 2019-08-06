@@ -1,11 +1,13 @@
 # main links
 main:
-  - title: "About"
-    url: /about/
   - title: "Publications"
     url: /Publications/
   - title: "Resume"
-    url: /Resume/
+    url: /resume/
+  - title: "Projects"
+    url: /Projects/
+  - title: "About"
+    url: /about/
   # - title: "Sample Collections"
   #   url: /collection-archive/
   # - title: "Sitemap"
