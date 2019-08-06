@@ -2,10 +2,10 @@
 main:
   - title: "About"
     url: /about/
-   - title: "About"
-     url: /publications/
-   - title: "Publications"
-  #   url: /year-archive/
+ - title: "Publications"
+   url: /publications/
+ - title: "Resume"
+   url: /Resume/
   # - title: "Sample Collections"
   #   url: /collection-archive/
   # - title: "Sitemap"
