@@ -10,7 +10,7 @@ author_profile: true
 
 # WORK EXPERIENCE
 R&D Engineer in Image Processing | Research Scientist
-L2S, CentraleSupélec & IAS, CNRS
+L2S, Centrale Supélec & IAS, CNRS
 10/2015 - 11/2018 (3 years 2 months)
 
 - Strong project management skills as evidenced by the L2S - IAS collaboration on the hyperspectral data reconstruction for the next space mission JWST (NASA/ESA/CSA), leading to the development of 2 new and innovative algorithms from scratch, using applied mathematics and machine learning in Python
@@ -21,31 +21,38 @@ Advanced written and verbal communication skills through participation at 2 conf
 # Formation
 
 ## University of Paris-Saclay
-2015 - 2018
+dates: 2015 - 2018
+
 Doctorat de philosophie (PhD), Signal and Image Processing, Machine
 Learning ·
 
 ## University of Bordeaux
-2013 - 2015
+dates: 2013 - 2015
+
 Master's degree, Signal and Image Processing
 
 ## Polytechnic school of Algiers
-2007 - 2012
+dates: 2007 - 2012
+
 Engineer degree, Electrical engineering
 
 # professional experiences
 
-## University of Paris-Saclay
-2015 - 2018
-Doctorat de philosophie (PhD), Signal and Image Processing, Machine
-Learning ·
+## dates: 2015 - 2018
+University of Paris-Saclay
 
-## University of Bordeaux
-2013 - 2015
+PhD in Signal and Image Processing·
+
+
+## dates: 2013 - 2015
+University of Bordeaux  
+
 Master's degree, Signal and Image Processing
 
-## Polytechnic school of Algiers
-2007 - 2012
+## 2007 - 2012
+
+Polytechnic school of Algiers
+
 Engineer degree, Electrical engineering
 
 source: [The Guardian](https://www.theguardian.com/books/booksblog/2011/jan/04/best-boring-books)
