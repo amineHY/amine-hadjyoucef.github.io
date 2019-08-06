@@ -9,9 +9,10 @@ author_profile: true
 ---
 
 
-# List of my Projects
+
 I love books! Here are some I'm reading now:
 
+# List of my Projects
 1. Robert Burton: *The Anatomy of Melancholy*
 2. Robert Musil: *The Man Without Qualities*
 8. William Thackeray: *Pendennis*
