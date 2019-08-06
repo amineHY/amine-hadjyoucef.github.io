@@ -11,6 +11,8 @@ header:
 
 # International journals with peer review  
 
+<br/><br/>
+
 ### Convolution kernels for multi-wavelength imaging  
 **Authors:** Alexandre Boucaud, Marco Bocchio, Alain Abergel, François Orieux, Hervé Dole, M. A Hadj-Youcef
 
@@ -27,16 +29,14 @@ Astrophysical images issued from different instruments and/or spectral bands oft
 Read the full paper [here](https://www.researchgate.net/publication/313504808_Convolution_kernels_for_multi-wavelength_imaging).
 
 
-$-$
-$-$
-$-$
-$-$
-$-$
-$-$
+<br/><br/>
+<br/><br/>
+<br/><br/>
 
 
 
 # International conferences with peer review
+<br/><br/>
 ### Spatio-Spectral Multichannel Reconstruction from few Low-Resolution Multispectral Data
 **Authors**: MA Hadj-Youcef, François Orieux, Aurélia Fraysse, Alain Abergel  
 **Publication date**: 2018/9/3  
@@ -49,6 +49,7 @@ This paper deals with the reconstruction of a 3-D spatio-spectral object observe
 
 Read the full paper [here](https://hal-centralesupelec.archives-ouvertes.fr/hal-01952286/file/eusipco_2018.pdf).  
 
+<br/><br/>
 
 ### Restoration from multispectral blurred data with non-stationary instrument response  
 **Authors**: M. A. Hadj-Youcef, François Orieux, Aurélia Fraysse, Alain Abergel  
@@ -64,6 +65,8 @@ In this paper we propose an approach of image restoration from multispectral dat
 
 Read the full paper [here](https://www.researchgate.net/publication/320825357_Restoration_from_multispectral_blurred_data_with_non-stationary_instrument_response).
 
+<br/><br/>
+
 ### Detection of epileptics during seizure free periods
 **Authors:** M.A. Hadj-Youcef, M. Adnane, A Bousbia-Salah  
 **Publication date:** 2013/12/5  
@@ -78,14 +81,13 @@ In this paper the problematic of epileptic detection is treated. An algorithm of
 
 Read the full paper [here](https://www.researchgate.net/publication/256995933_Detection_of_epileptics_during_seizure_free_periods).
 
-$-$
-$-$
-$-$
-$-$
-$-$
-$-$
+<br/><br/>
+<br/><br/>
+<br/><br/>
 
 # National conferences with peer review  
+
+<br/><br/>
 
 ### Restauration d’objets astrophysiques à partir de données multispectrales floues et d’une réponse instrument non-stationnaire  
 
@@ -104,20 +106,17 @@ $-$
   Read the full paper [here](https://jeannicod.ccsd.cnrs.fr/SUP_LSS/hal-01596257v1).
 
 
-
-
-
-
-
-
-
-
-
-
+<br/><br/>
+<br/><br/>
+<br/><br/>
 
 
 # Seminars
 in progress
+
+<br/><br/>
+<br/><br/>
+<br/><br/>
 
 # Talks
 in progress
