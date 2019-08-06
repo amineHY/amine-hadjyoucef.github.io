@@ -9,60 +9,136 @@ header:
   image: assets/images/banner_publications.jpg
 ---
 
+<!-- #####################################################################
+##########################################################################################################################################
+ -->
 
 # Work Experience
+<!--
+#####################################################################
+ -->
 
 ### R&D Engineer in Image Processing | Research Scientist
-L2S, Centrale Supélec & IAS, CNRS
+  at [Signal and Systems Laboratory (L2S)](http://www.l2s.centralesupelec.fr/), Centrale Supélec &  [Spatial Astrophysics Institute (IAS)](http://www.ias.u-psud.fr/), CNRS, University of Paris-Sud
+
 Dates: 10/2015 - 11/2018
 
-- Strong project management skills as evidenced by the L2S - IAS collaboration on the hyperspectral data reconstruction for the next space mission JWST (NASA/ESA/CSA), leading to the development of 2 new and innovative algorithms from scratch, using applied mathematics and machine learning in Python
+► Strong project management skills as evidenced by the L2S - IAS collaboration on the hyperspectral data reconstruction for the next space mission JWST (NASA/ESA/CSA), leading to the innovation of 2 new algorithms from scratch for the processing of infrared images using applied mathematics and machine learning in Python
 
-- Excellent leadership skills and experience mentoring as demonstrated by teaching "signal processing" to +60 engineering students at Ecole Polytech Paris-Sud resulting in a 100% success rate
-Advanced written and verbal communication skills through participation at 2 conferences, 1 workshop, and 1 seminar, resulting in 3 presentations in front of +100 experts, publication of 4 papers as a first author and 1 poster presentation
+► Excellent leadership skills and experience mentoring as demonstrated by teaching "signal processing" to +60 engineering students at Ecole Polytech Paris-Sud resulting in a 100% success rate
 
-- Rigor and organization, including project road map definition, literature review, system modeling, implementation of optimization algorithms
+► Gained advanced communication skills through participation at 2 conferences, 1 workshop, and 1 seminar, resulting in 3 talks in front of +100 experts, publication of 4 papers as a first author and 1 poster presentation
+
+► High-level technical skills, including project roadmap definition, literature review, system modeling, implemented of various optimization algorithms
+
+► *Keywords*:  Reconstruction,  Mathematical modeling, data simulation, Bayesian estimation, statistics, Programming in Python, scientific computation, Optimization algorithms.
+
+► Computer language:
+  * Python:  Numpy, Scikit-learn, Matplotlib, Pandas
+
+► Publication of 3 articles in international conferences:
+  * GRETSI 2017
+  * EUSIPCO 2017
+  * EUSIPCO 2018
+
+► Speaker in front of +100 experts at:
+  * GDR-ISIS, Paris
+  * EUSIPCO 2017, Kos
+  * EUSIPCO 2018, Rome
+
+  <!--
+  #####################################################################
+   -->
 
 ### Teaching Assistant
+at [Ecole Polytech Paris-Sud](http://www.polytech.u-psud.fr/fr/formations/electronique-et-systemes-robotises.html), University of Paris-Sud.
 Dates:
+
 ► Main missions:
-     » Signal Processing Teaching
-     » Supervision of two groups of +30 students
-     » Animation of tutorials
-     » Student Assessment and Exam Preparation
+  * Signal Processing Teaching
+  * Supervision of two groups of +30 students
+  * Animation of tutorials
+  * Student Assessment and Exam Preparation
 
 ► Technical content of the material:
-     » Fourier Transform
-     » Linear filtering
-     » Sampling
-     » Applied mathematics
-     » Deterministic and random signal processing
-     » Basis in statistics
+  * Fourier Transform
+  * Linear filtering
+  * Sampling
+  * Applied mathematics
+  * Deterministic and random signal processing
+  * Basis in statistics
 
 ► Total number of students:
-    +60 engineering students
+  * +60 engineering students
 
 ► Computer language taught:
-    MATLAB
+  *  MATLAB
 
-► Link: http://www.polytech.u-psud.fr/fr/formations/electronique-et-systemes-robotises.html
+
+  <!--
+  #####################################################################
+   -->
+
 
 ### Image Processing Engineer | Computer Vision
-at [Synchromedia Laboratory](http://www.synchromedia.ca/), Montréal, Quebec, Canada
+at [Synchromedia Laboratory](http://www.synchromedia.ca/), Montreal, Quebec, Canada
 
-- Demonstrated flexibility skills through the development of image processing algorithms for the preservation of historical documents, resulting in a new method for processing document images using a linear mixing model in Matlab
+► Description:
+  ...
 
-- Improved project and time management skills by defining the problem and the project roadmap, Implementing image processing algorithms in Matlab
+  - Demonstrated flexibility skills through the development of image processing algorithms for the preservation of historical documents, resulting in a new method for processing document images using a linear mixing model in Matlab
 
-- Developed communication skills through writing and presenting the project report in English
+  - Improved project and time management skills by defining the problem and the project roadmap, Implementing image processing algorithms in Matlab
+
+  * Developed communication skills through writing and presenting the project report in English
 
 ► Programming language:
-» MATLAB
+  * MATLAB
+
+
+### Signal and Image Processing Engineer
+at [Institut de Mathématiques de Bordeaux] (https://www.math.u-bordeaux.fr/imb/spip.php)
+Dates: 02/2014 - 07/2014
+
+► Description:
+  ...
+
+  - Gained high-level technical skills through the implementation from scratch of signal and image -restoration methods using advanced applied mathematics, and the implementation of optimization algorithms in Matlab
+
+  - Successful time management skills as demonstrated by solving, in a short time, three targeted problems (deconvolution, denoising, inpainting), leading to an efficient algorithm for multiple applications
+
+► Langage informatique utilisé:
+  * MATLAB
 
 
 
+###  Machine Learning engineer | R&D
+at Biomedical laboratory, USTHB
+Dates: 02/2012 - 02/2013
 
-# Formation
+► Description
+
+  - Developed project management skills through the development of a decision support tool for  epilepsy detection from an EEG signals database using machine learning, resulting in the proposition of a new pipeline for the classification of biomedical signals in Matlab
+
+  - Improved writing and communication skills through writing papers, leading to 2 publications in international conferences
+
+  - Ability to successfully handle a research project in machine learning through the definition of the roadmap project, the study of state-of-the-art works, data analysis, applied mathematics, signal processing
+
+► Computer language used:
+  * MATLAB
+
+► Publication of two conference articles:
+  * WoSSPA'2013
+  * CISTEM'2018
+
+
+
+<!-- #####################################################################
+##########################################################################################################################################
+ -->
+
+
+# Education
 
 ### University of Paris-Saclay
 Doctor of Philosophy (PhD), Signal and Image Processing, Machine Learning
@@ -70,48 +146,42 @@ Dates: 2015 - 2018
 website: https://www.universite-paris-saclay.fr/en
 
 ◆ Published of papers in national and international conferences:
-  ✔ 28th and 28th EUSIPCO (European Signal and Image Processing Conference).
-  ✔ 27th and 28th EUSIPCO (European Signal and Image Processing Conference).
-  ✔ 25th Colloque GRETSI (Groupe d'Etudes du Traitement du Signal et des Images).
-  ✔ Co-author of an article published in Astronomy & Astrophysics Journal.
+  * 28th and 28th EUSIPCO (European Signal and Image Processing Conference).
+  * 27th and 28th EUSIPCO (European Signal and Image Processing Conference).
+  * 25th Colloque GRETSI (Groupe d'Etudes du Traitement du Signal et des Images).
+  * Co-author of an article published in Astronomy & Astrophysics Journal.
+
+  <!--
+  #####################################################################
+   -->
+
 
 ### University of Bordeaux
 Master's degree, Signal and Image Processing
 Dates: 2013 - 2015
 website: https://www.u-bordeaux.com/
 
-► Rank : 2/21
-◆ Two years of training:
-    ✔ Master 1: 2013-2014
-    ✔ Master 2: 2014-2015
 
-### Polytechnic School of Algiers
+◆ Two years of training:
+  * Master 1: 2013-2014
+  * Master 2: 2014-2015
+
+► Ranked : 2/21
+
+
+<!--
+#####################################################################
+ -->
+
+
+### Ecole Polytechnique
 Engineer degree, Electrical engineering
 Dates: 2007 - 2012
 website: http://www.enp.edu.dz/
 
 ◆ Five years of training:
-» Fundamental Engineering: 2007-2009
-» Electrical and Electronics Engineering: 2009-2012
+  * Fundamental Engineering: 2007-2009
+  * Electrical and Electronics Engineering: 2009-2012
 
 ◆ Publication in an international conference:
-✔ WOSSPA 2013 (Workshop on Systems, Signal Processing, and their Applications)
-
-# Professional experiences
-
-### 2015 - 2018
-University of Paris-Saclay
-
-PhD in Signal and Image Processing·
-
-
-### 2013 - 2015
-University of Bordeaux  
-
-Master's degree, Signal and Image Processing
-
-### 2007 - 2012
-
-Polytechnic school of Algiers
-
-Engineer degree, Electrical engineering
+  * WOSSPA 2013 (Workshop on Systems, Signal Processing, and their Applications)
