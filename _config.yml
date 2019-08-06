@@ -118,7 +118,7 @@ author:
       url: mailto:hadjyoucef.amine@email.com
 
     - label: "LinkedIn"
-      icon: "fas fa-fw fa-link"
+      icon: "fa-linkedin-in"
       url: "https://www.linkedin.com/in/aminehy/"
 
     # - label: "Twitter"
@@ -138,12 +138,12 @@ author:
       url: https://scholar.google.com/citations?user=NXUvxIMAAAAJ&hl=en
 
     - label: "ResearshGate"
-      icon: "fas fa-fw fa-link"
+      icon: "fab fa-researchgate"
       url: "https://www.researchgate.net/profile/M_Amine_Hadj-Youcef"
 # Site Footer
 footer:
   links:
-
+# icons: https://fontawesome.com/
     - label: "LinkedIn"
       icon: "fa-linkedin-in"
       url: "https://www.linkedin.com/in/aminehy/"
@@ -161,7 +161,7 @@ footer:
       url: "https://scholar.google.com/citations?user=NXUvxIMAAAAJ&hl=en"
 
     - label: "ResearshGate"
-      icon: "fas fa-fw fa-link"
+      icon: "fab fa-researchgate"
       url: "https://www.researchgate.net/profile/M_Amine_Hadj-Youcef"
 
 # Reading Files
