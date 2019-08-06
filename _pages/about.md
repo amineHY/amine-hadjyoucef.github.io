@@ -6,7 +6,6 @@ icon: fa-home
 author_profile: true
 header:
   image: "/assets/images/tamanraset.jpg"
-
 ---
 
 
