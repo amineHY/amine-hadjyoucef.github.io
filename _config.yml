@@ -19,7 +19,7 @@ locale                   : "en-US"
 title                    : "Welcome to my Personal Website"
 title_separator          : "-"
 subtitle                 : # site tagline that appears below site title in masthead
-name                     : "M-Amine Hadj-Youcef"
+name                     : "M. Amine Hadj-Youcef, Ph. D"
 description              : "Data scientist profolio."
 url                      : "https://aminehy.github.io/"
 baseurl                  : # the subpath of your site, e.g. "/blog"

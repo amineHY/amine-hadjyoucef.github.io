@@ -4,7 +4,7 @@ main:
     url: /Publications/
 
   - title: "Resume"
-    url: /resume.md
+    url: /resume/
 
   - title: "Projects"
     url: /projects/
