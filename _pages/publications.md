@@ -6,7 +6,7 @@ subtitle: Scientific journals, international conferences, seminars
 icon: fa-book
 author_profile: true
 header:
-  image: assets/images/banner_publications.jpg
+  image: assets/images/banner_publications.png
 ---
 
 # International journals with peer review  
