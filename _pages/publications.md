@@ -19,12 +19,16 @@ header:
 
 		- [Restoration from multi-spectral blurred data with non-stationary instrument response](#restoration-from-multi-spectral-blurred-data-with-non-stationary-instrument-response)
 
-		- [Detection of epileptics during seizure free periods](#detection-of-epileptics-during-seizure-free-periods)
-    
-- [National conferences with peer review](#national-conferences-with-peer-review)
+		- [Detection of epileptics during seizure free periods](#detection-of-epileptics-during-seizure-free-periods)  
+
+- [National conferences with peer review](#national-conferences-with-peer-review)  
+
 		- [Restauration d’objets astrophysiques à partir de données multi-spectrales floues et d’une réponse instrument non-stationnaire](#restauration-dobjets-astrophysiques-partir-de-donnes-multi-spectrales-floues-et-dune-rponse-instrument-non-stationnaire)
-- [Seminars](#seminars)
+
+- [Seminears](#seminars)
+
 - [Talks](#talks)
+
 
 # International journals with peer review  
 
