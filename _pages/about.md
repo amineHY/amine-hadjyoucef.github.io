@@ -4,8 +4,10 @@ title: "About"
 permalink: /about/
 icon: fa-home
 order: 1
+author_profile: true
 header:
   image: "/assets/images/tamanraset.jpg"
+
 ---
 
 

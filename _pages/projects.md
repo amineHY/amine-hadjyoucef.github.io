@@ -1,10 +1,11 @@
 ---
 layout: "archive"
-title: Resume
+title: List of my Projects
 permalink: /projects/
 subtitle: Summary of my professional career
 icon: fa-book
 order: 3
+author_profile: true
 ---
 
 

@@ -1,10 +1,10 @@
 ---
 layout: "archive"
-title: Resume
-subtitle: Summary of my professional career
+title: List of my publications
+permalink: /publications/
+subtitle: Scientific journals, international conferences, seminars
 icon: fa-book
 order: 3
-permalink: /resume/
 author_profile: true
 ---
 
