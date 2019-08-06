@@ -133,7 +133,7 @@ author:
       icon: "fab fa-fw fa-github"
       url: "https://github.com/aminehy"
 
-    - label: "Google scholar"
+    - label: "Google Scholar"
       icon: "fas fa-fw fa-link"
       url: https://scholar.google.com/citations?user=NXUvxIMAAAAJ&hl=en
 
@@ -153,7 +153,7 @@ footer:
       icon: "fab fa-fw fa-gitlab"
       url: "https://gitlab.com/aminehy"
 
-    - label: "Google scholar"
+    - label: "Google Scholar"
       icon: "fas fa-fw fa-link"
       url: https://scholar.google.com/citations?user=NXUvxIMAAAAJ&hl=en
 
