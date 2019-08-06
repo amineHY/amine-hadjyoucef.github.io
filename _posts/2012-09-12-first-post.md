@@ -3,6 +3,8 @@ layout: "post"
 title: My First Post
 author: Amine
 permalink: "my_url"
+header:
+  teaser: /assets/images/my-awesome-post-teaser.jpg
 #date: 2019-07-22 23:37 -0700
 # This is a yaml frontmatter
 ---
