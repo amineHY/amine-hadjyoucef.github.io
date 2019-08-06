@@ -17,8 +17,11 @@ in progress
 <!-- On a side for fun I blog, tweet, and maintain several Deep Learning libraries written in Javascript (e.g. ConvNetJS, RecurrentJS, REINFORCEjs, t-sneJS). I am also sometimes jokingly referred to as the reference human for ImageNet (post :)). I also recently expanded on this with arxiv-sanity.com, which lets you search and sort through ~30,000 Arxiv papers on Machine Learning over the last 3 years in the same pretty format. -->
 
 **Timeline.**
-in progress
-<!-- 2017-now: Director of AI at Tesla Neural Networks for the Autopilot
+2019-now: Artificial Intelligence - computer Vision Engineer
+2015-2018: University of Paris-Saclay, France, PhD student
+2013-2015: University of Bordeaux, France, Master student
+2007-2012: Ecole Polytechnique of Algiers, Electrical and Electronics Engineer
+
 2016-2017: Research Scientist at OpenAI Deep Learning, Generative Models, Reinforcement Learning
 Summer 2015: DeepMind Internship Deep Reinforcement Learning group
 Summer 2013: Google Research Internship Large-Scale Supervised Deep Learning for Videos
