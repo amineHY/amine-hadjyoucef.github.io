@@ -1,7 +1,7 @@
 ---
 layout: home
 title: "About"
-permlink: /about/
+permalink: /about/
 icon: fa-home
 order: 1
 header:
