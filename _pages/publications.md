@@ -11,21 +11,12 @@ header:
 
 - [International journals with peer review](#international-journals-with-peer-review)
 
-		- [Convolution kernels for multi-wavelength imaging](#convolution-kernels-for-multi-wavelength-imaging)
-
 - [International conferences with peer review](#international-conferences-with-peer-review)
-
-		- [Spatio-Spectral Multichannel Reconstruction from few Low-Resolution multi-spectral Data](#spatio-spectral-multichannel-reconstruction-from-few-low-resolution-multi-spectral-data)
-
-		- [Restoration from multi-spectral blurred data with non-stationary instrument response](#restoration-from-multi-spectral-blurred-data-with-non-stationary-instrument-response)
-
-		- [Detection of epileptics during seizure free periods](#detection-of-epileptics-during-seizure-free-periods)  
 
 - [National conferences with peer review](#national-conferences-with-peer-review)  
 
-		- [Restauration d’objets astrophysiques à partir de données multi-spectrales floues et d’une réponse instrument non-stationnaire](#restauration-dobjets-astrophysiques-partir-de-donnes-multi-spectrales-floues-et-dune-rponse-instrument-non-stationnaire)
 
-- [Seminears](#seminars)
+- [Seminars](#seminars)
 
 - [Talks](#talks)
 
