@@ -16,7 +16,7 @@ minimal_mistakes_skin    : "default" # "air", "aqua", "contrast", "dark", "dirt"
 
 # Site Settings
 locale                   : "en-US"
-title                    : "M A Hadj Youcef"
+title                    : "M-Amine Hadj-Youcef Website"
 title_separator          : "-"
 subtitle                 : # site tagline that appears below site title in masthead
 name                     : "Hadj-Youcef's website"
@@ -107,9 +107,9 @@ analytics:
 
 # Site Author
 author:
-  name             : "Mohamed ElAmine Hadj-Youcef"
+  name             : "M-Amine Hadj-Youcef"
   avatar           : "/assets/images/photo de profile.jpg"
-  bio              : "Welcome to my website."
+  bio              : "Aritificial Intelligence, Computer Vision, Machine learning."
   location         : "Paris, France"
   email            :
   links:
