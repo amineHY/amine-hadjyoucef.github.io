@@ -1,6 +1,6 @@
 ---
 layout: "archive"
-title: List of my publications
+title: Here is a list of my scientific publications
 permalink: /publications/
 subtitle: Scientific journals, international conferences, seminars
 icon: fa-book
@@ -24,16 +24,12 @@ header:
 **Link**: https://www.aanda.org/articles/aa/full_html/2016/12/aa29080-16/aa29080-16.html  
 
 **Abstract:**
-Astrophysical images issued from different instruments and/or spectral bands often require to be processed together, either for fitting or comparison purposes. However each image is affected by an instrumental response, also known as point-spread function (PSF), that depends on the characteristics of the instrument as well as the wavelength and the observing strategy. Given the knowledge of the PSF in each band, a straightforward way of processing images is to homogenise them all to a target PSF using convolution kernels, so that they appear as if they had been acquired by the same instrument. We propose an algorithm that generates such PSF-matching kernels, based on Wiener filtering with a tunable regularisation parameter. This method ensures all anisotropic features in the PSFs to be taken into account. We compare our method to existing procedures using measured Herschel/PACS and SPIRE PSFs and simulated JWST/MIRI PSFs. Significant gains up to two orders of magnitude are obtained with respect to the use of kernels computed assuming Gaussian or circularised PSFs. A software to compute these kernels is available at https://github.com/aboucaud/pypher
+Astrophysical images issued from different instruments and/or spectral bands often require to be processed together, either for fitting or comparison purposes. However each image is affected by an instrumental response, also known as point-spread function (PSF), that depends on the characteristics of the instrument as well as the wavelength and the observing strategy. Given the knowledge of the PSF in each band, a straightforward way of processing images is to homogenise them all to a target PSF using convolution kernels, so that they appear as if they had been acquired by the same instrument. We propose an algorithm that generates such PSF-matching kernels, based on Wiener filtering with a tunable regularisation parameter. This method ensures all anisotropic features in the PSFs to be taken into account. We compare our method to existing procedures using measured Herschel/PACS and SPIRE PSFs and simulated JWST/MIRI PSFs. Significant gains up to two orders of magnitude are obtained with respect to the use of kernels computed assuming Gaussian or circularised PSFs. A software to compute these kernels is available in [GitHub](https://github.com/aboucaud/pypher).
 
 Read the full paper [here](https://www.researchgate.net/publication/313504808_Convolution_kernels_for_multi-wavelength_imaging).
 
-
 <br/><br/>
 <br/><br/>
-<br/><br/>
-
-
 
 # International conferences with peer review
 <br/><br/>
@@ -44,6 +40,7 @@ Read the full paper [here](https://www.researchgate.net/publication/313504808_Co
 **Pages**: 1980-1984  
 **Publisher**: IEEE  
 **Link**: https://ieeexplore.ieee.org/abstract/document/8553166  
+
 **Abstract**
 This paper deals with the reconstruction of a 3-D spatio-spectral object observed by a multi-spectral imaging system, where the original object is blurred with a spectral-variant PSF (Point Spread Function) and integrated over few broad spectral bands. In order to tackle this ill-posed problem, we propose a linear forward model that accounts for direct (or auto) channels and between (or cross) channels degradation, by modeling the imaging system response and the spectral distribution of the object with a piecewise linear function. Reconstruction based on regularization method is proposed, by enforcing spatial and spectral smoothness of the object. We test our approach on simulated data of the Mid-InfraRed Instrument (MIRI) Imager of the James Webb Space Telescope (JWST). Results on simulated multispectral data show a significant improvement over the conventional multichannel method.  
 
@@ -83,7 +80,6 @@ Read the full paper [here](https://www.researchgate.net/publication/256995933_De
 
 <br/><br/>
 <br/><br/>
-<br/><br/>
 
 # National conferences with peer review  
 
@@ -105,16 +101,12 @@ Read the full paper [here](https://www.researchgate.net/publication/256995933_De
 
   Read the full paper [here](https://jeannicod.ccsd.cnrs.fr/SUP_LSS/hal-01596257v1).
 
-
 <br/><br/>
 <br/><br/>
-<br/><br/>
-
 
 # Seminars
 in progress
 
-<br/><br/>
 <br/><br/>
 <br/><br/>
 
