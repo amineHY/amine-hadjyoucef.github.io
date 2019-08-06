@@ -69,6 +69,7 @@ Read the full paper [here](https://www.researchgate.net/publication/320825357_Re
 **Abstract**  
 In this paper the problematic of epileptic detection is treated. An algorithm of EEG signal classification into two classes: Healthy and Epileptics is developed. The difference with conventional methods is the use of free seizure epileptic records. A good classification accuracy means that it is possible to detect an epileptic in normal state or at an early stage of epilepsy. The raw EEG signal is decomposed using discrete wavelet transform (DWT). Then, principal component analysis (PCA) allows dimensionality reduction and better representation of the data. Several features are extracted and used in support vector machine (SVM) classifier. Results show satisfactory classification accuracy comparable or better than those reported in literature.
 
+Read the full paper [here](https://www.researchgate.net/publication/256995933_Detection_of_epileptics_during_seizure_free_periods).
 
 
 # National conferences with peer review  

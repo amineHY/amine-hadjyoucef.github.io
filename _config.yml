@@ -137,6 +137,9 @@ author:
       icon: "fas fa-fw fa-link"
       url: https://scholar.google.com/citations?user=NXUvxIMAAAAJ&hl=en
 
+    - label: "ResearhGate"
+      icon: "fas fa-fw fa-link"
+      url: "https://www.researchgate.net/profile/M_Amine_Hadj-Youcef"
 # Site Footer
 footer:
   links:
@@ -155,8 +158,12 @@ footer:
 
     - label: "Google Scholar"
       icon: "fas fa-fw fa-link"
-      url: https://scholar.google.com/citations?user=NXUvxIMAAAAJ&hl=en
+      url: "https://scholar.google.com/citations?user=NXUvxIMAAAAJ&hl=en"
 
+    - label: "ResearhGate"
+      icon: "fas fa-fw fa-link"
+      url: "https://www.researchgate.net/profile/M_Amine_Hadj-Youcef"
+      
 # Reading Files
 include:
   - .htaccess
