@@ -16,11 +16,11 @@ minimal_mistakes_skin    : "default" # "air", "aqua", "contrast", "dark", "dirt"
 
 # Site Settings
 locale                   : "en-US"
-title                    : "Site Title"
+title                    : "M-A Hadj-Youcef"
 title_separator          : "-"
 subtitle                 : # site tagline that appears below site title in masthead
-name                     : "Your Name"
-description              : "An amazing website."
+name                     : "M-A Hadj-Youcef"
+description              : "Data scientist profolio."
 url                      : # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
@@ -109,7 +109,7 @@ analytics:
 author:
   name             : "Mohamed ElAmine Hadj-Youcef"
   avatar           : "/assets/images/photo de profile.jpg"
-  bio              : "Welcome to my pI am an **amazing** person."
+  bio              : "Welcome to my website."
   location         : "Paris, France"
   email            :
   links:
@@ -127,7 +127,7 @@ author:
       # url: "https://facebook.com/"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
-      # url: "https://github.com/"
+      url: "https://github.com/aminehy"
     # - label: "Instagram"
     #   icon: "fab fa-fw fa-instagram"
     #   # url: "https://instagram.com/"
@@ -294,3 +294,14 @@ defaults:
       comments: # true
       share: true
       related: true
+  # total_pages
+    - scope:
+        path: ""
+        type: pages
+      values:
+        layout: single
+        author_profile: true
+        read_time: true
+        comments: # true
+        share: true
+        related: true
