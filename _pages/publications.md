@@ -47,7 +47,8 @@ Read the full paper [here](/assets/pdf/A_&_A.pdf).
 ### Spatio-Spectral Multichannel Reconstruction from few Low-Resolution multi-spectral Data
 **Authors**: MA Hadj-Youcef, François Orieux, Aurélia Fraysse, Alain Abergel  
 **Publication date**: 2018/9/3  
-**Conference**: 2018 26th European Signal Processing Conference (EUSIPCO)  
+**Conference**: EUSIPCO 2018, The 26th European Signal Processing Conference (EUSIPCO)  
+**Location**: Rome, Italy.
 **Pages**: 1980-1984  
 **Publisher**: IEEE  
 **Link**: https://ieeexplore.ieee.org/abstract/document/8553166  
@@ -62,8 +63,8 @@ Read the full paper [here](/assets/pdf/eusipco_2018.pdf).
 ### Restoration from multi-spectral blurred data with non-stationary instrument response  
 **Authors**: M. A. Hadj-Youcef, François Orieux, Aurélia Fraysse, Alain Abergel  
 **Publication date**: 2017/8/28  
-**Conference**: 2017 25th European Signal Processing Conference (EUSIPCO)  
-**Location**: ...  
+**Conference**: EUSIPCO 2017, The 25th European Signal Processing Conference (EUSIPCO)  
+**Location**: Kos, Greece.
 **Pages**: 503-507  
 **Publisher**: IEEE  
 **Link**: https://ieeexplore.ieee.org/abstract/document/8081258  
@@ -78,8 +79,8 @@ Read the full paper [here](/assets/pdf/eusipco-20171.pdf).
 ### Detection of epileptics during seizure free periods
 **Authors**: M.A. Hadj-Youcef, M. Adnane, A Bousbia-Salah  
 **Publication date**: 2013/12/5  
-**Conference**: Workshop on Systems, Signal Processing and their Applications (WoSSPA), 2013 8th International  
-**Location**: ...  
+**Conference**: WOSSPA 2013 : The 9th International Workshop on Systems, Signal Processing and their applications
+**Location**: Algiers, Algeria
 **Pages**: 209 - 213  
 **Publisher**: IEEE  
 **Link**: https://ieeexplore.ieee.org/abstract/document/6602363  
