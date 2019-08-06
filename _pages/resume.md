@@ -46,9 +46,7 @@ Dates: 10/2015 - 11/2018
   * EUSIPCO 2017, Kos
   * EUSIPCO 2018, Rome
 
-  <!--
-  #####################################################################
-   -->
+<br/><br/>
 
 ### Teaching Assistant
 at [Ecole Polytech Paris-Sud](http://www.polytech.u-psud.fr/fr/formations/electronique-et-systemes-robotises.html), University of Paris-Sud.
@@ -75,12 +73,9 @@ Dates:
   *  MATLAB
 
 
-  <!--
-  #####################################################################
-   -->
+<br/><br/>
 
-
-### Image Processing Engineer | Computer Vision
+### Image Processing Engineer - Computer Vision
 at [Synchromedia Laboratory](http://www.synchromedia.ca/), Montreal, Quebec, Canada
 
 ► Description:
