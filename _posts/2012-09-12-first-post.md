@@ -7,6 +7,7 @@ header:
   teaser: /assets/images/teaser.jpg
 icon: fa-home
 author_profile: true
+classes: wide
 ---
 
 # Introduction

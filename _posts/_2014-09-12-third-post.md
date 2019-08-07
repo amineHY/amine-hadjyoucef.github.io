@@ -4,6 +4,8 @@ author: Amine
 layout: post
 icon: fa-lightbulb
 icon-style: regular
+excerpt: ""
+classes: wide
 ---
 
 See the icon?

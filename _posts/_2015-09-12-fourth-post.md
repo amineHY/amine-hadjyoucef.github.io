@@ -2,6 +2,7 @@
 title: Fourth Post
 author: Amine
 layout: post
+classes: wide
 ---
 
 
