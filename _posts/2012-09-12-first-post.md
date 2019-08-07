@@ -4,7 +4,10 @@ title: "My First Post"
 author: Amine
 permalink: "my_url"
 header:
-  teaser: /assets/images/teaser.jpg
+  teaser: /assets/images/nature_2.jpg
+  image_description: "A description of the image"
+  caption: "Photo credit: [**Unsplash**](https://unsplash.com)"
+  overlay_filter: 0.5
 icon: fa-home
 author_profile: true
 classes: wide
