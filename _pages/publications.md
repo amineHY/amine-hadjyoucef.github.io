@@ -1,8 +1,8 @@
 ---
-layout: "archive"
 title: Here is a list of my scientific publications
-permalink: /publications/
 subtitle: Scientific journals, international conferences, seminars
+permalink: /publications/
+layout: "single"
 icon: fa-book
 author_profile: true
 header:

@@ -1,8 +1,8 @@
 ---
-layout: "archive"
 title: Education
-permalink: /education/
 subtitle: Summary of education
+permalink: /education/
+layout: "single"
 icon: fa-book
 author_profile: true
 header:
