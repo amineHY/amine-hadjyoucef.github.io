@@ -4,7 +4,6 @@ subtitle: Scientific journals, international conferences, seminars
 permalink: /publications/
 layout: "single"
 icon: fa-book
-author_profile: true
 header:
   image: assets/images/banner_publications.png
 

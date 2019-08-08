@@ -7,6 +7,7 @@ icon: fa-book
 author_profile: true
 header:
   image: assets/images/banner_publications.jpg
+classes: wide
 ---
 
 
