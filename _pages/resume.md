@@ -14,7 +14,7 @@ classes: wide
 
 
 
-# Work Experience
+## Work Experience
 <!--
 #####################################################################
  -->
@@ -142,7 +142,7 @@ As part of the internship at the end of engineering studies, I held the position
  -->
 
 
-# Education
+## Education
 
 ### University of Paris-Saclay
 Doctor of Philosophy (PhD), Signal and Image Processing.  
