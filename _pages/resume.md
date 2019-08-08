@@ -22,7 +22,7 @@ toc: true
 ### R&D Engineer in Image Processing - Computer Vision
   at [Signal and Systems Laboratory (L2S)](http://www.l2s.centralesupelec.fr/), Centrale Supélec &  [Spatial Astrophysics Institute (IAS)](http://www.ias.u-psud.fr/), CNRS, France.
 
-Dates: 10/2015 - 11/2018
+**Dates:** 10/2015 - 11/2018
 
 **Description**  
 Hyperspectral object reconstruction from multi-spectral data observed by an infrared imager, aboard NASA's next JWST space telescope. Launch of the telescope in 2021.  
@@ -56,6 +56,7 @@ Hyperspectral object reconstruction from multi-spectral data observed by an infr
 
 ### Teaching Assistant in Signal Processing
 at [Ecole Polytech Paris-Sud](http://www.polytech.u-psud.fr/fr/formations/electronique-et-systemes-robotises.html), University of Paris-Sud, France.  
+
 **Dates:** 2016-2018  
 
 **Description**  
@@ -75,6 +76,8 @@ I was in charge of teaching two classes of total number of +60 under graduate st
 ### Image Processing Engineer - Computer Vision
 at [Synchromedia Laboratory](http://www.synchromedia.ca/), Montreal, Quebec, Canada
 
+**Dates:** 02/2015-08/2015
+
 **Description**  
   ...
 
@@ -92,7 +95,8 @@ at [Synchromedia Laboratory](http://www.synchromedia.ca/), Montreal, Quebec, Can
 
 ### Signal and Image Processing Engineer
 at the [Mathematical Institue of Bordeaux](https://www.math.u-bordeaux.fr/imb/spip.php), France.
-Dates: 02/2014 - 07/2014
+
+**Dates:** 02/2014 - 07/2014
 
 **Description**  
   ...
@@ -110,7 +114,8 @@ Dates: 02/2014 - 07/2014
 
 ###  Machine Learning engineer | R&D
 at Biomedical laboratory, USTHB. Algeria.  
-Dates: 02/2012 - 02/2013  
+
+**Dates:** 02/2012 - 02/2013  
 
 **Description**  
 As part of the internship at the end of engineering studies, I held the position of machine learning engineer for the EEG biomedical signal epilepsy detection project. The goal is to anticipate the treatment of the pathology, and protect the individual suffering from the pathology in case of epileptic seizure.
@@ -141,7 +146,7 @@ As part of the internship at the end of engineering studies, I held the position
 
 ### University of Paris-Saclay
 Doctor of Philosophy (PhD), Signal and Image Processing.  
-Dates: 2015 - 2018
+**Dates:** 2015 - 2018
 
 
 **Publications in peew review national/international conference**  
@@ -157,12 +162,11 @@ Dates: 2015 - 2018
 
 ### University of Bordeaux
 Master's degree, Signal and Image Processing.  
-2013 - 2015  
+**Dates:** 2013 - 2015  
 
 
 ► Master 2: 2014-2015 (Ranked : 2/21)  
 ► Master 1: 2013-2014
-
 
 
 <!--
@@ -170,12 +174,13 @@ Master's degree, Signal and Image Processing.
  -->
 
 
-### Ecole Polytechnique  
+### Polytechnical school of Algiers.
 Engineer degree, Electrical engineering.  
-2007 - 2012
+**Dates:** 2007 - 2012
 
 ► 2007-2009: Fundamental Engineering  
 ► 2009-2012: Electrical and Electronics Engineering  
 
 **Publication in peer review international conference**
   * WOSSPA 2013 (Workshop on Systems, Signal Processing, and their Applications)
+**Dates:**
