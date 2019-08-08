@@ -148,14 +148,6 @@ footer:
       icon: "fab fa-fw fa-gitlab"
       url: "https://gitlab.com/aminehy"
 
-    - label: "Google Scholar"
-      icon: "fas fa-fw fa-link"
-      url: "https://scholar.google.com/citations?user=NXUvxIMAAAAJ&hl=en"
-
-    - label: "ResearshGate"
-      icon: "fab fa-researchgate"
-      url: "https://www.researchgate.net/profile/M_Amine_Hadj-Youcef"
-
 # Reading Files
 include:
   - .htaccess
