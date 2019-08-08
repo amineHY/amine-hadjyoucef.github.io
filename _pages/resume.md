@@ -24,81 +24,82 @@ toc: true
 
 Dates: 10/2015 - 11/2018
 
-**Description**
-Hyperspectral object reconstruction from multi-spectral data observed by an infrared imager, aboard NASA's next JWST space telescope. Launch of the telescope in 2021.
+**Description**  
+Hyperspectral object reconstruction from multi-spectral data observed by an infrared imager, aboard NASA's next JWST space telescope. Launch of the telescope in 2021.  
 
-*Keywords*:  Reconstruction,  Mathematical modeling, data simulation, Bayesian estimation, statistics, Programming in Python, scientific computation, Optimization algorithms.
+*Keywords*:  Reconstruction,  Mathematical modeling, data simulation, Bayesian estimation, statistics, Programming in Python, scientific computation, Optimization algorithms.  
 
-**Accomplishments**
-  ► Strong project management skills as evidenced by the L2S - IAS collaboration on the hyperspectral data reconstruction for the next space mission JWST (NASA/ESA/CSA), leading to the innovation of 2 new algorithms from scratch for the processing of infrared images using applied mathematics and machine learning in Python
+**Accomplishments**  
+  ► Strong project management skills as evidenced by the L2S - IAS collaboration on the hyperspectral data reconstruction for the next space mission JWST (NASA/ESA/CSA), leading to the innovation of 2 new algorithms from scratch for the processing of infrared images using applied mathematics and machine learning in Python  
 
-  ► Excellent leadership skills and experience mentoring as demonstrated by teaching "signal processing" to +60 engineering students at Ecole Polytech Paris-Sud resulting in a 100% success rate
+  ► Excellent leadership skills and experience mentoring as demonstrated by teaching "signal processing" to +60 engineering students at Ecole Polytech Paris-Sud resulting in a 100% success rate  
 
-  ► Gained advanced communication skills through participation at 2 conferences, 1 workshop, and 1 seminar, resulting in 3 talks in front of +100 experts, publication of 4 papers as a first author and 1 poster presentation
+  ► Gained advanced communication skills through participation at 2 conferences, 1 workshop, and 1 seminar, resulting in 3 talks in front of +100 experts, publication of 4 papers as a first author and 1 poster presentation  
 
-  ► High-level technical skills, including project roadmap definition, literature review, system modeling, implemented of various optimization algorithms
+  ► High-level technical skills, including project roadmap definition, literature review, system modeling, implemented of various optimization algorithms  
 
-**Publication in peer review international conferences**
-  ► GRETSI 2017
-  ► EUSIPCO 2017
-  ► EUSIPCO 2018
+**Publication in peer review international conferences**  
+  ► GRETSI 2017  
+  ► EUSIPCO 2017  
+  ► EUSIPCO 2018  
 
-**Public Talks**
-  ► GDR-ISIS, Paris
-  ► EUSIPCO 2018, Rome
-  ► EUSIPCO 2017, Kos
+**Public Talks**  
+  ► GDR-ISIS, Paris, France.  
+  ► EUSIPCO 2018, Rome, Italy.    
+  ► EUSIPCO 2017, Kos, Grece.    
 
-**Technical environment**
-  ► Linux Ubuntu 64-bit
-  ► Python:  Numpy, Scikit-learn, Matplotlib, Pandas
+**Technical environment**    
+  ► Linux Ubuntu 64-bit  
+  ► Python:  Numpy, Scikit-learn, Matplotlib, Pandas  
 
 <br/><br/>
 
 ### Teaching Assistant in Signal Processing
 at [Ecole Polytech Paris-Sud](http://www.polytech.u-psud.fr/fr/formations/electronique-et-systemes-robotises.html), University of Paris-Sud, France.
 
-**Description**
-I was in charge of teaching two classes of total number of +60 under graduate students at the engineering school *Polytech Paris-Sud*. **Dates:** 2016-2018
+**Description**  
+I was in charge of teaching two classes of total number of +60 under graduate students at the engineering school *Polytech Paris-Sud*. **Dates:** 2016-2018  
 
-**Accomplishments**
-  ► Teaching of Signal Processing
-  ► Supervision of two groups of +60 engineering students
-  ► Animation of tutorials
-  ► Student assessment and exam preparation
-  ► Teaching contents: Fourier Transform, Linear filtering, Sampling, Applied mathematics, Deterministic random signal processing, basis in statistics, ...
-  ► Teaching students to perform signal processing in *MATLAB*
+**Accomplishments**  
+  ► Teaching of Signal Processing  
+  ► Supervision of two groups of +60 engineering students  
+  ► Animation of tutorials  
+  ► Student assessment and exam preparation  
+  ► Teaching contents: Fourier Transform, Linear filtering, Sampling, Applied mathematics, Deterministic random signal processing, basis in statistics, ...  
+  ► Teaching students to perform signal processing in *MATLAB*  
 
 <br/><br/>
 
 ### Image Processing Engineer - Computer Vision
 at [Synchromedia Laboratory](http://www.synchromedia.ca/), Montreal, Quebec, Canada
 
-**Description**
+**Description**  
   ...
 
-**Accomplishments**
-  ► Demonstrated flexibility skills through the development of image processing algorithms for the preservation of historical documents, resulting in a new method for processing document images using a linear mixing model in Matlab
+**Accomplishments**    
+  ► Demonstrated flexibility skills through the development of image processing algorithms for the preservation of historical documents, resulting in a new method for processing document images using a linear mixing model in Matlab  
 
-  ► Improved project and time management skills by defining the problem and the project roadmap, Implementing image processing algorithms in Matlab
+  ► Improved project and time management skills by defining the problem and the project roadmap, Implementing image processing algorithms in Matlab  
 
-  ► Developed communication skills through writing and presenting the project report in English
+  ► Developed communication skills through writing and presenting the project report in English  
 
-**Technical environment**
-  ► MATLAB
+**Technical environment**  
+  ► MATLAB  
 
 
 ### Signal and Image Processing Engineer
 at the [Mathematical Institue of Bordeaux](https://www.math.u-bordeaux.fr/imb/spip.php), France.
 Dates: 02/2014 - 07/2014
 
-**Description**
+**Description**  
   ...
-**Accomplishments**
-  ► Gained high-level technical skills through the implementation from scratch of signal and image -restoration methods using advanced applied mathematics, and the implementation of optimization algorithms in Matlab
 
-  ► Successful time management skills as demonstrated by solving, in a short time, three targeted problems (deconvolution, denoising, inpainting), leading to an efficient algorithm for multiple applications
+**Accomplishments**  
+  ► Gained high-level technical skills through the implementation from scratch of signal and image -restoration methods using advanced applied mathematics, and the implementation of optimization algorithms in Matlab  
 
-**Technical environment**
+  ► Successful time management skills as demonstrated by solving, in a short time, three targeted problems (deconvolution, denoising, inpainting), leading to an efficient algorithm for multiple applications  
+
+**Technical environment**  
   ► MATLAB
 
 
@@ -107,22 +108,22 @@ Dates: 02/2014 - 07/2014
 at Biomedical laboratory, USTHB
 Dates: 02/2012 - 02/2013
 
-**Description**
+**Description**  
 As part of the internship at the end of engineering studies, I held the position of machine learning engineer for the EEG biomedical signal epilepsy detection project. The goal is to anticipate the treatment of the pathology, and protect the individual suffering from the pathology in case of epileptic seizure.
 
-**Accomplishments**
+**Accomplishments**    
   ► Developed project management skills through the development of a decision support tool for  epilepsy detection from an EEG signals database using machine learning, resulting in the proposition of a new pipeline for the classification of biomedical signals in Matlab
 
   ► Improved writing and communication skills through writing papers, leading to 2 publications in international conferences
 
   ► Ability to successfully handle a research project in machine learning through the definition of the roadmap project, the study of state-of-the-art works, data analysis, applied mathematics, signal processing
 
-**Technical environment**
-  ► MATLAB
+**Technical environment**  
+  ► MATLAB  
 
-**Publication in peer review international conferences**
-  ► CISTEM'2018
-  ► WoSSPA'2013
+**Publication in peer review international conferences**  
+  ► CISTEM'2018  
+  ► WoSSPA'2013  
 
 
 
