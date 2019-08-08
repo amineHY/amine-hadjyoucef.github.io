@@ -2,7 +2,6 @@
 title: Here is a list of my scientific publications
 subtitle: Scientific journals, international conferences, seminars
 permalink: /publications/
-layout: "single"
 icon: fa-book
 header:
   image: assets/images/banner_publications.png
@@ -16,7 +15,6 @@ toc_label: In this page:
 - [International conferences with peer review](#international-conferences-with-peer-review)
 
 - [National conferences with peer review](#national-conferences-with-peer-review)  
-
 
 - [Seminars](#seminars)
 
