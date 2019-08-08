@@ -55,10 +55,12 @@ Hyperspectral object reconstruction from multi-spectral data observed by an infr
 <br/><br/>
 
 ### Teaching Assistant in Signal Processing
-at [Ecole Polytech Paris-Sud](http://www.polytech.u-psud.fr/fr/formations/electronique-et-systemes-robotises.html), University of Paris-Sud, France.
+at [Ecole Polytech Paris-Sud](http://www.polytech.u-psud.fr/fr/formations/electronique-et-systemes-robotises.html), University of Paris-Sud, France.  
+**Dates:** 2016-2018  
 
 **Description**  
-I was in charge of teaching two classes of total number of +60 under graduate students at the engineering school *Polytech Paris-Sud*. **Dates:** 2016-2018  
+I was in charge of teaching two classes of total number of +60 under graduate students at the engineering school *Polytech Paris-Sud*.
+
 
 **Accomplishments**  
   ► Teaching of Signal Processing  
@@ -84,6 +86,7 @@ at [Synchromedia Laboratory](http://www.synchromedia.ca/), Montreal, Quebec, Can
   ► Developed communication skills through writing and presenting the project report in English  
 
 **Technical environment**  
+  ► Linux Ubuntu 64-bit  
   ► MATLAB  
 
 
@@ -100,13 +103,14 @@ Dates: 02/2014 - 07/2014
   ► Successful time management skills as demonstrated by solving, in a short time, three targeted problems (deconvolution, denoising, inpainting), leading to an efficient algorithm for multiple applications  
 
 **Technical environment**  
-  ► MATLAB
+  ► Linux Ubuntu 64-bit  
+  ► MATLAB  
 
 
 
 ###  Machine Learning engineer | R&D
-at Biomedical laboratory, USTHB
-Dates: 02/2012 - 02/2013
+at Biomedical laboratory, USTHB. Algeria.  
+Dates: 02/2012 - 02/2013  
 
 **Description**  
 As part of the internship at the end of engineering studies, I held the position of machine learning engineer for the EEG biomedical signal epilepsy detection project. The goal is to anticipate the treatment of the pathology, and protect the individual suffering from the pathology in case of epileptic seizure.
