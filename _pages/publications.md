@@ -5,6 +5,7 @@ permalink: /publications/
 icon: fa-book
 header:
   image: assets/images/banner_publications.png
+  layout: "single"
 toc: true
 toc_icon: "file-alt"
 toc_label: In this page:
