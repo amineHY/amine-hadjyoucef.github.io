@@ -136,15 +136,15 @@ As part of the internship at the end of engineering studies, I held the position
 # Education
 
 ### University of Paris-Saclay
-Doctor of Philosophy (PhD), Signal and Image Processing.
+Doctor of Philosophy (PhD), Signal and Image Processing.  
 Dates: 2015 - 2018
 
 
-**Publications in peew review national/international conference**
-  ► 28th and 28th EUSIPCO (European Signal and Image Processing Conference).
-  ► 27th and 28th EUSIPCO (European Signal and Image Processing Conference).
-  ► 25th Colloque GRETSI (Groupe d'Etudes du Traitement du Signal et des Images).
-  ► Co-author of an article published in Astronomy & Astrophysics Journal.
+**Publications in peew review national/international conference**  
+  ► 28th and 28th EUSIPCO (European Signal and Image Processing Conference).  
+  ► 27th and 28th EUSIPCO (European Signal and Image Processing Conference).  
+  ► 25th Colloque GRETSI (Groupe d'Etudes du Traitement du Signal et des Images).  
+  ► Co-author of an article published in Astronomy & Astrophysics Journal.  
 
   <!--
   #####################################################################
@@ -152,11 +152,11 @@ Dates: 2015 - 2018
 
 
 ### University of Bordeaux
-Master's degree, Signal and Image Processing.
-2013 - 2015
+Master's degree, Signal and Image Processing.  
+2013 - 2015  
 
 
-► Master 2: 2014-2015 (Ranked : 2/21)
+► Master 2: 2014-2015 (Ranked : 2/21)  
 ► Master 1: 2013-2014
 
 
@@ -166,12 +166,12 @@ Master's degree, Signal and Image Processing.
  -->
 
 
-### Ecole Polytechnique
-Engineer degree, Electrical engineering.
+### Ecole Polytechnique  
+Engineer degree, Electrical engineering.  
 2007 - 2012
 
-► 2007-2009: Fundamental Engineering:
-► 2009-2012: Electrical and Electronics Engineering:
+► 2007-2009: Fundamental Engineering  
+► 2009-2012: Electrical and Electronics Engineering  
 
 **Publication in peer review international conference**
   * WOSSPA 2013 (Workshop on Systems, Signal Processing, and their Applications)
