@@ -8,7 +8,7 @@ header:
   image_description: "A description of the image"
   caption: "Photo credit: [**Unsplash**](https://unsplash.com)"
   overlay_filter: 0.5
-icon: fa-home
+icon: fa-home 
 author_profile: true
 classes: wide
 ---
