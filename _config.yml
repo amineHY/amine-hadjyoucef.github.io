@@ -304,10 +304,16 @@ defaults:
       layout: single
       author_profile: true
 
-      defaults:
-  # _foo
+  # _portfolio
   - scope:
       path: ""
-      type: foo
+      type: portfolio
     values:
       layout: single
+      author_profile: false
+      share: true
+
+collections:
+  portfolio:
+    output: true
+    permalink: /:collection/:path/
