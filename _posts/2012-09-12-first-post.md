@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "single"
 title: "My First Post"
 author: Amine
 permalink: "my_url"
@@ -9,7 +9,6 @@ header:
   caption: "Photo credit: [**Unsplash**](https://unsplash.com)"
   overlay_filter: 0.5
 icon: fa-home
-author_profile: true
 classes: wide
 tags: [article, data sciences]
 excerpt: "Machine learning, data science, AI"

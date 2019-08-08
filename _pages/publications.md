@@ -7,9 +7,10 @@ icon: fa-book
 author_profile: true
 header:
   image: assets/images/banner_publications.png
+
 toc: true
 toc_icon: "file-alt"
-toc_label: Table of Content
+toc_label: In this page:
 ---
 
 - [International journals with peer review](#international-journals-with-peer-review)
