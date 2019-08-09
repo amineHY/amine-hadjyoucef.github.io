@@ -6,6 +6,7 @@ icon: fa-book
 layout: single
 header:
   image: assets/images/banner_publications.png
+classes: wide
 toc: true
 toc_icon: "file-alt"
 toc_label: In this page:
