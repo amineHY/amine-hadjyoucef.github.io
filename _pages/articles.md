@@ -1,6 +1,6 @@
 ---
 title: Articles
-subtitle: Summary of education
+subtitle:
 permalink: /articles/
 layout: "single"
 icon: fa-book
@@ -13,7 +13,8 @@ classes: wide
 
 
 Coming soon
-{% include base_path %}
+
+<!-- {% include base_path %}
 {% include group-by-array collection=site.posts field="tags" %}
 
 {% for tag in group_names %}
@@ -22,4 +23,15 @@ Coming soon
   {% for post in posts %}
     {% include archive-single.html %}
   {% endfor %}
-{% endfor %}
+{% endfor %} -->
+
+<h1>Latest Articles</h1>
+
+<ul>
+  {% for post in site.posts %}
+    <li>
+      <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
+      <p>{{ post.excerpt }}</p>
+    </li>
+  {% endfor %}
+</ul>
