@@ -7,7 +7,6 @@ icon: fa-book
 author_profile: false
 header:
   image: assets/images/desktop.jpg
-toc: true
 classes: wide
 ---
 
