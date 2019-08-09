@@ -31,7 +31,7 @@ classes: wide
 **Abstract**
 Astrophysical images issued from different instruments and/or spectral bands often require to be processed together, either for fitting or comparison purposes. However each image is affected by an instrumental response, also known as point-spread function (PSF), that depends on the characteristics of the instrument as well as the wavelength and the observing strategy. Given the knowledge of the PSF in each band, a straightforward way of processing images is to homogenise them all to a target PSF using convolution kernels, so that they appear as if they had been acquired by the same instrument. We propose an algorithm that generates such PSF-matching kernels, based on Wiener filtering with a tunable regularisation parameter. This method ensures all anisotropic features in the PSFs to be taken into account. We compare our method to existing procedures using measured Herschel/PACS and SPIRE PSFs and simulated JWST/MIRI PSFs. Significant gains up to two orders of magnitude are obtained with respect to the use of kernels computed assuming Gaussian or circularised PSFs. A software to compute these kernels is available in [GitHub](https://github.com/aboucaud/pypher).
 
-► Read the full paper [here](/assets/pdf/A_&_A.pdf).
+► Read the full paper [here](/assets/pdf/A_&_A.pdf).  
 ► Here is the [link](https://www.aanda.org/articles/aa/full_html/2016/12/aa29080-16/aa29080-16.html) in the web.
 <br/><br/>
 <br/><br/>
@@ -50,7 +50,7 @@ Astrophysical images issued from different instruments and/or spectral bands oft
 **Abstract**
 This paper deals with the reconstruction of a 3-D spatio-spectral object observed by a multi-spectral imaging system, where the original object is blurred with a spectral-variant PSF (Point Spread Function) and integrated over few broad spectral bands. In order to tackle this ill-posed problem, we propose a linear forward model that accounts for direct (or auto) channels and between (or cross) channels degradation, by modeling the imaging system response and the spectral distribution of the object with a piecewise linear function. Reconstruction based on regularization method is proposed, by enforcing spatial and spectral smoothness of the object. We test our approach on simulated data of the Mid-InfraRed Instrument (MIRI) Imager of the James Webb Space Telescope (JWST). Results on simulated multi-spectral data show a significant improvement over the conventional multichannel method.  
 
-► Read the full paper [here](/assets/pdf/eusipco_2018.pdf).  
+► Read the full paper [here](/assets/pdf/eusipco_2018.pdf).    
 ► Here is the [link](https://ieeexplore.ieee.org/abstract/document/8553166) on the web.
 <br/><br/>
 
@@ -66,7 +66,7 @@ This paper deals with the reconstruction of a 3-D spatio-spectral object observe
 **Abstract**
 In this paper we propose an approach of image restoration from multi-spectral data provided by an imaging system. We specifically address two topics: (i) Development of a multi-wavelength direct model for non-stationary instrument response that includes a spatial convolution and a spectral integration, (ii) Implementation of multi-spectral image restoration using a regularized least-square, based on a quadratic criterion and minimized by a gradient algorithm. We test our approach on simulated data of the Mid-InfraRed Instrument IMager (MIRIM) of the James Webb Space Telescope (JWST). Our method shows a clear increase of spatial resolution compare to conventional methods.
 
-► Read the full paper [here](/assets/pdf/eusipco-20171.pdf).
+► Read the full paper [here](/assets/pdf/eusipco-20171.pdf).  
 ► Here is the [link](https://ieeexplore.ieee.org/abstract/document/8081258) on the web.
 <br/><br/>
 
@@ -82,7 +82,7 @@ In this paper we propose an approach of image restoration from multi-spectral da
 **Abstract**  
 In this paper the problematic of epileptic detection is treated. An algorithm of EEG signal classification into two classes: Healthy and Epileptics is developed. The difference with conventional methods is the use of free seizure epileptic records. A good classification accuracy means that it is possible to detect an epileptic in normal state or at an early stage of epilepsy. The raw EEG signal is decomposed using discrete wavelet transform (DWT). Then, principal component analysis (PCA) allows dimensionality reduction and better representation of the data. Several features are extracted and used in support vector machine (SVM) classifier. Results show satisfactory classification accuracy comparable or better than those reported in literature.
 
-► Read the full paper [here](/assets/pdf/WOSSPA_2013.pdf).
+► Read the full paper [here](/assets/pdf/WOSSPA_2013.pdf).  
 ► Here is the [link](https://ieeexplore.ieee.org/abstract/document/6602363) to the paper on the web.
 
 <br/><br/>
@@ -100,7 +100,7 @@ In this paper the problematic of epileptic detection is treated. An algorithm of
 **Abstract**  
 In this paper we deal with the restoration of astrophysical objects from multi-spectral data acquired by an imager on board of a space telescope. The problems we address are the spatial resolution limitation caused by the spectral varying optical response and the broadband spectral integration of the object. Indeed, we develop an instrument model that takes into account these effects, and we propose a direct model by exploiting all the data from different spectral band jointly. The restoration of the object is implemented using the regularized least squares method, and the solution is computed by the conjugate gradient algorithm. We test our approach on simulated imagery data from the Mid-InfraRed Instrument (MIRI) on board the future James Webb Space Telescope (JWST). Our method shows a significant increase in spatial and spectral resolution compared to conventional methods.
 
-► Read the full paper [here](/assets/pdf/GRETSI_2017.pdf).
+► Read the full paper [here](/assets/pdf/GRETSI_2017.pdf).  
 ► Here is the [link](https://jeannicod.ccsd.cnrs.fr/SUP_LSS/hal-01596257v1) to the paper on the web.
 <br/><br/>
 <br/><br/>

@@ -4,8 +4,8 @@ subtitle: Summary of education
 permalink: /education/
 layout: "single"
 icon: fa-book
-header:
-  image: assets/images/banner_publications.jpg
+<!-- header:
+  image: assets/images/banner_publications.jpg -->
 toc: true
 ---
 
