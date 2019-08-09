@@ -3,10 +3,9 @@ title: Here is a list of my scientific publications
 subtitle: Scientific journals, international conferences, seminars
 permalink: /publications/
 icon: fa-book
-layout: page
+layout: single
 header:
   image: assets/images/banner_publications.png
-  layout: "single"
 toc: true
 toc_icon: "file-alt"
 toc_label: In this page:
