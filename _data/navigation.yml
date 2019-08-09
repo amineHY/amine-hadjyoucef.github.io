@@ -1,16 +1,17 @@
 # main links
 main:
+
+  # - title: "Projects"
+  #   url: /projects/
+
+  - title: "Articles"
+    url: /articles/
+
   - title: "Publications"
     url: /publications/
 
   - title: "Resume"
     url: /resume/
-
-  - title: "Projects"
-    url: /projects/
-
-  - title: "Articles"
-    url: /articles/
 
   - title: "About"
     url: /about/
