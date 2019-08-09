@@ -20,7 +20,7 @@ Coming soon
 
 **Timeline**  
 
-- 2019-now: Artificial Intelligence - Computer Vision Engineer
+- 2019-now: Artificial Intelligence - Computer Vision Engineer at Drone Volt.
 - 2015-2018: PhD student at University of Paris-Saclay, France.
 - 2015-2015: Internship at Synchromedia Laboratory, Montreal, Canada.
 - 2014-2014: Internship at Mathematical Institute of Bordeaux, Bordeaux France.

@@ -1,5 +1,5 @@
 ---
-title: Here is a list of my scientific publications
+title: List of my scientific publications
 subtitle: Scientific journals, international conferences, seminars
 permalink: /publications/
 layout: single
@@ -31,7 +31,7 @@ classes: wide
 **Abstract**
 Astrophysical images issued from different instruments and/or spectral bands often require to be processed together, either for fitting or comparison purposes. However each image is affected by an instrumental response, also known as point-spread function (PSF), that depends on the characteristics of the instrument as well as the wavelength and the observing strategy. Given the knowledge of the PSF in each band, a straightforward way of processing images is to homogenise them all to a target PSF using convolution kernels, so that they appear as if they had been acquired by the same instrument. We propose an algorithm that generates such PSF-matching kernels, based on Wiener filtering with a tunable regularisation parameter. This method ensures all anisotropic features in the PSFs to be taken into account. We compare our method to existing procedures using measured Herschel/PACS and SPIRE PSFs and simulated JWST/MIRI PSFs. Significant gains up to two orders of magnitude are obtained with respect to the use of kernels computed assuming Gaussian or circularised PSFs. A software to compute these kernels is available in [GitHub](https://github.com/aboucaud/pypher).
 
-► Read the full paper [here](/assets/pdf/A_&_A.pdf).  
+► Read the full paper [here](/assets/pdf/A_&_A.pdf).   
 ► Here is the [link](https://www.aanda.org/articles/aa/full_html/2016/12/aa29080-16/aa29080-16.html) in the web.
 <br/><br/>
 <br/><br/>
@@ -74,7 +74,7 @@ In this paper we propose an approach of image restoration from multi-spectral da
 **Authors**: M.A. Hadj-Youcef, M. Adnane, A Bousbia-Salah  
 **Publication date**: 2013/12/5  
 **Conference**: WOSSPA 2013 : The 9th International Workshop on Systems, Signal Processing and their applications
-**Location**: Algiers, Algeria
+**Location**: Algiers, Algeria.  
 **Pages**: 209 - 213  
 **Publisher**: IEEE  
 
