@@ -3,6 +3,7 @@ title: Here is a list of my scientific publications
 subtitle: Scientific journals, international conferences, seminars
 permalink: /publications/
 icon: fa-book
+layout: page
 header:
   image: assets/images/banner_publications.png
   layout: "single"
