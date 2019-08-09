@@ -1,5 +1,5 @@
 ---
-title: Education
+title: Articles
 subtitle: Summary of education
 permalink: /articles/
 layout: "single"
