@@ -19,7 +19,7 @@ classes: wide
 ###################################
  -->
 
-## - R&D Engineer in Image Processing - Computer Vision
+## R&D Engineer in Image Processing - Computer Vision
   at [Signal and Systems Laboratory (L2S)](http://www.l2s.centralesupelec.fr/), Centrale Supélec &  [Spatial Astrophysics Institute (IAS)](http://www.ias.u-psud.fr/), CNRS, France.
 
 **Dates:** 10/2015 - 11/2018
@@ -52,7 +52,7 @@ Hyperspectral object reconstruction from multi-spectral data observed by an infr
 
 <br/><br/>
 
-## - Teaching Assistant in Signal Processing
+## Teaching Assistant in Signal Processing
 at [Ecole Polytech Paris-Sud](http://www.polytech.u-psud.fr/fr/formations/electronique-et-systemes-robotises.html), University of Paris-Sud, France.  
 
 **Dates:** 2016-2018  
@@ -71,7 +71,7 @@ I was in charge of teaching two classes of total number of +60 under graduate st
 
 <br/><br/>
 
-## - Image Processing Engineer - Computer Vision
+## Image Processing Engineer - Computer Vision
 at [Synchromedia Laboratory](http://www.synchromedia.ca/), Montreal, Quebec, Canada
 
 **Dates:** 02/2015-08/2015
@@ -91,7 +91,7 @@ at [Synchromedia Laboratory](http://www.synchromedia.ca/), Montreal, Quebec, Can
   ► MATLAB  
 
 
-## - Signal and Image Processing Engineer
+## Signal and Image Processing Engineer
 at the [Mathematical Institue of Bordeaux](https://www.math.u-bordeaux.fr/imb/spip.php), France.
 
 **Dates:** 02/2014 - 07/2014
@@ -100,7 +100,7 @@ at the [Mathematical Institue of Bordeaux](https://www.math.u-bordeaux.fr/imb/sp
   ...
 
 **Accomplishments**  
-  ► Gained high-level technical skills through the implementation from scratch of signal and image -restoration methods using advanced applied mathematics, and the implementation of optimization algorithms in Matlab  
+  ► Gained high-level technical skills through the implementation from scratch of signal and image restoration methods using advanced applied mathematics, and the implementation of optimization algorithms in Matlab  
 
   ► Successful time management skills as demonstrated by solving, in a short time, three targeted problems (deconvolution, denoising, inpainting), leading to an efficient algorithm for multiple applications  
 
@@ -110,7 +110,7 @@ at the [Mathematical Institue of Bordeaux](https://www.math.u-bordeaux.fr/imb/sp
 
 
 
-## - Machine Learning engineer | R&D
+## Machine Learning engineer | R&D
 at Biomedical laboratory, USTHB. Algeria.  
 
 **Dates:** 02/2012 - 02/2013  
@@ -138,11 +138,11 @@ As part of the internship at the end of engineering studies, I held the position
 <!-- ###################################
 #####################################################################
  -->
-
+<br/><br/>
 
 # Education
 
-## - University of Paris-Saclay
+## University of Paris-Saclay
 Doctor of Philosophy (PhD), Signal and Image Processing.  
 **Dates:** 2015 - 2018
 
@@ -158,7 +158,7 @@ Doctor of Philosophy (PhD), Signal and Image Processing.
    -->
 
 
-## - University of Bordeaux
+## University of Bordeaux
 Master's degree, Signal and Image Processing.  
 **Dates:** 2013 - 2015  
 
@@ -172,7 +172,7 @@ Master's degree, Signal and Image Processing.
  -->
 
 
-## - Polytechnical school of Algiers.
+## Polytechnical school of Algiers.
 Engineer degree, Electrical engineering.  
 **Dates:** 2007 - 2012
 
