@@ -7,8 +7,7 @@ tag: [Machine Learning, Computer Vision, AI, Data Science]
 header:
   image: /assets/images/CNN-image-classification.png
 ---
-
-# Introduction
+# A Dive into an Artificial Intelligence algorithm
 
 This article will explain the Convolutional Neural Network (CNN) with an illustration of image classification. It provides a simple implementation of the CNN algorithm using the framework PyTorch on Python. There are many free courses that can be found on the internet. Personally, I suggest the course of *Andrej Karpathy* at Stanford university ([@karpathy](http://twitter.com/karpathy)). You will learn a lot, it is a step by step course. In addition, it provides many practical strategies to implement the CNN architecture.
 
