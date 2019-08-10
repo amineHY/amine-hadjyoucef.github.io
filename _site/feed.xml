@@ -1,0 +1,875 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://0.0.0.0:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/" rel="alternate" type="text/html" /><updated>2019-08-10T11:05:46+02:00</updated><id>http://0.0.0.0:4000/feed.xml</id><title type="html">Welcome to my Personal Website</title><subtitle>Data scientist profolio.</subtitle><author><name>M. Amine Hadj-Youcef</name></author><entry><title type="html">Have you Optimized your Deep Learning Model Before Deployment?</title><link href="http://0.0.0.0:4000/Optimize/" rel="alternate" type="text/html" title="Have you Optimized your Deep Learning Model Before Deployment?" /><published>2019-07-30T00:00:00+02:00</published><updated>2019-07-30T00:00:00+02:00</updated><id>http://0.0.0.0:4000/Optimize</id><content type="html" xml:base="http://0.0.0.0:4000/Optimize/">&lt;h1 id=&quot;use-nvidia-tensorrt-to-optimize-and-speed-up-inference-timeongpu-illustration-on-an-ai-based-computer-vision-with-yolo&quot;&gt;Use NVIDIA TensorRT to optimize and speed up inference time on GPU. Illustration on an AI-based Computer Vision with YOLO.&lt;/h1&gt;
+
+&lt;p&gt;This article presents how to use NVIDIA TensorRT to optimize a deep learning model that you want to deploy on the edge device (mobile, camera, robot, car ….). For instance, the intelligent double spectrum camera of Aerialtronics: &lt;em&gt;Pensar&lt;/em&gt; &lt;a href=&quot;https://pensarsdk.com/&quot;&gt;https://pensarsdk.com/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://cdn-images-1.medium.com/max/2280/1*kF5CrVqanC408hSvNYO1lg.png&quot; alt=&quot;[https://pensarsdk.com/](https://pensarsdk.com/)&quot; /&gt;
+&lt;em&gt;Source: &lt;a href=&quot;https://pensarsdk.com/&quot;&gt;https://pensarsdk.com/&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Which has onboard an NVIDIA Jetson TX2 GPU&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://cdn-images-1.medium.com/max/2000/1*QRaU5AHVxGZeKAqwpriktg.png&quot; alt=&quot;[https://developer.nvidia.com/embedded/jetson-tx2-developer-kit](https://developer.nvidia.com/embedded/jetson-tx2)&quot; /&gt;
+&lt;em&gt;Source: &lt;a href=&quot;https://developer.nvidia.com/embedded/jetson-tx2&quot;&gt;https://developer.nvidia.com/embedded/jetson-tx2-developer-kit&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;This article is organized as follows:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;What is NVIDIA TensorRT?&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Setup the Development Environment using docker&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Computer Vision Application: Object detection with YOLOv3 model&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;References&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Conclusion&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;why-do-i-need-an-optimized-deep-learning-model&quot;&gt;Why do I need an optimized deep learning model?&lt;/h2&gt;
+
+&lt;p&gt;As an example, think of AI-based computer vision application, they need to process each frame captured by the camera. Thus, each frame makes a forward pass through the layers of the model to compute a certain output (detection, segmentation, classification…).&lt;/p&gt;
+
+&lt;p&gt;Whatever power your GPU has, we all want the number of frames per second (FPS) at the output to be equal to one at the input (example 24, 30 FPS…). This means that the GPU is processing each frame in real-time.&lt;/p&gt;
+
+&lt;p&gt;This notion is more than desired for Computer Vision applications that require a real-time decision, for instance, surveillance, fraud detection, or crowd counting during an event, to cite just a few.&lt;/p&gt;
+
+&lt;h2 id=&quot;pre-deployment-optimization-workflow&quot;&gt;Pre-Deployment Optimization Workflow&lt;/h2&gt;
+
+&lt;p&gt;Among tasks of a Data Scientist is to exploit the data and develop/train/test a neural network architecture. After the validation of the model, usually, the architecture and the model’s parameters are exported for deployment. Many ways are possible to do that, either on a cloud or an edge device. In this article, we focus on deployment on edge device (camera, mobile, robot, car…).&lt;/p&gt;
+
+&lt;p&gt;The workflow of deployment, generally speaking, follows the block diagram depicted in the figure below:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://cdn-images-1.medium.com/max/2246/1*ftr5BLj4PitHbueEqS6JdQ.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;From the exported, pre-trained, deep learning model &lt;strong&gt;-&amp;gt;&lt;/strong&gt; framework parser &lt;strong&gt;-&amp;gt;&lt;/strong&gt; TensorRT optimization &lt;strong&gt;-&amp;gt;&lt;/strong&gt; Inference on new data&lt;/p&gt;
+
+&lt;h1 id=&quot;what-is-nvidia-tensorrt&quot;&gt;What Is NVIDIA TensorRT?&lt;/h1&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://cdn-images-1.medium.com/max/2000/1*EWiIvB6RjwEZrlSLF1Xttw.png&quot; alt=&quot;[https://docs.nvidia.com/deeplearning/sdk/tensorrt-archived/tensorrt_210/tensorrt-user-guide/](https://docs.nvidia.com/deeplearning/sdk/tensorrt-archived/tensorrt_210/tensorrt-user-guide/index.html)&quot; /&gt;&lt;em&gt;&lt;a href=&quot;https://docs.nvidia.com/deeplearning/sdk/tensorrt-archived/tensorrt_210/tensorrt-user-guide/index.html&quot;&gt;https://docs.nvidia.com/deeplearning/sdk/tensorrt-archived/tensorrt_210/tensorrt-user-guide/&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;The core of NVIDIA TensorRT is a C++ library that facilitates high-performance inference on NVIDIA graphics processing units (GPUs). TensorRT takes a trained network, which consists of a network definition and a set of trained parameters, and produces a highly optimized runtime engine which performs inference for that network.
+You can describe a TensorRT network using a C++ or Python API, or you can import an existing Caffe, ONNX, or TensorFlow model using one of the provided parsers.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;TensorRT provides API’s via C++ and Python that help to express deep learning models via the Network Definition API or load a pre-defined model via the parsers that allows TensorRT to optimize and run them on a NVIDIA GPU. TensorRT applies graph optimizations, layer fusion, among other optimizations, while also finding the fastest implementation of that model leveraging a diverse collection of highly optimized kernels. TensorRT also supplies a runtime that you can use to execute this network on all of NVIDIA’s GPUs from the Kepler generation onwards.&lt;/p&gt;
+
+&lt;p&gt;TensorRT also includes optional high speed mixed precision capabilities introduced in the Tegra X1, and extended with the Pascal, Volta, and Turing architectures.&lt;/p&gt;
+
+&lt;p&gt;Learn more about how to use TensorRT in the &lt;a href=&quot;[https://docs.nvidia.com/deeplearning/sdk/tensorrt-developer-guide/index.html](https://docs.nvidia.com/deeplearning/sdk/tensorrt-developer-guide/index.html)&quot;&gt;developer guide&lt;/a&gt; and interaction with the TensorRT community in the &lt;a href=&quot;https://devtalk.nvidia.com/default/board/304/tensorrt/&quot;&gt;TensorRT forum&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;setup-of-a-development-environment-using-docker&quot;&gt;Setup of a Development Environment using docker&lt;/h1&gt;
+
+&lt;h2 id=&quot;docker&quot;&gt;Docker&lt;/h2&gt;
+
+&lt;p&gt;For the development, we use a docker image that contains an installed version of NVIDIA TensorRT. This makes the development environment more reliable and scalable on the different operating system (Windows, Linux, macOS).&lt;/p&gt;
+
+&lt;p&gt;Here is an illustration of the docker positioning between the application and the GPU.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://cdn-images-1.medium.com/max/2246/1*-wpy3yNzLK_T2valKYMdVw.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; If you never heard about ‘docker’ then I highly recommend you to invest in learning about it, you can start &lt;a href=&quot;https://docs.docker.com/engine/docker-overview/&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;install-docker-ce&quot;&gt;Install Docker-CE&lt;/h2&gt;
+
+&lt;p&gt;Head over to the official website of docker and follows the steps to install &lt;code class=&quot;highlighter-rouge&quot;&gt;docker-ce&lt;/code&gt; (ce stands for community edition). I am using Ubuntu 64 bit, thus, here the installation &lt;a href=&quot;https://docs.docker.com/v17.09/engine/installation/linux/docker-ce/ubuntu/&quot;&gt;link&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;install-cuda&quot;&gt;Install CUDA&lt;/h2&gt;
+
+&lt;p&gt;In addition, you should have installed the latest version of &lt;a href=&quot;https://developer.nvidia.com/cuda-downloads&quot;&gt;CUDA &lt;/a&gt;. It is a parallel computing platform and application programming interface model created by NVIDIA. It allows software developers and software engineers to use a CUDA-enabled GPU for general purpose processing (read more about it in &lt;a href=&quot;https://developer.nvidia.com/cuda-zone&quot;&gt;here&lt;/a&gt;).&lt;/p&gt;
+
+&lt;p&gt;To check if CUDA is correctly installed on you machine, just enter in the terminal&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    nvidia-smi
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The output should look something like that (I have a &lt;code class=&quot;highlighter-rouge&quot;&gt;NVIDIA GPU GeForce GTX 1660 Ti/PCIe/SSE2&lt;/code&gt;)&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    Thu Aug 1 10:43:37 2019
+    + — — — — — — — — — — — — — — — — — — —— — — — — — — — — — — -+
+    | NVIDIA-SMI 430.40 &lt;span class=&quot;k&quot;&gt;**&lt;/span&gt;Driver Version: &lt;span class=&quot;k&quot;&gt;**&lt;/span&gt;430.40 &lt;span class=&quot;k&quot;&gt;**&lt;/span&gt;CUDA Version: &lt;span class=&quot;k&quot;&gt;**&lt;/span&gt;10.1 |
+    | — — — — — — — — — — — — -+ — — — — — — — — + — — — —— — — — +
+    | GPU Name Persistence-M| Bus-Id Disp.A | Volatile Uncorr. ECC |
+    | Fan Temp Perf Pwr:Usage/Cap| Memory-Usage | GPU-Util Compute M. |
+    |&lt;span class=&quot;o&quot;&gt;=====================&lt;/span&gt;+&lt;span class=&quot;o&quot;&gt;===================&lt;/span&gt;+&lt;span class=&quot;o&quot;&gt;===================&lt;/span&gt;|
+    | 0 GeForce GTX 166… Off | 00000000:01:00.0 Off | N/A |
+    | N/A 47C P8 4W / N/A | 994MiB / 5944MiB | 8% Default |
+    + — — — — —— — — — — — — -+ — — — — — — — — + — — — — — — — — +
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;run-the-docker-image&quot;&gt;Run the docker image&lt;/h2&gt;
+
+&lt;p&gt;I have created a docker image that includes installation of TensorRT on top of Ubuntu along with the necessary prerequisites from NVIDIA, Python, OpenCV, …. You can pull the image directly from my personal account on &lt;a href=&quot;https://hub.docker.com/r/aminehy/tensorrt-opencv-python3&quot;&gt;docker hub&lt;/a&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;First, open a terminal (ctrl+alt + t) and enter this command to pull the docker image&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;   docker pull aminehy/tensorrt-opencv-python3:version-1.3
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Enable launching GUI applications from inside the docker container bu entering the command&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;   xhost +
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Lastly, run the docker container with the command:&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  docker run &lt;span class=&quot;nt&quot;&gt;-it&lt;/span&gt; — &lt;span class=&quot;nb&quot;&gt;rm&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-v&lt;/span&gt; &lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;pwd&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;:/workspace — &lt;span class=&quot;nv&quot;&gt;runtime&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;nvidia &lt;span class=&quot;nt&quot;&gt;-w&lt;/span&gt; /workspace &lt;span class=&quot;nt&quot;&gt;-v&lt;/span&gt; /tmp/.X11-unix:/tmp/.X11-unix &lt;span class=&quot;nt&quot;&gt;-e&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;DISPLAY&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;unix&lt;span class=&quot;nv&quot;&gt;$DISPLAY&lt;/span&gt; aminehy/tensorrt-opencv-python3:version-1.3
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;computer-vision-application-object-detection-with-yolov3&quot;&gt;Computer Vision Application: Object Detection with YOLOv3&lt;/h1&gt;
+
+&lt;p&gt;YOLO is a Real-Time Object Detection from the DarkNet project. You can read more about this project on the official website here: &lt;a href=&quot;https://pjreddie.com/darknet/yolo/&quot;&gt;https://pjreddie.com/darknet/yolo/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://cdn-images-1.medium.com/max/3520/1*aFeEgXtb0ar-Zrxujmu1oA.png&quot; alt=&quot;[https://pjreddie.com/darknet/yolo/](https://pjreddie.com/darknet/yolo/)&quot; /&gt;
+&lt;em&gt;Source: &lt;a href=&quot;https://pjreddie.com/darknet/yolo/&quot;&gt;https://pjreddie.com/darknet/yolo/&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;In this experiment, we run YOLOv3 model on 500 images and compare the average inference time before and after optimization of the model with NVIDIA TensorRT. The images used in this experiment are from COCO dataset: &lt;a href=&quot;http://cocodataset.org/#home&quot;&gt;COCO - Common Objects in Context&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;1-running-a-non-optimized-yolov3&quot;&gt;1) Running a non-optimized YOLOv3&lt;/h2&gt;
+&lt;p&gt;Link to the project in gitlab: &lt;a href=&quot;https://gitlab.com/aminehy/yolov3-darknet&quot;&gt;Amine Hy / YOLOv3-DarkNet&lt;/a&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Clone and the repository then run using the script &lt;code class=&quot;highlighter-rouge&quot;&gt;docker_TensorRT_OpenCV_Python.sh&lt;/code&gt;.&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  git clone https://gitlab.com/aminehy/yolov3-darknet.git
+
+  &lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;yolov3-darknet
+
+  &lt;span class=&quot;nb&quot;&gt;chmod&lt;/span&gt; +x docker_TensorRT_OpenCV_Python.sh
+
+  ./docker_TensorRT_OpenCV_Python.sh run
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Download and unzip the test images folder in &lt;code class=&quot;highlighter-rouge&quot;&gt;./data/&lt;/code&gt;&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  wget http://images.cocodataset.org/zips/test2017.zip
+  unzip test2017.zip ../test2017/
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Download the weight file &lt;code class=&quot;highlighter-rouge&quot;&gt;yolov3.weights&lt;/code&gt;&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  wget https://pjreddie.com/media/files/yolov3.weights
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Then execute YOLOv3 python file:     &lt;code class=&quot;highlighter-rouge&quot;&gt;python darknet.py&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Results:&lt;/strong&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The results should be saved in the folder &lt;code class=&quot;highlighter-rouge&quot;&gt;./data/results&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://cdn-images-1.medium.com/max/2000/1*ySnKobAGy8_NFze7U0goYQ.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Output: The mean recognition time over 500 images is 0.044 seconds&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;2-optimizing-and-running-yolov3-using-nvidia-tensorrt-in-python&quot;&gt;2) Optimizing and Running YOLOv3 using NVIDIA TensorRT in Python&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://cdn-images-1.medium.com/max/2246/1*XM_KOVzJlT1F3sqP1Azfeg.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The first step is to import the model, which includes loading it from a saved file on disk and converting it to a TensorRT network from its native framework or format. Our example loads the model in ONNX format from the ONNX model.&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;ONNX is a standard for representing deep learning models enabling them to be transferred between frameworks. (Many frameworks such as Caffe2, Chainer, CNTK, PaddlePaddle, PyTorch, and MXNet support the ONNX format).&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Next, an optimized TensorRT engine is built based on the input model, target GPU platform, and other configuration parameters specified. The last step is to provide input data to the TensorRT engine to perform inference.&lt;/p&gt;
+
+&lt;p&gt;The sample uses the following components in TensorRT to perform the above steps:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;ONNX parser: takes a trained model in ONNX format as input and populates a network object in TensorRT&lt;/li&gt;
+  &lt;li&gt;Builder: takes a network in TensorRT and generates an engine that is optimized for the target platform&lt;/li&gt;
+  &lt;li&gt;Engine: takes input data, performs inferences and emits inference output&lt;/li&gt;
+  &lt;li&gt;Logger: object associated with the builder and engine to capture errors, warnings, and other information during the build and inference phases&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Link to the project: &lt;a href=&quot;https://gitlab.com/aminehy/YOLOv3-Darknet-ONNX-TensorRT&quot;&gt;Amine Hy / YOLOv3-Darknet-ONNX-TensorRT&lt;/a&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Get the project from GitHub and change the working directory&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  git clone https://gitlab.com/aminehy/YOLOv3-Darknet-ONNX-TensorRT.git
+
+  &lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;YOLOv3-Darknet-ONNX-TensorRT/
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Convert the model from Darknet to ONNX. This step will create an engine called: &lt;code class=&quot;highlighter-rouge&quot;&gt;yolov3.onnx&lt;/code&gt;&lt;/p&gt;
+
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;python yolov3_to_onnx.py&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Convert the model from ONNX to TensorRT. This step will create an engine called: &lt;code class=&quot;highlighter-rouge&quot;&gt;yolov3.trt&lt;/code&gt; and use for the inference&lt;/p&gt;
+
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;python onnx_to_tensorrt.py&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;For this experiment, we set this parameter: builder.fp16_mode = True
+    &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;n&quot;&gt;builder&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fp16_mode&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;builder&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;strict_type_constraints&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Results:&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://cdn-images-1.medium.com/max/2000/1*zcFERKUD21QuPYmK945eiw.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;`Output: The mean recognition time over 500 images is 0.018 seconds using the precision fp16.`
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Therefore, using NVIDIA TensorRT is 2.31 x faster than the unoptimized version!.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;3-optimizing-and-running-yolov3-using-nvidia-tensorrt-by-importing-a-caffe-model-in-c&quot;&gt;3) Optimizing and Running YOLOv3 using NVIDIA TensorRT by importing a Caffe model in C++&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://cdn-images-1.medium.com/max/2246/1*N1LE_DRYsRdwHWJh6kkE_w.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Link to the project: &lt;a href=&quot;https://gitlab.com/aminehy/YOLOv3-Caffe-TensorRT&quot;&gt;Amine Hy / YOLOv3-Caffe-TensorRT&lt;/a&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Get the project and change the working directory&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;YOLOv3-Caffe-TensorRT/
+  ./docker_TensorRT_OpenCV_Python.sh run
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+
+    &lt;p&gt;&lt;strong&gt;Note&lt;/strong&gt;: If the folder &lt;code class=&quot;highlighter-rouge&quot;&gt;/Caffe&lt;/code&gt; does not exist (for any reason), please download the model architecture and weights of YOLOv3 (.prototxt and .caffemodel) from Google Drive and insert them in a folder ‘Caffe’. Two options are possible, the 416 model and the 608 model. These parameters represent the height/width of the image at the input of the YOLOv3 network.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Download the caffe model from &lt;a href=&quot;https://drive.google.com/drive/folders/18OxNcRrDrCUmoAMgngJlhEglQ1Hqk_NJ&quot;&gt;Google Drive&lt;/a&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Compile and build the model&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  git submodule update — init — recursive
+
+  &lt;span class=&quot;nb&quot;&gt;mkdir &lt;/span&gt;build
+
+  &lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;build &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; cmake .. &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; make &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; make &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; ..
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Edit the configuration file and choose between the settings, YOLO 416 or YOLO 608, located in&lt;/p&gt;
+
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;~/TensorRT-Yolov3/tensorRTWrapper/code/include/YoloConfigs.h&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;You need also to take a look at the configuration file &lt;code class=&quot;highlighter-rouge&quot;&gt;configs.h&lt;/code&gt; located in&lt;/p&gt;
+
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;~/TensorRT-Yolov3/include/configs.h&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Create the TensorRT engine and run inference on a test image &lt;code class=&quot;highlighter-rouge&quot;&gt;dog.jpg &lt;/code&gt;&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;c&quot;&gt;# for yolov3–416 (don’t forget to edit YoloConfigs.h for YoloKernel)&lt;/span&gt;
+  ./install/runYolov3 — &lt;span class=&quot;nv&quot;&gt;caffemodel&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;./caffe/yolov3_416.caffemodel &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+  — &lt;span class=&quot;nv&quot;&gt;prototxt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;./caffe/yolov3_416.prototxt — &lt;span class=&quot;nv&quot;&gt;input&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;./dog.jpg &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+  — &lt;span class=&quot;nv&quot;&gt;W&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;416 — &lt;span class=&quot;nv&quot;&gt;H&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;416 — &lt;span class=&quot;nv&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;80 — &lt;span class=&quot;nv&quot;&gt;mode&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;fp16
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Once the engine is created, you can pass it as an argument&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  ./install/runYolov3 — &lt;span class=&quot;nv&quot;&gt;caffemodel&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;./caffe/yolov3_416.caffemodel
+   — &lt;span class=&quot;nv&quot;&gt;prototxt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;./caffe/yolov3_416.prototxt — &lt;span class=&quot;nv&quot;&gt;input&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;./dog.jpg — &lt;span class=&quot;nv&quot;&gt;W&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;416 — &lt;span class=&quot;nv&quot;&gt;H&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;416 — &lt;span class=&quot;nv&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;80 — &lt;span class=&quot;nv&quot;&gt;enginefile&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;./engine/yolov3_fp32.engine
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Results&lt;/strong&gt;:&lt;/p&gt;
+
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Output: Time over all layers: 21.245 ms&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Same observation as the previous experiment, using NVIDIA TensorRT is 2.07 x faster than the non-optimized version!.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h1&gt;
+
+&lt;p&gt;This article presented the importance of optimizing a pre-trained deep learning model. We illustrated that on an example on object detection application for computer vision, where we obtained a speedup ratio of  &amp;gt; 2 of the inference time.&lt;/p&gt;
+
+&lt;h1 id=&quot;references&quot;&gt;References&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;CUDA: &lt;a href=&quot;https://developer.nvidia.com/cuda-zone&quot;&gt;https://developer.nvidia.com/cuda-zone&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Docker-CE &lt;a href=&quot;https://docs.docker.com/v17.09/engine/installation/linux/docker-ce/ubuntu/&quot;&gt;https://docs.docker.com/&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;NVIDIA TensorRT: &lt;a href=&quot;https://ngc.nvidia.com/catalog/containers/nvidia:tensorrt&quot;&gt;https://ngc.nvidia.com/catalog/containers/nvidia:tensorrt&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;NVIDIA Container Best Practices: &lt;a href=&quot;https://docs.nvidia.com/deeplearning/frameworks/bp-docker/index.html#docker-bp-topic&quot;&gt;https://docs.nvidia.com/deeplearning/frameworks/bp-docker/index.html#docker-bp-topic&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;TensorRT Release 19.05: &lt;a href=&quot;https://docs.nvidia.com/deeplearning/sdk/tensorrt-container-release-notes/rel_19-05.html#rel_19-05&quot;&gt;https://docs.nvidia.com/deeplearning/sdk/tensorrt-container-release-notes/rel_19-05.html#rel_19-05&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</content><author><name>M. Amine Hadj-Youcef</name></author><category term="Machine Learning" /><category term="Computer Vision" /><category term="AI" /><category term="Data Science" /><summary type="html">[&quot;Machine Learning&quot;, &quot;Computer Vision&quot;, &quot;AI&quot;, &quot;Data Science&quot;]</summary></entry><entry><title type="html">Convolutional Neural Network for image classification</title><link href="http://0.0.0.0:4000/CNN-for-Image-Classification/" rel="alternate" type="text/html" title="Convolutional Neural Network for image classification" /><published>2019-04-19T00:00:00+02:00</published><updated>2019-04-19T00:00:00+02:00</updated><id>http://0.0.0.0:4000/CNN-for-Image-Classification</id><content type="html" xml:base="http://0.0.0.0:4000/CNN-for-Image-Classification/">&lt;h1 id=&quot;a-dive-into-an-artificial-intelligence-algorithm&quot;&gt;A Dive into an Artificial Intelligence algorithm&lt;/h1&gt;
+
+&lt;p&gt;This article will explain the Convolutional Neural Network (CNN) with an illustration of image classification. It provides a simple implementation of the CNN algorithm using the framework PyTorch on Python. There are many free courses that can be found on the internet. Personally, I suggest the course of &lt;em&gt;Andrej Karpathy&lt;/em&gt; at Stanford university (&lt;a href=&quot;http://twitter.com/karpathy&quot;&gt;@karpathy&lt;/a&gt;). You will learn a lot, it is a step by step course. In addition, it provides many practical strategies to implement the CNN architecture.&lt;/p&gt;
+
+&lt;p&gt;Link to the course: &lt;a href=&quot;http://cs231n.github.io/convolutional-networks/&quot;&gt;CS231n Convolutional Neural Networks for Visual Recognition&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;what-is-a-convolutional-neural-network&quot;&gt;What is a Convolutional Neural Network?&lt;/h1&gt;
+
+&lt;p&gt;Before going deep into Convolutional Neural Network, it is worth understanding their concept. CNN falls in the category of the supervised algorithms. The algorithm learns from training data, e,g, a set of images in the input and theirs associated labels at the output.&lt;/p&gt;
+
+&lt;p&gt;It consists of feeding the convolutional neural network with images of the training set, x, and their associated labels (targets), y, in order to learn network’s function, y=f(x). After learning the parameter of the network’s function (namely weight and bias), we test the network with an unseen images in order to predict their labels.The architecture of a Convolutional Neural Network (CNN or ConvNet)&lt;/p&gt;
+
+&lt;p&gt;The CNN architecture we used in this article is proposed in &lt;a href=&quot;http://personal.ie.cuhk.edu.hk/~ccloy/project_target_code/index.html&quot;&gt;this paper&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Here is an illustration of the image classification using CNN architecture&lt;/p&gt;
+&lt;p align=&quot;center&quot;&gt;
+  &lt;img src=&quot;https://cdn-images-1.medium.com/max/6096/1*JAoTFAsN5HCrRgrJPaBgrg.png&quot; alt=&quot;pooling&quot; /&gt;
+&lt;/p&gt;
+
+&lt;h1 id=&quot;implementation-of-the-cnn-in-python-using-the-pytorch-library&quot;&gt;Implementation of the CNN in Python using the PyTorch library&lt;/h1&gt;
+
+&lt;p&gt;The network is implemented as a class called CNN. It contains two main methods. The first method (&lt;strong&gt;init&lt;/strong&gt;) defines layers components of the network. In the second method (&lt;em&gt;forward&lt;/em&gt;) we wire the network and put every component in the desired order (as shown in the picture).&lt;/p&gt;
+
+&lt;p&gt;The python code bellow is straightforward. The network is defined using the neural network module of Torch. Notice that we already choose hyper-parameters of the network, such as Padding (P), Stride (S) and Kernel_size (F). Also the number of filters at each layer, … .&lt;/p&gt;
+
+&lt;p&gt;The input image has four dimensions, (batch_size, num_channel, height, width). The algorithm outputs an array with ten values, corresponding to the score (or amount of energy) of the predicted labels of the image. Therefore, the maximum score is the predicted label (or class) to retain for the tested image.&lt;/p&gt;
+
+&lt;p&gt;In the following bullet we will explain the role of each layer of the algorithm:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;em&gt;Conv layer&lt;/em&gt;: This is the main layer of the algorithm. It consists of extracting the key features in the input image (sharp edge, smoothness, rounded shape, …). This is done through a set of 2-dimensional convolutions of the image inthe input with one or many filters. Note that the convolution is performed simultaneously for each channel of the input image, e.g. a color image has C=3 channels, RGB: Red, Green, and Blue. The filters are set to have odd size for practical purpose CxFxF, e.g, 3x3x3, 3x5x5. The output of this operation is one scalar value, an artificial neuron. An illustrative animation for the convolution layer is given in &lt;a href=&quot;http://cs231n.github.io/convolutional-networks/#conv&quot;&gt;http://cs231n.github.io/convolutional-networks/#conv&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://cdn-images-1.medium.com/max/2000/1*qtinjiZct2w7Dr4XoFixnA.gif&quot; alt=&quot;Source: [http://cs231n.github.io/convolutional-networks/#conv](http://cs231n.github.io/convolutional-networks/#conv)&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Source: &lt;a href=&quot;http://cs231n.github.io/convolutional-networks/#conv&quot;&gt;http://cs231n.github.io/convolutional-networks/#conv&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Furthermore, the Conv layer is applied repeatedly to extract fine features that characterize the input image. The outputs of the Conv layer are called features map (or activation map), where each spatial position (or pixel) represents an artificial neuron.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;em&gt;ReLU (Rectifier Linear Units)&lt;/em&gt;: It performs hard thresholding for negative values to zero, and leave positive values untouched, i,e, ReLU(x)=max(0, x). This layer preserves the dynamic range of the feature map.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p align=&quot;center&quot;&gt;
+  &lt;img src=&quot;https://cdn-images-1.medium.com/max/2000/1*njuH4XVXf-l9pR_RorUOrA.png&quot; alt=&quot;pooling&quot; /&gt;
+&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;em&gt;Maxpooling layer&lt;/em&gt;: It performs spatial down-sampling of the feature map and retains only the most relevant information. See the picture below for a visual illustration of this operation. From a practical point of view, a pooling of size 2x2 with a stride of 2 gives good results on most applications. Having said that, other types of pooling exist, e,g, average pooling, median pooling, sum pooling, …&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p align=&quot;center&quot;&gt;
+  &lt;img src=&quot;https://cdn-images-1.medium.com/max/2000/1*gaD6SJ6kQNVOclE_WkwLNQ.png&quot; alt=&quot;pooling&quot; /&gt;
+&lt;/p&gt;
+
+&lt;h1 id=&quot;how-about-the-python-implementation-of-cnn&quot;&gt;How about the Python implementation of CNN?&lt;/h1&gt;
+
+&lt;p&gt;For this article, I used the neural network framework PyTorch to implement the CNN architecture detailed above.&lt;/p&gt;
+
+&lt;p&gt;The full code is available in my GitHub repository: &lt;a href=&quot;https://github.com/amineHY/Image-classification-of-MNIST/blob/master/pytorch_mnist_deep_cnn.ipynb&quot;&gt;amineHY/Image-classification-of-MNIST&lt;/a&gt;
+This repository contains notebooks for image classification of the MNIST dataset. The code is quite simple to understand, hopefully, since it mentions all the layers we discussed earlier in an intuitive way.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;c1&quot;&gt;# Implementation of CNN/ConvNet Model using PyTorch (depicted in the picture above)
+&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;CNN&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;torch&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nn&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Module&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;__init__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;nb&quot;&gt;super&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CNN&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;__init__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;# L1 ImgIn shape=(?, 28, 28, 1)
+&lt;/span&gt;        &lt;span class=&quot;c1&quot;&gt;#    Conv     -&amp;gt; (?, 28, 28, 32)
+&lt;/span&gt;        &lt;span class=&quot;c1&quot;&gt;#    Pool     -&amp;gt; (?, 14, 14, 32)
+&lt;/span&gt;        &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;layer1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;torch&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nn&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Sequential&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;torch&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nn&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Conv2d&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;32&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;kernel_size&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;stride&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;padding&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;torch&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nn&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ReLU&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;torch&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nn&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;MaxPool2d&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;kernel_size&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;stride&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;torch&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nn&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Dropout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;keep_prob&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;# L2 ImgIn shape=(?, 14, 14, 32)
+&lt;/span&gt;        &lt;span class=&quot;c1&quot;&gt;#    Conv      -&amp;gt;(?, 14, 14, 64)
+&lt;/span&gt;        &lt;span class=&quot;c1&quot;&gt;#    Pool      -&amp;gt;(?, 7, 7, 64)
+&lt;/span&gt;        &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;layer2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;torch&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nn&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Sequential&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;torch&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nn&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Conv2d&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;32&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;64&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;kernel_size&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;stride&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;padding&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;torch&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nn&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ReLU&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;torch&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nn&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;MaxPool2d&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;kernel_size&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;stride&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;torch&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nn&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Dropout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;keep_prob&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;# L3 ImgIn shape=(?, 7, 7, 64)
+&lt;/span&gt;        &lt;span class=&quot;c1&quot;&gt;#    Conv      -&amp;gt;(?, 7, 7, 128)
+&lt;/span&gt;        &lt;span class=&quot;c1&quot;&gt;#    Pool      -&amp;gt;(?, 4, 4, 128)
+&lt;/span&gt;        &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;layer3&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;torch&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nn&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Sequential&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;torch&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nn&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Conv2d&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;64&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;128&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;kernel_size&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;stride&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;padding&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;torch&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nn&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ReLU&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;torch&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nn&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;MaxPool2d&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;kernel_size&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;stride&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;padding&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;torch&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nn&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Dropout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;keep_prob&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+
+        &lt;span class=&quot;c1&quot;&gt;# L4 FC 4x4x128 inputs -&amp;gt; 625 outputs
+&lt;/span&gt;        &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fc1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;torch&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nn&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Linear&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;128&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;625&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bias&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;torch&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nn&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;init&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;xavier_uniform&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fc1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;weight&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;layer4&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;torch&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nn&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Sequential&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+            &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fc1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;torch&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nn&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ReLU&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;torch&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nn&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Dropout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;keep_prob&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;# L5 Final FC 625 inputs -&amp;gt; 10 outputs
+&lt;/span&gt;        &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fc2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;torch&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nn&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Linear&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;625&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bias&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;torch&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nn&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;init&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;xavier_uniform_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fc2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;weight&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# initialize parameters
+&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;forward&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;out&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;layer1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;out&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;layer2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;out&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;layer3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;out&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;view&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;   &lt;span class=&quot;c1&quot;&gt;# Flatten them for FC
+&lt;/span&gt;        &lt;span class=&quot;n&quot;&gt;out&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fc1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;out&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fc2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;out&lt;/span&gt;
+
+
+&lt;span class=&quot;c1&quot;&gt;# instantiate CNN model
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;model&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CNN&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;model&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Note that all the number mentioned in the input of the methods is parameters. They define the CNN architecture: kernel_size, stride, padding, input/output of each Conv layer. The code below defines a class called CNN where we define the CNN architecture in order.&lt;/p&gt;
+
+&lt;p&gt;The output of the above code summarizes the network architecture:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  CNN&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;layer1&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;: Sequential&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;
+      &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;0&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;: Conv2d&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;1, 32, &lt;span class=&quot;nv&quot;&gt;kernel_size&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=(&lt;/span&gt;3, 3&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;, &lt;span class=&quot;nv&quot;&gt;stride&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=(&lt;/span&gt;1, 1&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;, &lt;span class=&quot;nv&quot;&gt;padding&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=(&lt;/span&gt;1, 1&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;
+      &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;1&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;: ReLU&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+      &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;2&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;: MaxPool2d&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;kernel_size&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;2, &lt;span class=&quot;nv&quot;&gt;stride&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;2, &lt;span class=&quot;nv&quot;&gt;padding&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;0, &lt;span class=&quot;nv&quot;&gt;dilation&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;1, &lt;span class=&quot;nv&quot;&gt;ceil_mode&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;False&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+      &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;3&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;: Dropout&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;0.30&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;layer2&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;: Sequential&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;
+      &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;0&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;: Conv2d&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;32, 64, &lt;span class=&quot;nv&quot;&gt;kernel_size&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=(&lt;/span&gt;3, 3&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;, &lt;span class=&quot;nv&quot;&gt;stride&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=(&lt;/span&gt;1, 1&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;, &lt;span class=&quot;nv&quot;&gt;padding&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=(&lt;/span&gt;1, 1&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;
+      &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;1&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;: ReLU&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+      &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;2&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;: MaxPool2d&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;kernel_size&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;2, &lt;span class=&quot;nv&quot;&gt;stride&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;2, &lt;span class=&quot;nv&quot;&gt;padding&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;0, &lt;span class=&quot;nv&quot;&gt;dilation&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;1, &lt;span class=&quot;nv&quot;&gt;ceil_mode&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;False&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+      &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;3&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;: Dropout&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;0.30&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;layer3&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;: Sequential&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;
+      &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;0&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;: Conv2d&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;64, 128, &lt;span class=&quot;nv&quot;&gt;kernel_size&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=(&lt;/span&gt;3, 3&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;, &lt;span class=&quot;nv&quot;&gt;stride&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=(&lt;/span&gt;1, 1&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;, &lt;span class=&quot;nv&quot;&gt;padding&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=(&lt;/span&gt;1, 1&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;
+      &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;1&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;: ReLU&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+      &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;2&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;: MaxPool2d&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;kernel_size&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;2, &lt;span class=&quot;nv&quot;&gt;stride&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;2, &lt;span class=&quot;nv&quot;&gt;padding&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;1, &lt;span class=&quot;nv&quot;&gt;dilation&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;1, &lt;span class=&quot;nv&quot;&gt;ceil_mode&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;False&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+      &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;3&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;: Dropout&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;0.30&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;fc1&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;: Linear&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;in_features&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;2048, &lt;span class=&quot;nv&quot;&gt;out_features&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;625, &lt;span class=&quot;nv&quot;&gt;bias&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;True&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;layer4&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;: Sequential&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;
+      &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;0&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;: Linear&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;in_features&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;2048, &lt;span class=&quot;nv&quot;&gt;out_features&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;625, &lt;span class=&quot;nv&quot;&gt;bias&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;True&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+      &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;1&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;: ReLU&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+      &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;2&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;: Dropout&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;0.30&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;fc2&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;: Linear&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;in_features&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;625, &lt;span class=&quot;nv&quot;&gt;out_features&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;10, &lt;span class=&quot;nv&quot;&gt;bias&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;True&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h1 id=&quot;importing-mnist-dataset&quot;&gt;Importing MNIST Dataset&lt;/h1&gt;
+
+&lt;p&gt;In order to acquire the MNIST images, we use a method of torchvision library. Just copy paste this code to download the data. Basically, two datasets are loaded. The training dataset serves as ground truth to compute the network parameters. The testing images&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;torch&lt;/span&gt;
+  &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;torchvision.datasets&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dsets&lt;/span&gt;
+
+
+  &lt;span class=&quot;n&quot;&gt;batch_size&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;32&lt;/span&gt;
+
+  &lt;span class=&quot;c1&quot;&gt;# MNIST dataset
+&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;mnist_train&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dsets&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;MNIST&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;root&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'MNIST_data/'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                            &lt;span class=&quot;n&quot;&gt;train&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                            &lt;span class=&quot;n&quot;&gt;transform&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;transforms&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ToTensor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),&lt;/span&gt;
+                            &lt;span class=&quot;n&quot;&gt;download&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+  &lt;span class=&quot;n&quot;&gt;mnist_test&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dsets&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;MNIST&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;root&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'MNIST_data/'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                           &lt;span class=&quot;n&quot;&gt;train&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                           &lt;span class=&quot;n&quot;&gt;transform&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;transforms&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ToTensor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),&lt;/span&gt;
+                           &lt;span class=&quot;n&quot;&gt;download&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+  &lt;span class=&quot;c1&quot;&gt;# dataset loader
+&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;data_loader&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;torch&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;utils&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DataLoader&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dataset&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mnist_train&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                                            &lt;span class=&quot;n&quot;&gt;batch_size&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;batch_size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                                            &lt;span class=&quot;n&quot;&gt;shuffle&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h1 id=&quot;training-the-classification-model&quot;&gt;Training the classification model&lt;/h1&gt;
+
+&lt;p&gt;This is an essential stage of a supervised algorithm. By feeding the algorithm with many examples of image and their associated labels, we teach the algorithm to find patterns of each class. This is done by computing filter’s parameters (weight and bias).&lt;/p&gt;
+
+&lt;p&gt;The training of the network is composed of two major steps, forward and backward:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;During the forward pass, we feed the network by images of the training set and compute the features map till the end of the network, then we compute the loss function to measure how far / close the solution (predicted label) is from the ground truth label.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;The backward pass performs the computation of the loss function’s gradient and updates the filters’ parameters.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;We also need to define an loss function, e.g. &lt;a href=&quot;https://en.wikipedia.org/wiki/Cross_entropy#Cross-entropy_error_function_and_logistic_regression&quot;&gt;Cross-entropy loss function&lt;/a&gt;, and an optimization algorithm, such as &lt;a href=&quot;https://arxiv.org/pdf/1412.6980.pdf&quot;&gt;Gradient descent, SGD, Adam&lt;/a&gt; (Adaptive moment estimation&lt;a href=&quot;https://arxiv.org/pdf/1412.6980.pdf&quot;&gt;)&lt;/a&gt;…&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://cdn-images-1.medium.com/max/2000/1*MOVbwX27vXjzYmfV1NSswQ.png&quot; alt=&quot;[Source: https://arxiv.org/pdf/1412.6980.pdf](https://arxiv.org/pdf/1412.6980.pdf)&quot; /&gt;&lt;em&gt;&lt;a href=&quot;https://arxiv.org/pdf/1412.6980.pdf&quot;&gt;Source: https://arxiv.org/pdf/1412.6980.pdf&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;What to remember&lt;/strong&gt; for training a deep learning algorithm:&lt;/p&gt;
+
+&lt;p&gt;— Initialize the parameters (weights : w, bias: b)
+ — Optimize the loss iteratively to learn parameters (w,b)
+ — Compute the loss function and its gradients
+ — Update parameters using an optimization algorithm (e,g, Adam)
+ — Use the learned parameters to predict the label for a given input image&lt;/p&gt;
+
+&lt;h3 id=&quot;python-implementation-of-training-cnn-in-python-using-pytorch&quot;&gt;Python implementation of training CNN in Python using PyTorch&lt;/h3&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'Training the Deep Learning network ...'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;learning_rate&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.001&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;criterion&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;torch&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nn&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CrossEntropyLoss&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;# Softmax is internally computed.
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;optimizer&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;torch&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;optim&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Adam&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;params&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;parameters&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lr&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;learning_rate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;train_cost&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;train_accu&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;batch_size&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;32&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;training_epochs&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;15&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;total_batch&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mnist_train&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;batch_size&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'Size of the training dataset is {}'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mnist_train&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()))&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'Size of the testing dataset'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mnist_test&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()))&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'Batch size is : {}'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;batch_size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'Total number of batches is : {0:2.0f}'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;total_batch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Total number of epochs is : {0:2.0f}'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;training_epochs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;compute_accuracy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Y_target&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;hypothesis&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;Y_prediction&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;hypothesis&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;max&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dim&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;accuracy&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Y_prediction&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Y_target&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;float&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mean&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;    
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;accuracy&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+
+
+&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;epoch&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;training_epochs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;avg_cost&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;batch_X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;batch_Y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;enumerate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data_loader&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+
+        &lt;span class=&quot;c1&quot;&gt;# Select a minibatch
+&lt;/span&gt;        &lt;span class=&quot;n&quot;&gt;X&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Variable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;batch_X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;# image is already size of (28x28), no reshape
+&lt;/span&gt;        &lt;span class=&quot;n&quot;&gt;Y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Variable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;batch_Y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;# label is not one-hot encoded
+&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;# initialization of the gradients
+&lt;/span&gt;        &lt;span class=&quot;n&quot;&gt;optimizer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;zero_grad&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+
+        &lt;span class=&quot;c1&quot;&gt;# Forward propagation: compute the output
+&lt;/span&gt;        &lt;span class=&quot;n&quot;&gt;hypothesis&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+        &lt;span class=&quot;c1&quot;&gt;# Computation of the cost J
+&lt;/span&gt;        &lt;span class=&quot;n&quot;&gt;cost&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;criterion&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;hypothesis&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# &amp;lt;= compute the loss function
+&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;# Backward propagation
+&lt;/span&gt;        &lt;span class=&quot;n&quot;&gt;cost&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;backward&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# &amp;lt;= compute the gradients
+&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;# Update parameters (weights and biais)
+&lt;/span&gt;        &lt;span class=&quot;n&quot;&gt;optimizer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;step&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+
+        &lt;span class=&quot;c1&quot;&gt;# Print some performance to monitor the training
+&lt;/span&gt;        &lt;span class=&quot;n&quot;&gt;train_accu&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;compute_accuracy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;hypothesis&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;train_cost&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cost&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;   
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;200&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Epoch= {},&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\t&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; batch = {},&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\t&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; cost = {:2.4f},&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\t&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; accuracy = {}&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;epoch&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;train_cost&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;train_accu&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]))&lt;/span&gt;
+
+        &lt;span class=&quot;n&quot;&gt;avg_cost&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cost&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;total_batch&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;[Epoch: {:&amp;gt;4}], averaged cost = {:&amp;gt;.9}&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;epoch&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;avg_cost&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()))&lt;/span&gt;
+
+
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'Learning Finished!'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;monitoring-the-training-by-plotting-the-loss-function-and-the-accuracy&quot;&gt;Monitoring the training by plotting the Loss-Function and the Accuracy&lt;/h2&gt;
+
+&lt;p align=&quot;center&quot;&gt;
+  &lt;img src=&quot;https://cdn-images-1.medium.com/max/2000/1*us1x6tgDfYBRhme0j3dgFg.png&quot; alt=&quot;pooling&quot; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Plotting these plots help monitor understanding the convergence of the algorithm. The loss plot is decreasing during the training which a what we want since the goal of the optimization algorithm (Adam) is to minimize the loss function. On the right, the plot shows the evolution of the classification accuracy during the training. The more we train the algorithm, the better the classification accuracy. Notice the fluctuation of the accuracy between ~90 and 100 %. Better tuning of hyper-parameters will provide a precise classification.&lt;/p&gt;
+
+&lt;h2 id=&quot;display-of-classification-results&quot;&gt;Display of Classification Results&lt;/h2&gt;
+
+&lt;p&gt;The classification algorithm is able to understand the content of these images thanks to the training of CNN.&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;
+  &lt;img src=&quot;https://cdn-images-1.medium.com/max/2000/1*bgm3yCrLs1wvE9UskdBhRA.png&quot; alt=&quot;pooling&quot; /&gt;
+&lt;/p&gt;
+
+&lt;h1 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h1&gt;
+&lt;p&gt;This article attempts to explain briefly the convolutional neural network without going deep into mathematical development. An illustration is provided at each step with a visual explanation, as well as an application of image classification of MNIST dataset. Finally, a python implementation using PyTorch library is presented in order to provide a concrete example of application. Hopefully, you will find it interesting and easy to read.&lt;/p&gt;</content><author><name>M. Amine Hadj-Youcef</name></author><category term="Machine Learning" /><category term="Computer Vision" /><category term="AI" /><category term="Data Science" /><summary type="html">A Dive into an Artificial Intelligence algorithm</summary></entry><entry><title type="html">Elements Reference</title><link href="http://0.0.0.0:4000/elements/" rel="alternate" type="text/html" title="Elements Reference" /><published>2018-01-12T00:00:00+01:00</published><updated>2018-01-12T00:00:00+01:00</updated><id>http://0.0.0.0:4000/elements</id><content type="html" xml:base="http://0.0.0.0:4000/elements/">&lt;!-- Text stuff --&gt;
+&lt;h2&gt;Text&lt;/h2&gt;
+&lt;p&gt;This is &lt;b&gt;bold&lt;/b&gt; and this is &lt;strong&gt;strong&lt;/strong&gt;. This is &lt;i&gt;italic&lt;/i&gt; and this is &lt;em&gt;emphasized&lt;/em&gt;.
+	This is &lt;sup&gt;superscript&lt;/sup&gt; text and this is &lt;sub&gt;subscript&lt;/sub&gt; text.
+	This is &lt;u&gt;underlined&lt;/u&gt; and this is code: &lt;code&gt;for (;;) { ... }&lt;/code&gt;.
+	Finally, this is a &lt;a href=&quot;#&quot;&gt;link&lt;/a&gt;.&lt;/p&gt;
+	&lt;hr /&gt;
+	&lt;h2&gt;Heading Level 2&lt;/h2&gt;
+	&lt;h3&gt;Heading Level 3&lt;/h3&gt;
+	&lt;hr /&gt;
+	&lt;header&gt;
+		&lt;h2&gt;Heading with a Subtitle&lt;/h2&gt;
+		&lt;p&gt;Lorem ipsum dolor sit amet nullam id egestas urna aliquam&lt;/p&gt;
+	&lt;/header&gt;
+	&lt;p&gt;Nunc lacinia ante nunc ac lobortis. Interdum adipiscing gravida odio porttitor sem non mi integer non faucibus ornare mi ut ante amet placerat aliquet. Volutpat eu sed ante lacinia sapien lorem accumsan varius montes viverra nibh in adipiscing blandit tempus accumsan.&lt;/p&gt;
+	&lt;hr /&gt;
+
+	&lt;!-- Lists --&gt;
+	&lt;h2&gt;Lists&lt;/h2&gt;
+	&lt;div class=&quot;row&quot;&gt;
+		&lt;div class=&quot;6u 12u$(small)&quot;&gt;
+
+			&lt;h3&gt;Unordered&lt;/h3&gt;
+			&lt;ul&gt;
+				&lt;li&gt;Dolor pulvinar etiam.&lt;/li&gt;
+				&lt;li&gt;Sagittis lorem eleifend.&lt;/li&gt;
+				&lt;li&gt;Felis feugiat dolore viverra.&lt;/li&gt;
+				&lt;li&gt;Dolor pulvinar etiam.&lt;/li&gt;
+			&lt;/ul&gt;
+
+			&lt;h3&gt;Icons&lt;/h3&gt;
+			&lt;ul class=&quot;icons&quot;&gt;
+				&lt;li&gt;&lt;a href=&quot;#&quot; class=&quot;icon fa-envelope&quot;&gt;&lt;span class=&quot;label&quot;&gt;Twitter&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+				&lt;li&gt;&lt;a href=&quot;#&quot; class=&quot;icon-r fa-envelope&quot;&gt;&lt;span class=&quot;label&quot;&gt;Twitter&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+				&lt;li&gt;&lt;a href=&quot;#&quot; class=&quot;icon fa-user&quot;&gt;&lt;span class=&quot;label&quot;&gt;Facebook&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+				&lt;li&gt;&lt;a href=&quot;#&quot; class=&quot;icon-r fa-user&quot;&gt;&lt;span class=&quot;label&quot;&gt;Instagram&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+				&lt;li&gt;&lt;a href=&quot;#&quot; class=&quot;icon-b fa-github&quot;&gt;&lt;span class=&quot;label&quot;&gt;Github&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+				&lt;li&gt;&lt;a href=&quot;#&quot; class=&quot;icon-b fa-github-alt&quot;&gt;&lt;span class=&quot;label&quot;&gt;Dribbble&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+			&lt;/ul&gt;
+
+		&lt;/div&gt;
+		&lt;div class=&quot;6u$ 12u$(small)&quot;&gt;
+
+			&lt;h3&gt;Ordered&lt;/h3&gt;
+			&lt;ol&gt;
+				&lt;li&gt;Dolor pulvinar etiam.&lt;/li&gt;
+				&lt;li&gt;Etiam vel felis at viverra.&lt;/li&gt;
+				&lt;li&gt;Felis enim feugiat magna.&lt;/li&gt;
+				&lt;li&gt;Etiam vel felis nullam.&lt;/li&gt;
+				&lt;li&gt;Felis enim et tempus.&lt;/li&gt;
+			&lt;/ol&gt;
+
+		&lt;/div&gt;
+	&lt;/div&gt;
+	&lt;h3&gt;Definition&lt;/h3&gt;
+	&lt;dl&gt;
+		&lt;dt&gt;Item 1&lt;/dt&gt;
+		&lt;dd&gt;
+			&lt;p&gt;Lorem ipsum dolor vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent.&lt;/p&gt;
+		&lt;/dd&gt;
+		&lt;dt&gt;Item 2&lt;/dt&gt;
+		&lt;dd&gt;
+			&lt;p&gt;Lorem ipsum dolor vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent.&lt;/p&gt;
+		&lt;/dd&gt;
+		&lt;dt&gt;Item 3&lt;/dt&gt;
+		&lt;dd&gt;
+			&lt;p&gt;Lorem ipsum dolor vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent.&lt;/p&gt;
+		&lt;/dd&gt;
+	&lt;/dl&gt;
+
+	&lt;h3&gt;Button&lt;/h3&gt;
+		&lt;a href=&quot;#&quot; class=&quot;button&quot;&gt;Button&lt;/a&gt;
+		&lt;a href=&quot;#&quot; class=&quot;button icon fa-search&quot;&gt;Icon&lt;/a&gt;
+
+	&lt;hr /&gt;
+
+	&lt;!-- Blockquote --&gt;
+	&lt;h2&gt;Blockquote&lt;/h2&gt;
+	&lt;blockquote&gt;Fringilla nisl. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan faucibus. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis.&lt;/blockquote&gt;
+
+	&lt;hr /&gt;
+
+	&lt;!-- Table --&gt;
+	&lt;h2&gt;Table&lt;/h2&gt;
+	&lt;div class=&quot;table-wrapper&quot;&gt;
+		&lt;table&gt;
+			&lt;thead&gt;
+				&lt;tr&gt;
+					&lt;th&gt;Name&lt;/th&gt;
+					&lt;th&gt;Description&lt;/th&gt;
+					&lt;th&gt;Price&lt;/th&gt;
+				&lt;/tr&gt;
+			&lt;/thead&gt;
+			&lt;tbody&gt;
+				&lt;tr&gt;
+					&lt;td&gt;Item 1&lt;/td&gt;
+					&lt;td&gt;Ante turpis integer aliquet porttitor.&lt;/td&gt;
+					&lt;td&gt;29.99&lt;/td&gt;
+				&lt;/tr&gt;
+				&lt;tr&gt;
+					&lt;td&gt;Item 2&lt;/td&gt;
+					&lt;td&gt;Vis ac commodo adipiscing arcu aliquet.&lt;/td&gt;
+					&lt;td&gt;19.99&lt;/td&gt;
+				&lt;/tr&gt;
+				&lt;tr&gt;
+					&lt;td&gt;Item 3&lt;/td&gt;
+					&lt;td&gt; Morbi faucibus arcu accumsan lorem.&lt;/td&gt;
+					&lt;td&gt;29.99&lt;/td&gt;
+				&lt;/tr&gt;
+				&lt;tr&gt;
+					&lt;td&gt;Item 4&lt;/td&gt;
+					&lt;td&gt;Vitae integer tempus condimentum.&lt;/td&gt;
+					&lt;td&gt;19.99&lt;/td&gt;
+				&lt;/tr&gt;
+				&lt;tr&gt;
+					&lt;td&gt;Item 5&lt;/td&gt;
+					&lt;td&gt;Ante turpis integer aliquet porttitor.&lt;/td&gt;
+					&lt;td&gt;29.99&lt;/td&gt;
+				&lt;/tr&gt;
+			&lt;/tbody&gt;
+			&lt;tfoot&gt;
+				&lt;tr&gt;
+					&lt;td colspan=&quot;2&quot;&gt;&lt;/td&gt;
+					&lt;td&gt;100.00&lt;/td&gt;
+				&lt;/tr&gt;
+			&lt;/tfoot&gt;
+		&lt;/table&gt;
+	&lt;/div&gt;
+
+	&lt;hr /&gt;
+
+	&lt;!-- Form --&gt;
+	&lt;h2&gt;Form&lt;/h2&gt;
+
+	&lt;form method=&quot;post&quot; action=&quot;#&quot;&gt;
+		&lt;div class=&quot;row uniform&quot;&gt;
+			&lt;div class=&quot;6u 12u$(xsmall)&quot;&gt;
+				&lt;input type=&quot;text&quot; name=&quot;demo-name&quot; id=&quot;demo-name&quot; value=&quot;&quot; placeholder=&quot;Name&quot; /&gt;
+			&lt;/div&gt;
+			&lt;div class=&quot;6u$ 12u$(xsmall)&quot;&gt;
+				&lt;input type=&quot;email&quot; name=&quot;demo-email&quot; id=&quot;demo-email&quot; value=&quot;&quot; placeholder=&quot;Email&quot; /&gt;
+			&lt;/div&gt;
+			&lt;!-- Break --&gt;
+			&lt;div class=&quot;12u$&quot;&gt;
+				&lt;div class=&quot;select-wrapper&quot;&gt;
+					&lt;select name=&quot;demo-category&quot; id=&quot;demo-category&quot;&gt;
+						&lt;option value=&quot;&quot;&gt;- Category -&lt;/option&gt;
+						&lt;option value=&quot;1&quot;&gt;Manufacturing&lt;/option&gt;
+						&lt;option value=&quot;1&quot;&gt;Shipping&lt;/option&gt;
+						&lt;option value=&quot;1&quot;&gt;Administration&lt;/option&gt;
+						&lt;option value=&quot;1&quot;&gt;Human Resources&lt;/option&gt;
+					&lt;/select&gt;
+				&lt;/div&gt;
+			&lt;/div&gt;
+			&lt;!-- Break --&gt;
+			&lt;div class=&quot;4u 12u$(small)&quot;&gt;
+				&lt;input type=&quot;radio&quot; id=&quot;demo-priority-low&quot; name=&quot;demo-priority&quot; checked&gt;
+				&lt;label for=&quot;demo-priority-low&quot;&gt;Low&lt;/label&gt;
+			&lt;/div&gt;
+			&lt;div class=&quot;4u 12u$(small)&quot;&gt;
+				&lt;input type=&quot;radio&quot; id=&quot;demo-priority-normal&quot; name=&quot;demo-priority&quot;&gt;
+				&lt;label for=&quot;demo-priority-normal&quot;&gt;Normal&lt;/label&gt;
+			&lt;/div&gt;
+			&lt;div class=&quot;4u$ 12u$(small)&quot;&gt;
+				&lt;input type=&quot;radio&quot; id=&quot;demo-priority-high&quot; name=&quot;demo-priority&quot;&gt;
+				&lt;label for=&quot;demo-priority-high&quot;&gt;High&lt;/label&gt;
+			&lt;/div&gt;
+			&lt;!-- Break --&gt;
+			&lt;div class=&quot;6u 12u$(small)&quot;&gt;
+				&lt;input type=&quot;checkbox&quot; id=&quot;demo-copy&quot; name=&quot;demo-copy&quot;&gt;
+				&lt;label for=&quot;demo-copy&quot;&gt;Email me a copy&lt;/label&gt;
+			&lt;/div&gt;
+			&lt;div class=&quot;6u$ 12u$(small)&quot;&gt;
+				&lt;input type=&quot;checkbox&quot; id=&quot;demo-human&quot; name=&quot;demo-human&quot; checked&gt;
+				&lt;label for=&quot;demo-human&quot;&gt;I am a human&lt;/label&gt;
+			&lt;/div&gt;
+			&lt;!-- Break --&gt;
+			&lt;div class=&quot;12u$&quot;&gt;
+				&lt;textarea name=&quot;demo-message&quot; id=&quot;demo-message&quot; placeholder=&quot;Enter your message&quot; rows=&quot;6&quot;&gt;&lt;/textarea&gt;
+			&lt;/div&gt;
+			&lt;!-- Break --&gt;
+			&lt;div class=&quot;12u$&quot;&gt;
+				&lt;div class=&quot;actions&quot;&gt;
+					&lt;input type=&quot;submit&quot; value=&quot;Send Message&quot; class=&quot;special&quot; /&gt;
+					&lt;input type=&quot;reset&quot; value=&quot;Reset&quot; /&gt;
+				&lt;/div&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+	&lt;/form&gt;
+
+	&lt;hr /&gt;
+
+	&lt;!-- Image --&gt;
+	&lt;h2&gt;Image&lt;/h2&gt;
+
+	&lt;div class=&quot;row&quot;&gt;
+    &lt;div class=&quot;4u 12u$(mobile)&quot;&gt;
+      &lt;div class=&quot;item&quot;&gt;
+        &lt;a href=&quot;#&quot; class=&quot;image fit&quot;&gt;&lt;img src=&quot;/assets/images/pic02.jpg&quot; alt=&quot;Ipsum Feugiat&quot; /&gt;&lt;/a&gt;
+        &lt;header&gt;
+          &lt;h3&gt;Ipsum Feugiat&lt;/h3&gt;
+        &lt;/header&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;item&quot;&gt;
+        &lt;a href=&quot;#&quot; class=&quot;image fit&quot;&gt;&lt;img src=&quot;/assets/images/pic03.jpg&quot; alt=&quot;Rhoncus Semper&quot; /&gt;&lt;/a&gt;
+        &lt;header&gt;
+          &lt;h3&gt;Rhoncus Semper&lt;/h3&gt;
+        &lt;/header&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;4u 12u$(mobile)&quot;&gt;
+      &lt;div class=&quot;item&quot;&gt;
+        &lt;a href=&quot;#&quot; class=&quot;image fit&quot;&gt;&lt;img src=&quot;/assets/images/pic04.jpg&quot; alt=&quot;Magna Nullam&quot; /&gt;&lt;/a&gt;
+        &lt;header&gt;
+          &lt;h3&gt;Magna Nullam&lt;/h3&gt;
+        &lt;/header&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;item&quot;&gt;
+        &lt;a href=&quot;#&quot; class=&quot;image fit&quot;&gt;&lt;img src=&quot;/assets/images/pic05.jpg&quot; alt=&quot;Natoque Vitae&quot; /&gt;&lt;/a&gt;
+        &lt;header&gt;
+          &lt;h3&gt;Natoque Vitae&lt;/h3&gt;
+        &lt;/header&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;4u$ 12u$(mobile)&quot;&gt;
+      &lt;div class=&quot;item&quot;&gt;
+        &lt;a href=&quot;#&quot; class=&quot;image fit&quot;&gt;&lt;img src=&quot;/assets/images/pic06.jpg&quot; alt=&quot;Dolor Penatibus&quot; /&gt;&lt;/a&gt;
+        &lt;header&gt;
+          &lt;h3&gt;Dolor Penatibus&lt;/h3&gt;
+        &lt;/header&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;item&quot;&gt;
+        &lt;a href=&quot;#&quot; class=&quot;image fit&quot;&gt;&lt;img src=&quot;/assets/images/pic07.jpg&quot; alt=&quot;Orci Convallis&quot; /&gt;&lt;/a&gt;
+        &lt;header&gt;
+          &lt;h3&gt;Orci Convallis&lt;/h3&gt;
+        &lt;/header&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+	&lt;h3&gt;Left &amp;amp; Right&lt;/h3&gt;
+	&lt;p&gt;&lt;span class=&quot;image left&quot;&gt;&lt;img src=&quot;/assets/images/pic03.jpg&quot; alt=&quot;&quot; /&gt;&lt;/span&gt;Lorem ipsum dolor sit accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent. Vestibulum ante ipsum primis in faucibus magna blandit adipiscing eu felis iaculis.&lt;/p&gt;
+	&lt;p&gt;&lt;span class=&quot;image right&quot;&gt;&lt;img src=&quot;/assets/images/pic02.jpg&quot; alt=&quot;&quot; /&gt;&lt;/span&gt;Lorem ipsum dolor sit accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent. Vestibulum ante ipsum primis in faucibus magna blandit adipiscing eu felis iaculis.&lt;/p&gt;
+
+	&lt;hr /&gt;
+
+	&lt;!-- Preformatted Code --&gt;
+	&lt;h2&gt;Preformatted&lt;/h2&gt;
+	&lt;pre&gt;&lt;code&gt;i = 0;
+
+while (!deck.isInOrder()) {
+	print 'Iteration ' + i;
+	deck.shuffle();
+	i++;
+}
+
+print 'It took ' + i + ' iterations to sort the deck.';&lt;/code&gt;&lt;/pre&gt;</content><author><name>M. Amine Hadj-Youcef</name></author><summary type="html">Text This is bold and this is strong. This is italic and this is emphasized. This is superscript text and this is subscript text. This is underlined and this is code: for (;;) { ... }. Finally, this is a link. Heading Level 2 Heading Level 3 Heading with a Subtitle Lorem ipsum dolor sit amet nullam id egestas urna aliquam Nunc lacinia ante nunc ac lobortis. Interdum adipiscing gravida odio porttitor sem non mi integer non faucibus ornare mi ut ante amet placerat aliquet. Volutpat eu sed ante lacinia sapien lorem accumsan varius montes viverra nibh in adipiscing blandit tempus accumsan. Lists Unordered Dolor pulvinar etiam. Sagittis lorem eleifend. Felis feugiat dolore viverra. Dolor pulvinar etiam. Icons Twitter Twitter Facebook Instagram Github Dribbble Ordered Dolor pulvinar etiam. Etiam vel felis at viverra. Felis enim feugiat magna. Etiam vel felis nullam. Felis enim et tempus. Definition Item 1 Lorem ipsum dolor vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent. Item 2 Lorem ipsum dolor vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent. Item 3 Lorem ipsum dolor vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent. Button Button Icon Blockquote Fringilla nisl. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan faucibus. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis. Table Name Description Price Item 1 Ante turpis integer aliquet porttitor. 29.99 Item 2 Vis ac commodo adipiscing arcu aliquet. 19.99 Item 3 Morbi faucibus arcu accumsan lorem. 29.99 Item 4 Vitae integer tempus condimentum. 19.99 Item 5 Ante turpis integer aliquet porttitor. 29.99 100.00 Form - Category - Manufacturing Shipping Administration Human Resources Low Normal High Email me a copy I am a human Image Ipsum Feugiat Rhoncus Semper Magna Nullam Natoque Vitae Dolor Penatibus Orci Convallis Left &amp;amp; Right Lorem ipsum dolor sit accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent. Vestibulum ante ipsum primis in faucibus magna blandit adipiscing eu felis iaculis. Lorem ipsum dolor sit accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent. Vestibulum ante ipsum primis in faucibus magna blandit adipiscing eu felis iaculis. Preformatted i = 0; while (!deck.isInOrder()) { print 'Iteration ' + i; deck.shuffle(); i++; } print 'It took ' + i + ' iterations to sort the deck.';</summary></entry><entry><title type="html">My First Post</title><link href="http://0.0.0.0:4000/my_url" rel="alternate" type="text/html" title="My First Post" /><published>2012-09-12T00:00:00+02:00</published><updated>2012-09-12T00:00:00+02:00</updated><id>http://0.0.0.0:4000/first-post</id><content type="html" xml:base="http://0.0.0.0:4000/my_url">&lt;h1 id=&quot;introduction&quot;&gt;Introduction&lt;/h1&gt;
+
+&lt;p&gt;Lorem ipsum dolor sit amet, iusto ridens dictas te sed. Error latine vis et. Ex cum munere d, efinitiones, ne quas debitis contentiones cum, epicurei constituam ea sit. Dicant aeterno dolorum ex eum, qui everti iisque consectetuer ea! Duo in falli similique, nec tritani accusam te. Enim sapientem intellegat te pri, nam at atqui accumsan vituperata.&lt;/p&gt;
+
+&lt;h2 id=&quot;basic&quot;&gt;basic&lt;/h2&gt;
+
+&lt;p&gt;Sed id graeci feugiat. No meis summo consequat vel! Albucius phaedrum omittantur eos an, ex sit lorem possim perpetua. Usu et sumo posidonium, ut qui dicat sapientem tincidunt, et has consul oporteat torquatos! In qui fabulas facilisis, justo nonumes an his, quo vidisse nusquam facilisis no. Eam iriure mediocrem suavitate an?&lt;/p&gt;
+
+&lt;p&gt;Quo te solum malorum prompta, porro oblique senserit cum et! Pro wisi cetero periculis ei, nam ullum dicit accusam ne, ad quo apeirian principes dissentiunt. An mea mucius vocent iisque? Vel eu altera consetetur, clita perfecto mea ad. Eos in vero ullum regione, ei veniam disputando pro, nam et iuvaret detracto voluptua.&lt;/p&gt;
+
+&lt;p&gt;Ad tritani deleniti sit, ne per ubique habemus singulis. Pro at integre alienum mediocritatem, mea ad libris adipisci necessitatibus, nostro constituam sit te. Recusabo oportere et mea, case minimum deleniti no quo, deseruisse conclusionemque vis te. Nam ex iudicabit constituam accommodare, dicam singulis ex eos! Eu mea viderer ceteros repudiandae, id erat voluptatum mea, ut consul omittam convenire quo. Id justo ipsum mei, modus contentiones per et! At mel omnium lucilius instructior, vel quando graeco in, eos docendi periculis eloquentiam ut.&lt;/p&gt;
+
+&lt;p&gt;Eam habemus aliquando ut. Id idque virtute antiopam duo, et idque falli incorrupte eos, in sea omnium instructior. Mei ex nostrud moderatius cotidieque, cu sea partiendo euripidis, eam no tollit doming! Has ne facilisi vulputate, aliquando disputationi mel eu. Ex pri diceret delectus intellegam, regione definiebas pro ex.&lt;/p&gt;</content><author><name>Amine</name></author><category term="article" /><category term="data sciences" /><summary type="html">Machine learning, data science, AI</summary></entry></feed>

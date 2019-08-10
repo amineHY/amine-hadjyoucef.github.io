@@ -1,0 +1,868 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.16.5 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Have you Optimized your Deep Learning Model Before Deployment? - Welcome to my Personal Website</title>
+<meta name="description" content="[“Machine Learning”, “Computer Vision”, “AI”, “Data Science”]">
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Welcome to my Personal Website">
+<meta property="og:title" content="Have you Optimized your Deep Learning Model Before Deployment?">
+<meta property="og:url" content="http://0.0.0.0:4000/Optimize/">
+
+
+  <meta property="og:description" content="[“Machine Learning”, “Computer Vision”, “AI”, “Data Science”]">
+
+
+
+  <meta property="og:image" content="http://0.0.0.0:4000/assets/images/tensorrt.png">
+
+
+
+
+
+  <meta property="article:published_time" content="2019-07-30T00:00:00+02:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://0.0.0.0:4000/Optimize/">
+
+
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "M. Amine Hadj-Youcef, Ph. D",
+      "url": "http://0.0.0.0:4000",
+      "sameAs": null
+    }
+  </script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Welcome to my Personal Website Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if IE ]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single wide">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Welcome to my Personal Website
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/articles/" >Articles</a>
+            </li><li class="masthead__menu-item">
+              <a href="/publications/" >Publications</a>
+            </li><li class="masthead__menu-item">
+              <a href="/resume/" >Resume</a>
+            </li><li class="masthead__menu-item">
+              <a href="/about/" >About</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+  
+
+
+
+
+
+
+
+
+
+
+
+<div class="page__hero"
+  style=" "
+>
+  
+    <img src="/assets/images/tensorrt.png" alt="Have you Optimized your Deep Learning Model Before Deployment?" class="page__hero-image">
+  
+  
+</div>
+
+
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name"></h3>
+    
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Have you Optimized your Deep Learning Model Before Deployment?">
+    <meta itemprop="description" content="[“Machine Learning”, “Computer Vision”, “AI”, “Data Science”]">
+    <meta itemprop="datePublished" content="July 30, 2019">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">Have you Optimized your Deep Learning Model Before Deployment?
+</h1>
+          
+            <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  8 minute read
+</p>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <h1 id="use-nvidia-tensorrt-to-optimize-and-speed-up-inference-timeongpu-illustration-on-an-ai-based-computer-vision-with-yolo">Use NVIDIA TensorRT to optimize and speed up inference time on GPU. Illustration on an AI-based Computer Vision with YOLO.</h1>
+
+<p>This article presents how to use NVIDIA TensorRT to optimize a deep learning model that you want to deploy on the edge device (mobile, camera, robot, car ….). For instance, the intelligent double spectrum camera of Aerialtronics: <em>Pensar</em> <a href="https://pensarsdk.com/">https://pensarsdk.com/</a></p>
+
+<p><img src="https://cdn-images-1.medium.com/max/2280/1*kF5CrVqanC408hSvNYO1lg.png" alt="[https://pensarsdk.com/](https://pensarsdk.com/)" />
+<em>Source: <a href="https://pensarsdk.com/">https://pensarsdk.com/</a></em></p>
+
+<p>Which has onboard an NVIDIA Jetson TX2 GPU</p>
+
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*QRaU5AHVxGZeKAqwpriktg.png" alt="[https://developer.nvidia.com/embedded/jetson-tx2-developer-kit](https://developer.nvidia.com/embedded/jetson-tx2)" />
+<em>Source: <a href="https://developer.nvidia.com/embedded/jetson-tx2">https://developer.nvidia.com/embedded/jetson-tx2-developer-kit</a></em></p>
+
+<p>This article is organized as follows:</p>
+
+<ul>
+  <li>
+    <p>What is NVIDIA TensorRT?</p>
+  </li>
+  <li>
+    <p>Setup the Development Environment using docker</p>
+  </li>
+  <li>
+    <p>Computer Vision Application: Object detection with YOLOv3 model</p>
+  </li>
+  <li>
+    <p>References</p>
+  </li>
+  <li>
+    <p>Conclusion</p>
+  </li>
+</ul>
+
+<h2 id="why-do-i-need-an-optimized-deep-learning-model">Why do I need an optimized deep learning model?</h2>
+
+<p>As an example, think of AI-based computer vision application, they need to process each frame captured by the camera. Thus, each frame makes a forward pass through the layers of the model to compute a certain output (detection, segmentation, classification…).</p>
+
+<p>Whatever power your GPU has, we all want the number of frames per second (FPS) at the output to be equal to one at the input (example 24, 30 FPS…). This means that the GPU is processing each frame in real-time.</p>
+
+<p>This notion is more than desired for Computer Vision applications that require a real-time decision, for instance, surveillance, fraud detection, or crowd counting during an event, to cite just a few.</p>
+
+<h2 id="pre-deployment-optimization-workflow">Pre-Deployment Optimization Workflow</h2>
+
+<p>Among tasks of a Data Scientist is to exploit the data and develop/train/test a neural network architecture. After the validation of the model, usually, the architecture and the model’s parameters are exported for deployment. Many ways are possible to do that, either on a cloud or an edge device. In this article, we focus on deployment on edge device (camera, mobile, robot, car…).</p>
+
+<p>The workflow of deployment, generally speaking, follows the block diagram depicted in the figure below:</p>
+
+<p><img src="https://cdn-images-1.medium.com/max/2246/1*ftr5BLj4PitHbueEqS6JdQ.png" alt="" /></p>
+
+<p>From the exported, pre-trained, deep learning model <strong>-&gt;</strong> framework parser <strong>-&gt;</strong> TensorRT optimization <strong>-&gt;</strong> Inference on new data</p>
+
+<h1 id="what-is-nvidia-tensorrt">What Is NVIDIA TensorRT?</h1>
+
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*EWiIvB6RjwEZrlSLF1Xttw.png" alt="[https://docs.nvidia.com/deeplearning/sdk/tensorrt-archived/tensorrt_210/tensorrt-user-guide/](https://docs.nvidia.com/deeplearning/sdk/tensorrt-archived/tensorrt_210/tensorrt-user-guide/index.html)" /><em><a href="https://docs.nvidia.com/deeplearning/sdk/tensorrt-archived/tensorrt_210/tensorrt-user-guide/index.html">https://docs.nvidia.com/deeplearning/sdk/tensorrt-archived/tensorrt_210/tensorrt-user-guide/</a></em></p>
+<blockquote>
+  <p>The core of NVIDIA TensorRT is a C++ library that facilitates high-performance inference on NVIDIA graphics processing units (GPUs). TensorRT takes a trained network, which consists of a network definition and a set of trained parameters, and produces a highly optimized runtime engine which performs inference for that network.
+You can describe a TensorRT network using a C++ or Python API, or you can import an existing Caffe, ONNX, or TensorFlow model using one of the provided parsers.</p>
+</blockquote>
+
+<p>TensorRT provides API’s via C++ and Python that help to express deep learning models via the Network Definition API or load a pre-defined model via the parsers that allows TensorRT to optimize and run them on a NVIDIA GPU. TensorRT applies graph optimizations, layer fusion, among other optimizations, while also finding the fastest implementation of that model leveraging a diverse collection of highly optimized kernels. TensorRT also supplies a runtime that you can use to execute this network on all of NVIDIA’s GPUs from the Kepler generation onwards.</p>
+
+<p>TensorRT also includes optional high speed mixed precision capabilities introduced in the Tegra X1, and extended with the Pascal, Volta, and Turing architectures.</p>
+
+<p>Learn more about how to use TensorRT in the <a href="[https://docs.nvidia.com/deeplearning/sdk/tensorrt-developer-guide/index.html](https://docs.nvidia.com/deeplearning/sdk/tensorrt-developer-guide/index.html)">developer guide</a> and interaction with the TensorRT community in the <a href="https://devtalk.nvidia.com/default/board/304/tensorrt/">TensorRT forum</a></p>
+
+<h1 id="setup-of-a-development-environment-using-docker">Setup of a Development Environment using docker</h1>
+
+<h2 id="docker">Docker</h2>
+
+<p>For the development, we use a docker image that contains an installed version of NVIDIA TensorRT. This makes the development environment more reliable and scalable on the different operating system (Windows, Linux, macOS).</p>
+
+<p>Here is an illustration of the docker positioning between the application and the GPU.</p>
+
+<p><img src="https://cdn-images-1.medium.com/max/2246/1*-wpy3yNzLK_T2valKYMdVw.png" alt="" /></p>
+
+<p><strong>Note:</strong> If you never heard about ‘docker’ then I highly recommend you to invest in learning about it, you can start <a href="https://docs.docker.com/engine/docker-overview/">here</a>.</p>
+
+<h2 id="install-docker-ce">Install Docker-CE</h2>
+
+<p>Head over to the official website of docker and follows the steps to install <code class="highlighter-rouge">docker-ce</code> (ce stands for community edition). I am using Ubuntu 64 bit, thus, here the installation <a href="https://docs.docker.com/v17.09/engine/installation/linux/docker-ce/ubuntu/">link</a>.</p>
+
+<h2 id="install-cuda">Install CUDA</h2>
+
+<p>In addition, you should have installed the latest version of <a href="https://developer.nvidia.com/cuda-downloads">CUDA </a>. It is a parallel computing platform and application programming interface model created by NVIDIA. It allows software developers and software engineers to use a CUDA-enabled GPU for general purpose processing (read more about it in <a href="https://developer.nvidia.com/cuda-zone">here</a>).</p>
+
+<p>To check if CUDA is correctly installed on you machine, just enter in the terminal</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    nvidia-smi
+</code></pre></div></div>
+
+<p>The output should look something like that (I have a <code class="highlighter-rouge">NVIDIA GPU GeForce GTX 1660 Ti/PCIe/SSE2</code>)</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    Thu Aug 1 10:43:37 2019
+    + — — — — — — — — — — — — — — — — — — —— — — — — — — — — — — -+
+    | NVIDIA-SMI 430.40 <span class="k">**</span>Driver Version: <span class="k">**</span>430.40 <span class="k">**</span>CUDA Version: <span class="k">**</span>10.1 |
+    | — — — — — — — — — — — — -+ — — — — — — — — + — — — —— — — — +
+    | GPU Name Persistence-M| Bus-Id Disp.A | Volatile Uncorr. ECC |
+    | Fan Temp Perf Pwr:Usage/Cap| Memory-Usage | GPU-Util Compute M. |
+    |<span class="o">=====================</span>+<span class="o">===================</span>+<span class="o">===================</span>|
+    | 0 GeForce GTX 166… Off | 00000000:01:00.0 Off | N/A |
+    | N/A 47C P8 4W / N/A | 994MiB / 5944MiB | 8% Default |
+    + — — — — —— — — — — — — -+ — — — — — — — — + — — — — — — — — +
+</code></pre></div></div>
+
+<h2 id="run-the-docker-image">Run the docker image</h2>
+
+<p>I have created a docker image that includes installation of TensorRT on top of Ubuntu along with the necessary prerequisites from NVIDIA, Python, OpenCV, …. You can pull the image directly from my personal account on <a href="https://hub.docker.com/r/aminehy/tensorrt-opencv-python3">docker hub</a></p>
+
+<ul>
+  <li>
+    <p>First, open a terminal (ctrl+alt + t) and enter this command to pull the docker image</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   docker pull aminehy/tensorrt-opencv-python3:version-1.3
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Enable launching GUI applications from inside the docker container bu entering the command</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   xhost +
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Lastly, run the docker container with the command:</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  docker run <span class="nt">-it</span> — <span class="nb">rm</span> <span class="nt">-v</span> <span class="si">$(</span><span class="nb">pwd</span><span class="si">)</span>:/workspace — <span class="nv">runtime</span><span class="o">=</span>nvidia <span class="nt">-w</span> /workspace <span class="nt">-v</span> /tmp/.X11-unix:/tmp/.X11-unix <span class="nt">-e</span> <span class="nv">DISPLAY</span><span class="o">=</span>unix<span class="nv">$DISPLAY</span> aminehy/tensorrt-opencv-python3:version-1.3
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h1 id="computer-vision-application-object-detection-with-yolov3">Computer Vision Application: Object Detection with YOLOv3</h1>
+
+<p>YOLO is a Real-Time Object Detection from the DarkNet project. You can read more about this project on the official website here: <a href="https://pjreddie.com/darknet/yolo/">https://pjreddie.com/darknet/yolo/</a></p>
+
+<p><img src="https://cdn-images-1.medium.com/max/3520/1*aFeEgXtb0ar-Zrxujmu1oA.png" alt="[https://pjreddie.com/darknet/yolo/](https://pjreddie.com/darknet/yolo/)" />
+<em>Source: <a href="https://pjreddie.com/darknet/yolo/">https://pjreddie.com/darknet/yolo/</a></em></p>
+
+<p>In this experiment, we run YOLOv3 model on 500 images and compare the average inference time before and after optimization of the model with NVIDIA TensorRT. The images used in this experiment are from COCO dataset: <a href="http://cocodataset.org/#home">COCO - Common Objects in Context</a>.</p>
+
+<h2 id="1-running-a-non-optimized-yolov3">1) Running a non-optimized YOLOv3</h2>
+<p>Link to the project in gitlab: <a href="https://gitlab.com/aminehy/yolov3-darknet">Amine Hy / YOLOv3-DarkNet</a></p>
+
+<ul>
+  <li>
+    <p>Clone and the repository then run using the script <code class="highlighter-rouge">docker_TensorRT_OpenCV_Python.sh</code>.</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  git clone https://gitlab.com/aminehy/yolov3-darknet.git
+
+  <span class="nb">cd </span>yolov3-darknet
+
+  <span class="nb">chmod</span> +x docker_TensorRT_OpenCV_Python.sh
+
+  ./docker_TensorRT_OpenCV_Python.sh run
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Download and unzip the test images folder in <code class="highlighter-rouge">./data/</code></p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  wget http://images.cocodataset.org/zips/test2017.zip
+  unzip test2017.zip ../test2017/
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Download the weight file <code class="highlighter-rouge">yolov3.weights</code></p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  wget https://pjreddie.com/media/files/yolov3.weights
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Then execute YOLOv3 python file:     <code class="highlighter-rouge">python darknet.py</code></p>
+  </li>
+  <li>
+    <p><strong>Results:</strong></p>
+  </li>
+</ul>
+
+<p>The results should be saved in the folder <code class="highlighter-rouge">./data/results</code></p>
+
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*ySnKobAGy8_NFze7U0goYQ.png" alt="" /></p>
+
+<p><code class="highlighter-rouge">Output: The mean recognition time over 500 images is 0.044 seconds</code></p>
+
+<h2 id="2-optimizing-and-running-yolov3-using-nvidia-tensorrt-in-python">2) Optimizing and Running YOLOv3 using NVIDIA TensorRT in Python</h2>
+
+<p><img src="https://cdn-images-1.medium.com/max/2246/1*XM_KOVzJlT1F3sqP1Azfeg.png" alt="" /></p>
+
+<p>The first step is to import the model, which includes loading it from a saved file on disk and converting it to a TensorRT network from its native framework or format. Our example loads the model in ONNX format from the ONNX model.</p>
+<blockquote>
+  <p>ONNX is a standard for representing deep learning models enabling them to be transferred between frameworks. (Many frameworks such as Caffe2, Chainer, CNTK, PaddlePaddle, PyTorch, and MXNet support the ONNX format).</p>
+</blockquote>
+
+<p>Next, an optimized TensorRT engine is built based on the input model, target GPU platform, and other configuration parameters specified. The last step is to provide input data to the TensorRT engine to perform inference.</p>
+
+<p>The sample uses the following components in TensorRT to perform the above steps:</p>
+<ul>
+  <li>ONNX parser: takes a trained model in ONNX format as input and populates a network object in TensorRT</li>
+  <li>Builder: takes a network in TensorRT and generates an engine that is optimized for the target platform</li>
+  <li>Engine: takes input data, performs inferences and emits inference output</li>
+  <li>Logger: object associated with the builder and engine to capture errors, warnings, and other information during the build and inference phases</li>
+</ul>
+
+<p>Link to the project: <a href="https://gitlab.com/aminehy/YOLOv3-Darknet-ONNX-TensorRT">Amine Hy / YOLOv3-Darknet-ONNX-TensorRT</a></p>
+
+<ul>
+  <li>
+    <p>Get the project from GitHub and change the working directory</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  git clone https://gitlab.com/aminehy/YOLOv3-Darknet-ONNX-TensorRT.git
+
+  <span class="nb">cd </span>YOLOv3-Darknet-ONNX-TensorRT/
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Convert the model from Darknet to ONNX. This step will create an engine called: <code class="highlighter-rouge">yolov3.onnx</code></p>
+
+    <p><code class="highlighter-rouge">python yolov3_to_onnx.py</code></p>
+  </li>
+  <li>
+    <p>Convert the model from ONNX to TensorRT. This step will create an engine called: <code class="highlighter-rouge">yolov3.trt</code> and use for the inference</p>
+
+    <p><code class="highlighter-rouge">python onnx_to_tensorrt.py</code></p>
+  </li>
+  <li>For this experiment, we set this parameter: builder.fp16_mode = True
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="n">builder</span><span class="o">.</span><span class="n">fp16_mode</span> <span class="o">=</span> <span class="bp">True</span>
+  <span class="n">builder</span><span class="o">.</span><span class="n">strict_type_constraints</span> <span class="o">=</span> <span class="bp">True</span>
+</code></pre></div>    </div>
+  </li>
+  <li><strong>Results:</strong></li>
+</ul>
+
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*zcFERKUD21QuPYmK945eiw.png" alt="" /></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>`Output: The mean recognition time over 500 images is 0.018 seconds using the precision fp16.`
+</code></pre></div></div>
+
+<p><strong>Therefore, using NVIDIA TensorRT is 2.31 x faster than the unoptimized version!.</strong></p>
+
+<h2 id="3-optimizing-and-running-yolov3-using-nvidia-tensorrt-by-importing-a-caffe-model-in-c">3) Optimizing and Running YOLOv3 using NVIDIA TensorRT by importing a Caffe model in C++</h2>
+
+<p><img src="https://cdn-images-1.medium.com/max/2246/1*N1LE_DRYsRdwHWJh6kkE_w.png" alt="" /></p>
+
+<p>Link to the project: <a href="https://gitlab.com/aminehy/YOLOv3-Caffe-TensorRT">Amine Hy / YOLOv3-Caffe-TensorRT</a></p>
+
+<ul>
+  <li>
+    <p>Get the project and change the working directory</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nb">cd </span>YOLOv3-Caffe-TensorRT/
+  ./docker_TensorRT_OpenCV_Python.sh run
+</code></pre></div>    </div>
+
+    <p><strong>Note</strong>: If the folder <code class="highlighter-rouge">/Caffe</code> does not exist (for any reason), please download the model architecture and weights of YOLOv3 (.prototxt and .caffemodel) from Google Drive and insert them in a folder ‘Caffe’. Two options are possible, the 416 model and the 608 model. These parameters represent the height/width of the image at the input of the YOLOv3 network.</p>
+  </li>
+  <li>
+    <p>Download the caffe model from <a href="https://drive.google.com/drive/folders/18OxNcRrDrCUmoAMgngJlhEglQ1Hqk_NJ">Google Drive</a>.</p>
+  </li>
+  <li>
+    <p>Compile and build the model</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  git submodule update — init — recursive
+
+  <span class="nb">mkdir </span>build
+
+  <span class="nb">cd </span>build <span class="o">&amp;&amp;</span> cmake .. <span class="o">&amp;&amp;</span> make <span class="o">&amp;&amp;</span> make <span class="nb">install</span> <span class="o">&amp;&amp;</span> <span class="nb">cd</span> ..
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Edit the configuration file and choose between the settings, YOLO 416 or YOLO 608, located in</p>
+
+    <p><code class="highlighter-rouge">~/TensorRT-Yolov3/tensorRTWrapper/code/include/YoloConfigs.h</code></p>
+  </li>
+  <li>
+    <p>You need also to take a look at the configuration file <code class="highlighter-rouge">configs.h</code> located in</p>
+
+    <p><code class="highlighter-rouge">~/TensorRT-Yolov3/include/configs.h</code></p>
+  </li>
+  <li>
+    <p>Create the TensorRT engine and run inference on a test image <code class="highlighter-rouge">dog.jpg </code></p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="c"># for yolov3–416 (don’t forget to edit YoloConfigs.h for YoloKernel)</span>
+  ./install/runYolov3 — <span class="nv">caffemodel</span><span class="o">=</span>./caffe/yolov3_416.caffemodel <span class="se">\</span>
+  — <span class="nv">prototxt</span><span class="o">=</span>./caffe/yolov3_416.prototxt — <span class="nv">input</span><span class="o">=</span>./dog.jpg <span class="se">\</span>
+  — <span class="nv">W</span><span class="o">=</span>416 — <span class="nv">H</span><span class="o">=</span>416 — <span class="nv">class</span><span class="o">=</span>80 — <span class="nv">mode</span><span class="o">=</span>fp16
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Once the engine is created, you can pass it as an argument</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  ./install/runYolov3 — <span class="nv">caffemodel</span><span class="o">=</span>./caffe/yolov3_416.caffemodel
+   — <span class="nv">prototxt</span><span class="o">=</span>./caffe/yolov3_416.prototxt — <span class="nv">input</span><span class="o">=</span>./dog.jpg — <span class="nv">W</span><span class="o">=</span>416 — <span class="nv">H</span><span class="o">=</span>416 — <span class="nv">class</span><span class="o">=</span>80 — <span class="nv">enginefile</span><span class="o">=</span>./engine/yolov3_fp32.engine
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p><strong>Results</strong>:</p>
+
+    <p><code class="highlighter-rouge">Output: Time over all layers: 21.245 ms</code></p>
+  </li>
+</ul>
+
+<p><strong>Same observation as the previous experiment, using NVIDIA TensorRT is 2.07 x faster than the non-optimized version!.</strong></p>
+
+<h1 id="conclusion">Conclusion</h1>
+
+<p>This article presented the importance of optimizing a pre-trained deep learning model. We illustrated that on an example on object detection application for computer vision, where we obtained a speedup ratio of  &gt; 2 of the inference time.</p>
+
+<h1 id="references">References</h1>
+
+<ul>
+  <li>
+    <p>CUDA: <a href="https://developer.nvidia.com/cuda-zone">https://developer.nvidia.com/cuda-zone</a></p>
+  </li>
+  <li>
+    <p>Docker-CE <a href="https://docs.docker.com/v17.09/engine/installation/linux/docker-ce/ubuntu/">https://docs.docker.com/</a></p>
+  </li>
+  <li>
+    <p>NVIDIA TensorRT: <a href="https://ngc.nvidia.com/catalog/containers/nvidia:tensorrt">https://ngc.nvidia.com/catalog/containers/nvidia:tensorrt</a></p>
+  </li>
+  <li>
+    <p>NVIDIA Container Best Practices: <a href="https://docs.nvidia.com/deeplearning/frameworks/bp-docker/index.html#docker-bp-topic">https://docs.nvidia.com/deeplearning/frameworks/bp-docker/index.html#docker-bp-topic</a></p>
+  </li>
+  <li>
+    <p>TensorRT Release 19.05: <a href="https://docs.nvidia.com/deeplearning/sdk/tensorrt-container-release-notes/rel_19-05.html#rel_19-05">https://docs.nvidia.com/deeplearning/sdk/tensorrt-container-release-notes/rel_19-05.html#rel_19-05</a></p>
+  </li>
+</ul>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/#ai" class="page__taxonomy-item" rel="tag">AI</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#computer-vision" class="page__taxonomy-item" rel="tag">Computer Vision</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#data-science" class="page__taxonomy-item" rel="tag">Data Science</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#machine-learning" class="page__taxonomy-item" rel="tag">Machine Learning</a>
+    
+    </span>
+  </p>
+
+
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2019-07-30T00:00:00+02:00">July 30, 2019</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Have+you+Optimized+your+Deep+Learning+Model+Before+Deployment%3F%20http%3A%2F%2F0.0.0.0%3A4000%2FOptimize%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2F0.0.0.0%3A4000%2FOptimize%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2F0.0.0.0%3A4000%2FOptimize%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/CNN-for-Image-Classification/" class="pagination--pager" title="Convolutional Neural Network for image classification
+">Previous</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You may also enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+      <div class="archive__item-teaser">
+        <img src=
+          
+            "/assets/images/nature.jpeg"
+          
+          alt="">
+      </div>
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/CNN-for-Image-Classification/" rel="permalink">Convolutional Neural Network for image classification
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  8 minute read
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">A Dive into an Artificial Intelligence algorithm
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+      <div class="archive__item-teaser">
+        <img src=
+          
+            "/assets/images/nature.jpeg"
+          
+          alt="">
+      </div>
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/elements/" rel="permalink">Elements Reference
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  3 minute read
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">
+Text
+This is bold and this is strong. This is italic and this is emphasized.
+	This is superscript text and this is subscript text.
+	This is underlined and t...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+      <div class="archive__item-teaser">
+        <img src=
+          
+            "/assets/images/nature_2.jpg"
+          
+          alt="">
+      </div>
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/my_url" rel="permalink">My First Post
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  1 minute read
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Machine learning, data science, AI
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+          <li><a href="https://www.linkedin.com/in/aminehy/" rel="nofollow noopener noreferrer"><i class="fab fa-linkedin" aria-hidden="true"></i> LinkedIn</a></li>
+        
+      
+        
+          <li><a href="https://github.com/aminehy" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+          <li><a href="https://gitlab.com/aminehy" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-gitlab" aria-hidden="true"></i> GitLab</a></li>
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2019 M. Amine Hadj-Youcef, Ph. D. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script src="https://kit.fontawesome.com/4eee35f757.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>
