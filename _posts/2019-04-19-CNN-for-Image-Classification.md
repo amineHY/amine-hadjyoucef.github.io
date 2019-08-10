@@ -1,16 +1,18 @@
-
-# Convolutional Neural Network for image classification with implementation on Python using PyTorch
-
-Deep Learning for image classification w/ implementation in PyTorch
-
-### A Dive into an Artificial Intelligence algorithm
+---
+title: Convolutional Neural Network for image classification with implementation on Python using PyTorch
+subtitle: A Dive into an Artificial Intelligence algorithm
+layout: single
+classes: wide
+tag: [Machine Learning, Computer Vision, AI, Data Science]
+header:
+  image: /assets/images/CNN-image-classification.png
+---
 
 ### Introduction
 
 This article will explain the Convolutional Neural Network (CNN) with an illustration of image classification. It provides a simple implementation of the CNN algorithm using the framework PyTorch on Python.
 There are many free courses that can be found on the internet. Personally, I suggest the course of Andrej Karpathy ([@karpathy](http://twitter.com/karpathy)) at Stanford. You will learn a lot, it is a step by step course. In addition, it provides many practical strategies to implement the CNN architecture.
-[**CS231n Convolutional Neural Networks for Visual Recognition**
-*Course materials and notes for Stanford class CS231n: Convolutional Neural Networks for Visual Recognition.*cs231n.github.io](http://cs231n.github.io/convolutional-networks/)
+[CS231n Convolutional Neural Networks for Visual Recognition](http://cs231n.github.io/convolutional-networks/)
 
 ### What is a Convolutional Neural Network?
 
