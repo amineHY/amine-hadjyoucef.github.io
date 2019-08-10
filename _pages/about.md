@@ -6,6 +6,7 @@ icon: fa-home
 author_profile: true
 header:
   image: "/assets/images/nature_2.jpg"
+classes: wide
 ---
 
 
