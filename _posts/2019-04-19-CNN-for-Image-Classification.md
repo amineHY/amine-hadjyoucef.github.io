@@ -3,7 +3,7 @@ title: Convolutional Neural Network for image classification
 subtitle: A Dive into an Artificial Intelligence algorithm
 layout: single
 classes: wide
-tags: [Machine Learning, Computer Vision, AI, Data Science]
+tags: [Image classification, Computer Vision]
 excerpt: "image classification with deep learning"
 header:
   image: /assets/images/CNN-image-classification.png
