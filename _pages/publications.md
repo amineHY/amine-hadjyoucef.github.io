@@ -19,7 +19,8 @@ classes: wide
 
 # International journals with peer review  
 
-### Convolution kernels for multi-wavelength imaging  
+## Convolution kernels for multi-wavelength imaging  
+-----------------------------
 **Authors**: Alexandre Boucaud, Marco Bocchio, Alain Abergel, François Orieux, Hervé Dole, M. A Hadj-Youcef  
 **Publication date**: 2016/12/1  
 **Journal**: Astronomy & Astrophysics  
@@ -38,7 +39,7 @@ Astrophysical images issued from different instruments and/or spectral bands oft
 
 # International conferences with peer review
 
-### Spatio-Spectral Multichannel Reconstruction from few Low-Resolution multi-spectral Data
+## Spatio-Spectral Multichannel Reconstruction from few Low-Resolution multi-spectral Data
 **Authors**: MA Hadj-Youcef, François Orieux, Aurélia Fraysse, Alain Abergel  
 **Publication date**: 2018/9/3  
 **Conference**: EUSIPCO 2018, The 26th European Signal Processing Conference (EUSIPCO)  
@@ -54,7 +55,7 @@ This paper deals with the reconstruction of a 3-D spatio-spectral object observe
 ► Here is the [link](https://ieeexplore.ieee.org/abstract/document/8553166) on the web.
 <br/><br/>
 
-### Restoration from multi-spectral blurred data with non-stationary instrument response  
+## Restoration from multi-spectral blurred data with non-stationary instrument response  
 **Authors**: M. A. Hadj-Youcef, François Orieux, Aurélia Fraysse, Alain Abergel  
 **Publication date**: 2017/8/28  
 **Conference**: EUSIPCO 2017, The 25th European Signal Processing Conference (EUSIPCO)  
@@ -70,7 +71,7 @@ In this paper we propose an approach of image restoration from multi-spectral da
 ► Here is the [link](https://ieeexplore.ieee.org/abstract/document/8081258) on the web.
 <br/><br/>
 
-### Detection of epileptics during seizure free periods
+## Detection of epileptics during seizure free periods
 **Authors**: M.A. Hadj-Youcef, M. Adnane, A Bousbia-Salah  
 **Publication date**: 2013/12/5  
 **Conference**: WOSSPA 2013 : The 9th International Workshop on Systems, Signal Processing and their applications
@@ -90,7 +91,7 @@ In this paper the problematic of epileptic detection is treated. An algorithm of
 
 # National conferences with peer review  
 
-### Restauration d’objets astrophysiques à partir de données multi-spectrales floues et d’une réponse instrument non-stationnaire  
+## Restauration d’objets astrophysiques à partir de données multi-spectrales floues et d’une réponse instrument non-stationnaire  
 
 **Authors**: M. A. Hadj-Youcef, François Orieux, Aurélia Fraysse, Alain Abergel  
 **Publication date**: 2017/9/5  
