@@ -6,6 +6,7 @@ layout: single
 classes: wide
 ---
 
+
 - [International journals with peer review](#international-journals-with-peer-review)
 
 - [International conferences with peer review](#international-conferences-with-peer-review)
@@ -16,11 +17,12 @@ classes: wide
 
 - [Talks](#talks)
 
-
+***
 # International journals with peer review  
-
+***
 ## Convolution kernels for multi-wavelength imaging  
------------------------------
+***
+
 **Authors**: Alexandre Boucaud, Marco Bocchio, Alain Abergel, François Orieux, Hervé Dole, M. A Hadj-Youcef  
 **Publication date**: 2016/12/1  
 **Journal**: Astronomy & Astrophysics  
@@ -38,8 +40,9 @@ Astrophysical images issued from different instruments and/or spectral bands oft
 <br/><br/>
 
 # International conferences with peer review
-
+***
 ## Spatio-Spectral Multichannel Reconstruction from few Low-Resolution multi-spectral Data
+***
 **Authors**: MA Hadj-Youcef, François Orieux, Aurélia Fraysse, Alain Abergel  
 **Publication date**: 2018/9/3  
 **Conference**: EUSIPCO 2018, The 26th European Signal Processing Conference (EUSIPCO)  
@@ -56,6 +59,7 @@ This paper deals with the reconstruction of a 3-D spatio-spectral object observe
 <br/><br/>
 
 ## Restoration from multi-spectral blurred data with non-stationary instrument response  
+***
 **Authors**: M. A. Hadj-Youcef, François Orieux, Aurélia Fraysse, Alain Abergel  
 **Publication date**: 2017/8/28  
 **Conference**: EUSIPCO 2017, The 25th European Signal Processing Conference (EUSIPCO)  
@@ -72,6 +76,7 @@ In this paper we propose an approach of image restoration from multi-spectral da
 <br/><br/>
 
 ## Detection of epileptics during seizure free periods
+***
 **Authors**: M.A. Hadj-Youcef, M. Adnane, A Bousbia-Salah  
 **Publication date**: 2013/12/5  
 **Conference**: WOSSPA 2013 : The 9th International Workshop on Systems, Signal Processing and their applications
@@ -90,9 +95,9 @@ In this paper the problematic of epileptic detection is treated. An algorithm of
 <br/><br/>
 
 # National conferences with peer review  
-
+***
 ## Restauration d’objets astrophysiques à partir de données multi-spectrales floues et d’une réponse instrument non-stationnaire  
-
+***
 **Authors**: M. A. Hadj-Youcef, François Orieux, Aurélia Fraysse, Alain Abergel  
 **Publication date**: 2017/9/5  
 **Conference**: 26eme Colloque GRETSI Traitement du Signal & des Images, GRETSI 2017  
@@ -103,14 +108,16 @@ In this paper we deal with the restoration of astrophysical objects from multi-s
 
 ► Read the full paper [here](/assets/pdf/GRETSI_2017.pdf).  
 ► Here is the [link](https://jeannicod.ccsd.cnrs.fr/SUP_LSS/hal-01596257v1) to the paper on the web.
-<br/><br/>
+
 <br/><br/>
 
 # Seminars
-in progress
+***
+Coming soon
 
 <br/><br/>
-<br/><br/>
+
 
 # Talks
-in progress
+***
+coming soon

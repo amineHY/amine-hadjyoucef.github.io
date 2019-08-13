@@ -206,6 +206,8 @@ Engineer degree, Electrical engineering.
 
   **Tools**: Linux OS, Gitlab, Docker, bash, Slack
 
+  **Instrument**: NVIDIA Development kit TX2, dual-camera Pensar
+
 
 
 ***

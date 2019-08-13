@@ -10,7 +10,7 @@
     <meta charset="utf-8">
 
 <!-- begin _includes/seo.html --><title>Convolutional Neural Network for image classification - Welcome to my Personal Website</title>
-<meta name="description" content="A Dive into an Artificial Intelligence algorithm">
+<meta name="description" content="image classification with deep learning">
 
 
 
@@ -18,14 +18,14 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="Welcome to my Personal Website">
 <meta property="og:title" content="Convolutional Neural Network for image classification">
-<meta property="og:url" content="http://0.0.0.0:4000/CNN-for-Image-Classification/">
+<meta property="og:url" content="http://localhost:4000/CNN-for-Image-Classification/">
 
 
-  <meta property="og:description" content="A Dive into an Artificial Intelligence algorithm">
+  <meta property="og:description" content="image classification with deep learning">
 
 
 
-  <meta property="og:image" content="http://0.0.0.0:4000/assets/images/CNN-image-classification.png">
+  <meta property="og:image" content="http://localhost:4000/assets/images/CNN-image-classification.png">
 
 
 
@@ -42,7 +42,7 @@
   
 
 
-<link rel="canonical" href="http://0.0.0.0:4000/CNN-for-Image-Classification/">
+<link rel="canonical" href="http://localhost:4000/CNN-for-Image-Classification/">
 
 
 
@@ -55,7 +55,7 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "name": "M. Amine Hadj-Youcef, Ph. D",
-      "url": "http://0.0.0.0:4000",
+      "url": "http://localhost:4000",
       "sameAs": null
     }
   </script>
@@ -268,7 +268,7 @@
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
     <meta itemprop="headline" content="Convolutional Neural Network for image classification">
-    <meta itemprop="description" content="A Dive into an Artificial Intelligence algorithm">
+    <meta itemprop="description" content="image classification with deep learning">
     <meta itemprop="datePublished" content="April 19, 2019">
     
 
@@ -353,60 +353,60 @@
 This repository contains notebooks for image classification of the MNIST dataset. The code is quite simple to understand, hopefully, since it mentions all the layers we discussed earlier in an intuitive way.</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-<span class="c1"># Implementation of CNN/ConvNet Model using PyTorch (depicted in the picture above)
-</span>
+<span class="c"># Implementation of CNN/ConvNet Model using PyTorch (depicted in the picture above)</span>
+
 <span class="k">class</span> <span class="nc">CNN</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">CNN</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">()</span>
-        <span class="c1"># L1 ImgIn shape=(?, 28, 28, 1)
-</span>        <span class="c1">#    Conv     -&gt; (?, 28, 28, 32)
-</span>        <span class="c1">#    Pool     -&gt; (?, 14, 14, 32)
-</span>        <span class="bp">self</span><span class="o">.</span><span class="n">layer1</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+        <span class="c"># L1 ImgIn shape=(?, 28, 28, 1)</span>
+        <span class="c">#    Conv     -&gt; (?, 28, 28, 32)</span>
+        <span class="c">#    Pool     -&gt; (?, 14, 14, 32)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">layer1</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
             <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">stride</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
             <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(),</span>
             <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">MaxPool2d</span><span class="p">(</span><span class="n">kernel_size</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">stride</span><span class="o">=</span><span class="mi">2</span><span class="p">),</span>
             <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="mi">1</span> <span class="o">-</span> <span class="n">keep_prob</span><span class="p">))</span>
-        <span class="c1"># L2 ImgIn shape=(?, 14, 14, 32)
-</span>        <span class="c1">#    Conv      -&gt;(?, 14, 14, 64)
-</span>        <span class="c1">#    Pool      -&gt;(?, 7, 7, 64)
-</span>        <span class="bp">self</span><span class="o">.</span><span class="n">layer2</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+        <span class="c"># L2 ImgIn shape=(?, 14, 14, 32)</span>
+        <span class="c">#    Conv      -&gt;(?, 14, 14, 64)</span>
+        <span class="c">#    Pool      -&gt;(?, 7, 7, 64)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">layer2</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
             <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">stride</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
             <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(),</span>
             <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">MaxPool2d</span><span class="p">(</span><span class="n">kernel_size</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">stride</span><span class="o">=</span><span class="mi">2</span><span class="p">),</span>
             <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="mi">1</span> <span class="o">-</span> <span class="n">keep_prob</span><span class="p">))</span>
-        <span class="c1"># L3 ImgIn shape=(?, 7, 7, 64)
-</span>        <span class="c1">#    Conv      -&gt;(?, 7, 7, 128)
-</span>        <span class="c1">#    Pool      -&gt;(?, 4, 4, 128)
-</span>        <span class="bp">self</span><span class="o">.</span><span class="n">layer3</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+        <span class="c"># L3 ImgIn shape=(?, 7, 7, 64)</span>
+        <span class="c">#    Conv      -&gt;(?, 7, 7, 128)</span>
+        <span class="c">#    Pool      -&gt;(?, 4, 4, 128)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">layer3</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
             <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">stride</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
             <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(),</span>
             <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">MaxPool2d</span><span class="p">(</span><span class="n">kernel_size</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">stride</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
             <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="mi">1</span> <span class="o">-</span> <span class="n">keep_prob</span><span class="p">))</span>
 
-        <span class="c1"># L4 FC 4x4x128 inputs -&gt; 625 outputs
-</span>        <span class="bp">self</span><span class="o">.</span><span class="n">fc1</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">4</span> <span class="o">*</span> <span class="mi">4</span> <span class="o">*</span> <span class="mi">128</span><span class="p">,</span> <span class="mi">625</span><span class="p">,</span> <span class="n">bias</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+        <span class="c"># L4 FC 4x4x128 inputs -&gt; 625 outputs</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fc1</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">4</span> <span class="o">*</span> <span class="mi">4</span> <span class="o">*</span> <span class="mi">128</span><span class="p">,</span> <span class="mi">625</span><span class="p">,</span> <span class="n">bias</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
         <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">init</span><span class="o">.</span><span class="n">xavier_uniform</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fc1</span><span class="o">.</span><span class="n">weight</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">layer4</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">fc1</span><span class="p">,</span>
             <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(),</span>
             <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="mi">1</span> <span class="o">-</span> <span class="n">keep_prob</span><span class="p">))</span>
-        <span class="c1"># L5 Final FC 625 inputs -&gt; 10 outputs
-</span>        <span class="bp">self</span><span class="o">.</span><span class="n">fc2</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">625</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">bias</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-        <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">init</span><span class="o">.</span><span class="n">xavier_uniform_</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fc2</span><span class="o">.</span><span class="n">weight</span><span class="p">)</span> <span class="c1"># initialize parameters
-</span>
+        <span class="c"># L5 Final FC 625 inputs -&gt; 10 outputs</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fc2</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">625</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">bias</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+        <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">init</span><span class="o">.</span><span class="n">xavier_uniform_</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fc2</span><span class="o">.</span><span class="n">weight</span><span class="p">)</span> <span class="c"># initialize parameters</span>
+
     <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
         <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">layer1</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
         <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">layer2</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
         <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">layer3</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
-        <span class="n">out</span> <span class="o">=</span> <span class="n">out</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">out</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>   <span class="c1"># Flatten them for FC
-</span>        <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fc1</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="n">out</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">out</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>   <span class="c"># Flatten them for FC</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fc1</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
         <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fc2</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">out</span>
 
 
-<span class="c1"># instantiate CNN model
-</span><span class="n">model</span> <span class="o">=</span> <span class="n">CNN</span><span class="p">()</span>
+<span class="c"># instantiate CNN model</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">CNN</span><span class="p">()</span>
 <span class="n">model</span>
 </code></pre></div></div>
 
@@ -453,8 +453,8 @@ This repository contains notebooks for image classification of the MNIST dataset
 
   <span class="n">batch_size</span> <span class="o">=</span> <span class="mi">32</span>
 
-  <span class="c1"># MNIST dataset
-</span>  <span class="n">mnist_train</span> <span class="o">=</span> <span class="n">dsets</span><span class="o">.</span><span class="n">MNIST</span><span class="p">(</span><span class="n">root</span><span class="o">=</span><span class="s">'MNIST_data/'</span><span class="p">,</span>
+  <span class="c"># MNIST dataset</span>
+  <span class="n">mnist_train</span> <span class="o">=</span> <span class="n">dsets</span><span class="o">.</span><span class="n">MNIST</span><span class="p">(</span><span class="n">root</span><span class="o">=</span><span class="s">'MNIST_data/'</span><span class="p">,</span>
                             <span class="n">train</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
                             <span class="n">transform</span><span class="o">=</span><span class="n">transforms</span><span class="o">.</span><span class="n">ToTensor</span><span class="p">(),</span>
                             <span class="n">download</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
@@ -464,8 +464,8 @@ This repository contains notebooks for image classification of the MNIST dataset
                            <span class="n">transform</span><span class="o">=</span><span class="n">transforms</span><span class="o">.</span><span class="n">ToTensor</span><span class="p">(),</span>
                            <span class="n">download</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 
-  <span class="c1"># dataset loader
-</span>  <span class="n">data_loader</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span><span class="n">dataset</span><span class="o">=</span><span class="n">mnist_train</span><span class="p">,</span>
+  <span class="c"># dataset loader</span>
+  <span class="n">data_loader</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span><span class="n">dataset</span><span class="o">=</span><span class="n">mnist_train</span><span class="p">,</span>
                                             <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span>
                                             <span class="n">shuffle</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 </code></pre></div></div>
@@ -501,8 +501,8 @@ This repository contains notebooks for image classification of the MNIST dataset
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="s">'Training the Deep Learning network ...'</span><span class="p">)</span>
 
 <span class="n">learning_rate</span> <span class="o">=</span> <span class="mf">0.001</span>
-<span class="n">criterion</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">CrossEntropyLoss</span><span class="p">()</span>    <span class="c1"># Softmax is internally computed.
-</span><span class="n">optimizer</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">params</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="n">learning_rate</span><span class="p">)</span>
+<span class="n">criterion</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">CrossEntropyLoss</span><span class="p">()</span>    <span class="c"># Softmax is internally computed.</span>
+<span class="n">optimizer</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">params</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="n">learning_rate</span><span class="p">)</span>
 
 <span class="n">train_cost</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">train_accu</span> <span class="o">=</span> <span class="p">[]</span>
@@ -510,11 +510,11 @@ This repository contains notebooks for image classification of the MNIST dataset
 <span class="n">training_epochs</span> <span class="o">=</span> <span class="mi">15</span>
 <span class="n">total_batch</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">mnist_train</span><span class="p">)</span> <span class="o">//</span> <span class="n">batch_size</span>
 
-<span class="k">print</span><span class="p">(</span><span class="s">'Size of the training dataset is {}'</span><span class="o">.</span><span class="nb">format</span><span class="p">(</span><span class="n">mnist_train</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">size</span><span class="p">()))</span>
-<span class="k">print</span><span class="p">(</span><span class="s">'Size of the testing dataset'</span><span class="o">.</span><span class="nb">format</span><span class="p">(</span><span class="n">mnist_test</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">size</span><span class="p">()))</span>
-<span class="k">print</span><span class="p">(</span><span class="s">'Batch size is : {}'</span><span class="o">.</span><span class="nb">format</span><span class="p">(</span><span class="n">batch_size</span><span class="p">))</span>
-<span class="k">print</span><span class="p">(</span><span class="s">'Total number of batches is : {0:2.0f}'</span><span class="o">.</span><span class="nb">format</span><span class="p">(</span><span class="n">total_batch</span><span class="p">))</span>
-<span class="k">print</span><span class="p">(</span><span class="s">'</span><span class="se">\n</span><span class="s">Total number of epochs is : {0:2.0f}'</span><span class="o">.</span><span class="nb">format</span><span class="p">(</span><span class="n">training_epochs</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'Size of the training dataset is {}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">mnist_train</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">size</span><span class="p">()))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'Size of the testing dataset'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">mnist_test</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">size</span><span class="p">()))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'Batch size is : {}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">batch_size</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'Total number of batches is : {0:2.0f}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">total_batch</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'</span><span class="se">\n</span><span class="s">Total number of epochs is : {0:2.0f}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">training_epochs</span><span class="p">))</span>
 
 <span class="k">def</span> <span class="nf">compute_accuracy</span><span class="p">(</span><span class="n">Y_target</span><span class="p">,</span> <span class="n">hypothesis</span><span class="p">):</span>
     <span class="n">Y_prediction</span> <span class="o">=</span> <span class="n">hypothesis</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="nb">max</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
@@ -526,34 +526,34 @@ This repository contains notebooks for image classification of the MNIST dataset
     <span class="n">avg_cost</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">batch_X</span><span class="p">,</span> <span class="n">batch_Y</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">data_loader</span><span class="p">):</span>
 
-        <span class="c1"># Select a minibatch
-</span>        <span class="n">X</span> <span class="o">=</span> <span class="n">Variable</span><span class="p">(</span><span class="n">batch_X</span><span class="p">)</span>    <span class="c1"># image is already size of (28x28), no reshape
-</span>        <span class="n">Y</span> <span class="o">=</span> <span class="n">Variable</span><span class="p">(</span><span class="n">batch_Y</span><span class="p">)</span>    <span class="c1"># label is not one-hot encoded
-</span>
-        <span class="c1"># initialization of the gradients
-</span>        <span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
+        <span class="c"># Select a minibatch</span>
+        <span class="n">X</span> <span class="o">=</span> <span class="n">Variable</span><span class="p">(</span><span class="n">batch_X</span><span class="p">)</span>    <span class="c"># image is already size of (28x28), no reshape</span>
+        <span class="n">Y</span> <span class="o">=</span> <span class="n">Variable</span><span class="p">(</span><span class="n">batch_Y</span><span class="p">)</span>    <span class="c"># label is not one-hot encoded</span>
 
-        <span class="c1"># Forward propagation: compute the output
-</span>        <span class="n">hypothesis</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+        <span class="c"># initialization of the gradients</span>
+        <span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
 
-        <span class="c1"># Computation of the cost J
-</span>        <span class="n">cost</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">hypothesis</span><span class="p">,</span> <span class="n">Y</span><span class="p">)</span> <span class="c1"># &lt;= compute the loss function
-</span>
-        <span class="c1"># Backward propagation
-</span>        <span class="n">cost</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span> <span class="c1"># &lt;= compute the gradients
-</span>
-        <span class="c1"># Update parameters (weights and biais)
-</span>        <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+        <span class="c"># Forward propagation: compute the output</span>
+        <span class="n">hypothesis</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 
-        <span class="c1"># Print some performance to monitor the training
-</span>        <span class="n">train_accu</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">compute_accuracy</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">hypothesis</span><span class="p">))</span>
+        <span class="c"># Computation of the cost J</span>
+        <span class="n">cost</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">hypothesis</span><span class="p">,</span> <span class="n">Y</span><span class="p">)</span> <span class="c"># &lt;= compute the loss function</span>
+
+        <span class="c"># Backward propagation</span>
+        <span class="n">cost</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span> <span class="c"># &lt;= compute the gradients</span>
+
+        <span class="c"># Update parameters (weights and biais)</span>
+        <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+
+        <span class="c"># Print some performance to monitor the training</span>
+        <span class="n">train_accu</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">compute_accuracy</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">hypothesis</span><span class="p">))</span>
         <span class="n">train_cost</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cost</span><span class="o">.</span><span class="n">item</span><span class="p">())</span>   
         <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">200</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="k">print</span><span class="p">(</span><span class="s">"Epoch= {},</span><span class="se">\t</span><span class="s"> batch = {},</span><span class="se">\t</span><span class="s"> cost = {:2.4f},</span><span class="se">\t</span><span class="s"> accuracy = {}"</span><span class="o">.</span><span class="nb">format</span><span class="p">(</span><span class="n">epoch</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">train_cost</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">train_accu</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
+            <span class="k">print</span><span class="p">(</span><span class="s">"Epoch= {},</span><span class="se">\t</span><span class="s"> batch = {},</span><span class="se">\t</span><span class="s"> cost = {:2.4f},</span><span class="se">\t</span><span class="s"> accuracy = {}"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">epoch</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">train_cost</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">train_accu</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
 
         <span class="n">avg_cost</span> <span class="o">+=</span> <span class="n">cost</span><span class="o">.</span><span class="n">data</span> <span class="o">/</span> <span class="n">total_batch</span>
 
-    <span class="k">print</span><span class="p">(</span><span class="s">"[Epoch: {:&gt;4}], averaged cost = {:&gt;.9}"</span><span class="o">.</span><span class="nb">format</span><span class="p">(</span><span class="n">epoch</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">avg_cost</span><span class="o">.</span><span class="n">item</span><span class="p">()))</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"[Epoch: {:&gt;4}], averaged cost = {:&gt;.9}"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">epoch</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">avg_cost</span><span class="o">.</span><span class="n">item</span><span class="p">()))</span>
 
 
 <span class="k">print</span><span class="p">(</span><span class="s">'Learning Finished!'</span><span class="p">)</span>
@@ -597,19 +597,11 @@ This repository contains notebooks for image classification of the MNIST dataset
     
       
       
-      <a href="/tags/#ai" class="page__taxonomy-item" rel="tag">AI</a><span class="sep">, </span>
-    
-      
-      
       <a href="/tags/#computer-vision" class="page__taxonomy-item" rel="tag">Computer Vision</a><span class="sep">, </span>
     
       
       
-      <a href="/tags/#data-science" class="page__taxonomy-item" rel="tag">Data Science</a><span class="sep">, </span>
-    
-      
-      
-      <a href="/tags/#machine-learning" class="page__taxonomy-item" rel="tag">Machine Learning</a>
+      <a href="/tags/#image-classification" class="page__taxonomy-item" rel="tag">Image classification</a>
     
     </span>
   </p>
@@ -627,19 +619,18 @@ This repository contains notebooks for image classification of the MNIST dataset
     <h4 class="page__share-title">Share on</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=Convolutional+Neural+Network+for+image+classification%20http%3A%2F%2F0.0.0.0%3A4000%2FCNN-for-Image-Classification%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=Convolutional+Neural+Network+for+image+classification%20http%3A%2F%2Flocalhost%3A4000%2FCNN-for-Image-Classification%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2F0.0.0.0%3A4000%2FCNN-for-Image-Classification%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2FCNN-for-Image-Classification%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2F0.0.0.0%3A4000%2FCNN-for-Image-Classification%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2FCNN-for-Image-Classification%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
       
   <nav class="pagination">
     
-      <a href="/elements/" class="pagination--pager" title="Elements Reference
-">Previous</a>
+      <a href="#" class="pagination--pager disabled">Previous</a>
     
     
       <a href="/Optimize/" class="pagination--pager" title="Have you Optimized your Deep Learning Model Before Deployment?
@@ -688,82 +679,7 @@ This repository contains notebooks for image classification of the MNIST dataset
   9 minute read
 </p>
     
-    <p class="archive__item-excerpt" itemprop="description">[“Machine Learning”, “Computer Vision”, “AI”, “Data Science”]
-</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-      <div class="archive__item-teaser">
-        <img src=
-          
-            "/assets/images/nature.jpeg"
-          
-          alt="">
-      </div>
-    
-    <h2 class="archive__item-title" itemprop="headline">
-      
-        <a href="/elements/" rel="permalink">Elements Reference
-</a>
-      
-    </h2>
-    
-      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
-
-
-
-
-  3 minute read
-</p>
-    
-    <p class="archive__item-excerpt" itemprop="description">
-Text
-This is bold and this is strong. This is italic and this is emphasized.
-	This is superscript text and this is subscript text.
-	This is underlined and t...</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-      <div class="archive__item-teaser">
-        <img src=
-          
-            "/assets/images/nature_2.jpg"
-          
-          alt="">
-      </div>
-    
-    <h2 class="archive__item-title" itemprop="headline">
-      
-        <a href="/my_url" rel="permalink">My First Post
-</a>
-      
-    </h2>
-    
-      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
-
-
-
-
-  1 minute read
-</p>
-    
-    <p class="archive__item-excerpt" itemprop="description">Machine learning, data science, AI
+    <p class="archive__item-excerpt" itemprop="description">Optimization of deep learning model
 </p>
   </article>
 </div>
