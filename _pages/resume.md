@@ -199,9 +199,13 @@ Engineer degree, Electrical engineering.
 # Techniques, Software & Instrumentation
 ***
   **Programming Languages**: Python, Matlab, Latex, Markdown, RST
+
   **Libraries**: OpenCV, Numpy, Matplotlib, scrikit-learn, PyTorch, TensorFlow, Keras
+
   **IDE**: VS Code, JupyterLab, Spyder
+
   **Tools**: Linux OS, Gitlab, Docker, bash, Slack
+  
 
 
 ***
