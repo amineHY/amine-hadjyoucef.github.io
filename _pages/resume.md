@@ -88,7 +88,7 @@ classes: wide
 
 ### Image Processing Engineer - Computer Vision
 ***
-at [Synchromedia Laboratory](http://www.synchromedia.ca/), Montreal, Quebec, Canada
+[Synchromedia Laboratory](http://www.synchromedia.ca/), Montreal, Quebec, Canada
 
 02/2015-08/2015
 
@@ -145,7 +145,7 @@ Biomedical laboratory, USTHB. Algeria.
 **Technical environment**  
   ► MATLAB  
 
-**Publication in peer review international conferences**  
+**Publication in peer review international conferences**    
   ► CISTEM'2018  
   ► WoSSPA'2013  
 
@@ -162,15 +162,11 @@ Doctor of Philosophy (PhD), Signal and Image Processing.
 2015 - 2018
 
 
-**Publications in peew review national/international conference**
+**Publications in peew review national/international conference**  
     ► 28th and 28th EUSIPCO (European Signal and Image Processing Conference).  
     ► 27th and 28th EUSIPCO (European Signal and Image Processing Conference).  
     ► 25th Colloque GRETSI (Groupe d'Etudes du Traitement du Signal et des Images).  
     ► Co-author of an article published in Astronomy & Astrophysics Journal.  
-
-  <!--
-  ###################################
-   -->
 
 
 ### University of Bordeaux
