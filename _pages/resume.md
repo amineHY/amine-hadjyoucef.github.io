@@ -184,7 +184,7 @@ Master's degree, Signal and Image Processing.
  -->
 
 
-### Ecole Polytechnique
+### Ecole Nationale Polytechnique
 ***
 Engineer degree, Electrical engineering.  
 2007 - 2012
@@ -205,7 +205,7 @@ Engineer degree, Electrical engineering.
   **IDE**: VS Code, JupyterLab, Spyder
 
   **Tools**: Linux OS, Gitlab, Docker, bash, Slack
-  
+
 
 
 ***
