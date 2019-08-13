@@ -12,9 +12,7 @@ classes: wide
 
 
 ***
-***
 # Summary
-***
 ***
 
 - Strong project management skills as demonstrated by 3 successful projects in industrial sectors, biomedical, information and spatial, leading to 6 publications in advanced scientific journals (IEEE Xplore Digital Library)
@@ -35,7 +33,6 @@ classes: wide
 
 
 # Work Experience
-***
 ***
 ### R&D Engineer in Image Processing
 ***
@@ -156,9 +153,7 @@ Biomedical laboratory, USTHB. Algeria.
 
 
 ***
-***
 # Education
-***
 ***
 
 ### University of Paris-Saclay
@@ -205,23 +200,19 @@ Engineer degree, Electrical engineering.
   * WOSSPA 2013 (Workshop on Systems, Signal Processing, and their Applications)
 
 ***
-***
 # Techniques, Software & Instrumentation
 ***
-***
-  |Programming Languages | Libraries | IDE      | Tools|
-  |---       | ---       | ---       | ---|
-  |Python    | Numpy, Scikit-learn,... | VS Code | Linux OS|
-  |Matlab    | PyTorch   | Spyder    | GitLab & GitHub|
-  |Latex     | TensorFlow| JupyterLab| Docker|
-  |Markdown & RST |Keras |           |  Bash|
-  |          |OpenCV     |           | Slack|
+  Programming Languages | Libraries | IDE      | Tools
+  ---       | ---       | ---       | ---
+  Python    | Numpy, Scikit-learn,... | VS Code | Linux OS
+  Matlab    | PyTorch   | Spyder    | GitLab & GitHub
+  Latex     | TensorFlow| JupyterLab| Docker
+  Markdown & RST |Keras |    -       |  Bash     
+  - |        OpenCV       |   -       |  Slack
 
 
 
-***
 ***
 # Affiliations &/ Hobbies
-***
 ***
 Running, Badminton, Reading, Writing
