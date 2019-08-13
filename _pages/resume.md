@@ -199,12 +199,12 @@ Engineer degree, Electrical engineering.
 # Techniques, Software & Instrumentation
 ***
   Programming Languages | Libraries | IDE | Tools
-  ----------------------|-----------|---- |-------
+  ----------------------|-----------|----|-------
   Python    | Numpy, Scikit-learn,... | VS Code   | Linux OS
   Matlab    | PyTorch                 | Spyder    | GitLab & GitHub
   Latex     | TensorFlow              | JupyterLab| Docker
-  Markdown & RST | Keras              |    -       |  Bash
-  -         |        OpenCV           |    -       |  Slack
+  Markdown & RST | Keras              |           |  Bash
+|        OpenCV           |           |  Slack
 
 
 ***
