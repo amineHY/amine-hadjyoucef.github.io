@@ -22,4 +22,4 @@ gem 'github-pages',
 group: :jekyll_plugins
 
 
-gem 'jekyll-sass-converter', git: 'https://github.com/jekyll/jekyll-sass-converter', branch: 'master'
+# gem 'jekyll-sass-converter', git: 'https://github.com/jekyll/jekyll-sass-converter', branch: 'master'
