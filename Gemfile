@@ -20,3 +20,6 @@ gem "minima", "~> 2.0"
 # uncomment the line below. To upgrade, run `bundle update github-pages`.
 gem 'github-pages',
 group: :jekyll_plugins
+
+
+gem 'jekyll-sass-converter', git: 'https://github.com/jekyll/jekyll-sass-converter', branch: 'master'

@@ -248,6 +248,3 @@ DEPENDENCIES
   jekyll (~> 3.8.4)
   jekyll-include-cache
   minima (~> 2.0)
-
-BUNDLED WITH
-   2.0.2
