@@ -11,17 +11,48 @@ classes: wide
 
 
 
-**Bio**
+<!-- **About** -->
 
-Coming soon
+
 <!-- I am the Director of AI at Tesla, where I lead the team responsible for all neural networks on the Autopilot. Previously, I was a Research Scientist at OpenAI working on Deep Learning in Computer Vision, Generative Modeling and Reinforcement Learning. I received my PhD from Stanford, where I worked with Fei-Fei Li on Convolutional/Recurrent Neural Network architectures and their applications in Computer Vision, Natural Language Processing and their intersection. Over the course of my PhD I squeezed in two internships at Google where I worked on large-scale feature learning over YouTube videos, and in 2015 I interned at DeepMind and worked on Deep Reinforcement Learning. Together with Fei-Fei, I designed and taught a new Stanford class on Convolutional Neural Networks for Visual Recognition (CS231n). The class was the first Deep Learning course offering at Stanford and has grown from 150 enrolled in 2015 to 330 students in 2016, and 750 students in 2017. -->
 
 <!-- On a side for fun I blog, tweet, and maintain several Deep Learning libraries written in Javascript (e.g. ConvNetJS, RecurrentJS, REINFORCEjs, t-sneJS). I am also sometimes jokingly referred to as the reference human for ImageNet (post :)). I also recently expanded on this with arxiv-sanity.com, which lets you search and sort through ~30,000 Arxiv papers on Machine Learning over the last 3 years in the same pretty format. -->
+
+
+
+
+
+
+
+I am the head of Artificial intelligence at Drone Volt, Expert in  onboard artificial intelligence and professional civilian drone manufacturer. I hold a PhD in Signal and image processing from Paris-Saclay University. My fields of expertise includes machine learning, computer vision, Signal/Image processing and data science in general.
+I'm a learner for life, my goal is to increase the variance of my knowledge distribution. I enjoy mentoring and transfer my knowledge to others, hence, I write articles about what I think will help people out there. The article I write are highly to moderately technical. I try to do my best to make it easy and practical. I like working in agile environment and enjoy high-pace work with the mindset of adding values to the business.
+
+My top three values:
+* Spread knowledge.
+* Serve others.
+* Be nice to people.
+
+
+
+
+<!-- Some numbers:
+* Three countries
+* mentored +60 engineering students
+* successfully -->
+
+*Want to know more?*
+* Have a look at my [CV](/assets/pdf/CV_detailed.pdf) for more information.
+
+* Connect with me on [LinkedIn](https://www.linkedin.com/in/aminehy/).
+
+
+
+
 <br/><br/>
 
 **Timeline**  
 
-- 2019-now: Artificial Intelligence - Computer Vision Engineer at Drone Volt.
+- 2019-now: Head of Artificial Intelligence - Computer Vision at Drone Volt.
 - 2015-2018: PhD student at University of Paris-Saclay, France.
 - 2015-2015: Internship at Synchromedia Laboratory, Montreal, Canada.
 - 2014-2014: Internship at Mathematical Institute of Bordeaux, Bordeaux France.
