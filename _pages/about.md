@@ -24,10 +24,10 @@ classes: wide
 
 
 
-I am the head of Artificial intelligence at Drone Volt, Expert in  onboard artificial intelligence and professional civilian drone manufacturer. I hold a PhD in Signal and image processing from Paris-Saclay University. My fields of expertise includes machine learning, computer vision, Signal/Image processing and data science in general.
+I am the head of Artificial intelligence at Drone Volt, Expert in  onboard artificial intelligence and professional civilian drone manufacturer. I hold a PhD in Signal and image processing from Paris-Saclay University. My fields of expertise includes machine learning, computer vision, Signal & Image processing and data science in general.
 I'm a learner for life, my goal is to increase the variance of my knowledge distribution. I enjoy mentoring and transfer my knowledge to others, hence, I write articles about what I think will help people out there. The article I write are highly to moderately technical. I try to do my best to make it easy and practical. I like working in agile environment and enjoy high-pace work with the mindset of adding values to the business.
 
-My top three values:
+*My top three values:*
 * Spread knowledge.
 * Serve others.
 * Be nice to people.
@@ -35,22 +35,22 @@ My top three values:
 
 
 
-<!-- Some numbers:
-* Three countries
-* mentored +60 engineering students
-* successfully -->
-
 *Want to know more?*
 * Have a look at my [CV](/assets/pdf/CV_detailed.pdf) for more information.
 
 * Connect with me on [LinkedIn](https://www.linkedin.com/in/aminehy/).
 
 
+<!-- Some numbers:
+* Three countries
+* mentored +60 engineering students
+* successfully -->
+
 
 
 <br/><br/>
 
-**Timeline**  
+##Timeline
 
 - 2019-now: Head of Artificial Intelligence - Computer Vision at Drone Volt.
 - 2015-2018: PhD student at University of Paris-Saclay, France.
