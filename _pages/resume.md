@@ -5,8 +5,8 @@ permalink: /resume/
 layout: "single"
 icon: fa-book
 author_profile: true
-<!-- header:
-  image: assets/images/banner_publications.jpg -->
+header:
+  image: assets/images/dummy.jpg
 classes: wide
 ---
 
@@ -67,7 +67,7 @@ classes: wide
 
 <br/><br/>
 
-### Teaching Assistant in Signal Processing
+### Teaching Assistant
 ***
 [Ecole Polytech Paris-Sud](http://www.polytech.u-psud.fr/fr/formations/electronique-et-systemes-robotises.html), University of Paris-Sud, France.  
 
@@ -206,7 +206,7 @@ Engineer degree, Electrical engineering.
 
   **Tools**: Linux OS, Gitlab, Docker, bash, Slack
 
-  **Instrument**: NVIDIA Development kit TX2, dual-camera Pensar
+  **Instrument**: NVIDIA Development kit TX2, Dual-camera Pensar of Aerialtronics.
 
 
 

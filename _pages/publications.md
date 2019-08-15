@@ -3,6 +3,8 @@ title: List of my scientific publications
 subtitle: Scientific journals, international conferences, seminars
 permalink: /publications/
 layout: single
+header:
+  image: assets/images/pub.png
 classes: wide
 ---
 
