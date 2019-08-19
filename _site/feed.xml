@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-08-15T12:32:01+02:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Welcome to my Personal Website</title><subtitle>Data scientist profolio.</subtitle><author><name>M. Amine Hadj-Youcef. Ph.D.</name></author><entry><title type="html">Have you Optimized your Deep Learning Model Before Deployment?</title><link href="http://localhost:4000/Optimize/" rel="alternate" type="text/html" title="Have you Optimized your Deep Learning Model Before Deployment?" /><published>2019-07-30T00:00:00+02:00</published><updated>2019-07-30T00:00:00+02:00</updated><id>http://localhost:4000/Optimize</id><content type="html" xml:base="http://localhost:4000/Optimize/">&lt;h1 id=&quot;illustration-on-an-ai-based-computer-vision-application&quot;&gt;Illustration on an AI-based Computer Vision application.&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-08-19T13:40:49+02:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Welcome to my Personal Website</title><subtitle>Data scientist profolio.</subtitle><author><name>Amine Hadj-Youcef. Ph. D</name></author><entry><title type="html">Have you Optimized your Deep Learning Model Before Deployment?</title><link href="http://localhost:4000/Optimize/" rel="alternate" type="text/html" title="Have you Optimized your Deep Learning Model Before Deployment?" /><published>2019-07-30T00:00:00+02:00</published><updated>2019-07-30T00:00:00+02:00</updated><id>http://localhost:4000/Optimize</id><content type="html" xml:base="http://localhost:4000/Optimize/">&lt;h1 id=&quot;illustration-on-an-ai-based-computer-vision-application&quot;&gt;Illustration on an AI-based Computer Vision application.&lt;/h1&gt;
 
 &lt;p&gt;This article presents how to use NVIDIA TensorRT to optimize a deep learning model that you want to deploy on the edge device (mobile, camera, robot, car ….). For instance, the intelligent double spectrum camera of Aerialtronics: &lt;em&gt;Pensar&lt;/em&gt; &lt;a href=&quot;https://pensarsdk.com/&quot;&gt;https://pensarsdk.com/&lt;/a&gt;&lt;/p&gt;
 
@@ -51,6 +51,7 @@
 &lt;h1 id=&quot;what-is-nvidia-tensorrt&quot;&gt;What Is NVIDIA TensorRT?&lt;/h1&gt;
 
 &lt;p&gt;&lt;img src=&quot;https://cdn-images-1.medium.com/max/2000/1*EWiIvB6RjwEZrlSLF1Xttw.png&quot; alt=&quot;[https://docs.nvidia.com/deeplearning/sdk/tensorrt-archived/tensorrt_210/tensorrt-user-guide/](https://docs.nvidia.com/deeplearning/sdk/tensorrt-archived/tensorrt_210/tensorrt-user-guide/index.html)&quot; /&gt;&lt;em&gt;&lt;a href=&quot;https://docs.nvidia.com/deeplearning/sdk/tensorrt-archived/tensorrt_210/tensorrt-user-guide/index.html&quot;&gt;https://docs.nvidia.com/deeplearning/sdk/tensorrt-archived/tensorrt_210/tensorrt-user-guide/&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+
 &lt;blockquote&gt;
   &lt;p&gt;The core of NVIDIA TensorRT is a C++ library that facilitates high-performance inference on NVIDIA graphics processing units (GPUs). TensorRT takes a trained network, which consists of a network definition and a set of trained parameters, and produces a highly optimized runtime engine which performs inference for that network.
 You can describe a TensorRT network using a C++ or Python API, or you can import an existing Caffe, ONNX, or TensorFlow model using one of the provided parsers.&lt;/p&gt;
@@ -84,7 +85,7 @@ You can describe a TensorRT network using a C++ or Python API, or you can import
 
 &lt;p&gt;To check if CUDA is correctly installed on you machine, just enter in the terminal&lt;/p&gt;
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    nvidia-smi
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  nvidia-smi
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;The output should look something like that (I have a &lt;code class=&quot;highlighter-rouge&quot;&gt;NVIDIA GPU GeForce GTX 1660 Ti/PCIe/SSE2&lt;/code&gt;)&lt;/p&gt;
@@ -109,19 +110,19 @@ You can describe a TensorRT network using a C++ or Python API, or you can import
   &lt;li&gt;
     &lt;p&gt;First, open a terminal (ctrl+alt + t) and enter this command to pull the docker image&lt;/p&gt;
 
-    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;   docker pull aminehy/tensorrt-opencv-python3:version-1.3
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; docker pull aminehy/tensorrt-opencv-python3:version-1.3
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;Enable launching GUI applications from inside the docker container bu entering the command&lt;/p&gt;
 
-    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;   xhost +
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; xhost +
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;Lastly, run the docker container with the command:&lt;/p&gt;
 
-    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  docker run &lt;span class=&quot;nt&quot;&gt;-it&lt;/span&gt; — rm &lt;span class=&quot;nt&quot;&gt;-v&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;pwd&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;:/workspace — &lt;span class=&quot;nv&quot;&gt;runtime&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;nvidia &lt;span class=&quot;nt&quot;&gt;-w&lt;/span&gt; /workspace &lt;span class=&quot;nt&quot;&gt;-v&lt;/span&gt; /tmp/.X11-unix:/tmp/.X11-unix &lt;span class=&quot;nt&quot;&gt;-e&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;DISPLAY&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;unix&lt;span class=&quot;nv&quot;&gt;$DISPLAY&lt;/span&gt; aminehy/tensorrt-opencv-python3:version-1.3
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker run &lt;span class=&quot;nt&quot;&gt;-it&lt;/span&gt; — rm &lt;span class=&quot;nt&quot;&gt;-v&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;pwd&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;:/workspace — &lt;span class=&quot;nv&quot;&gt;runtime&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;nvidia &lt;span class=&quot;nt&quot;&gt;-w&lt;/span&gt; /workspace &lt;span class=&quot;nt&quot;&gt;-v&lt;/span&gt; /tmp/.X11-unix:/tmp/.X11-unix &lt;span class=&quot;nt&quot;&gt;-e&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;DISPLAY&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;unix&lt;span class=&quot;nv&quot;&gt;$DISPLAY&lt;/span&gt; aminehy/tensorrt-opencv-python3:version-1.3
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
@@ -136,42 +137,48 @@ You can describe a TensorRT network using a C++ or Python API, or you can import
 &lt;p&gt;In this experiment, we run YOLOv3 model on 500 images and compare the average inference time before and after optimization of the model with NVIDIA TensorRT. The images used in this experiment are from COCO dataset: &lt;a href=&quot;http://cocodataset.org/#home&quot;&gt;COCO - Common Objects in Context&lt;/a&gt;.&lt;/p&gt;
 
 &lt;h2 id=&quot;1-running-a-non-optimized-yolov3&quot;&gt;1) Running a non-optimized YOLOv3&lt;/h2&gt;
+
 &lt;p&gt;Link to the project in gitlab: &lt;a href=&quot;https://gitlab.com/aminehy/yolov3-darknet&quot;&gt;Amine Hy / YOLOv3-DarkNet&lt;/a&gt;&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;
     &lt;p&gt;Clone and the repository then run using the script &lt;code class=&quot;highlighter-rouge&quot;&gt;docker_TensorRT_OpenCV_Python.sh&lt;/code&gt;.&lt;/p&gt;
 
-    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  git clone https://gitlab.com/aminehy/yolov3-darknet.git
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git clone https://gitlab.com/aminehy/yolov3-darknet.git
 
-  &lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;yolov3-darknet
+&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;yolov3-darknet
 
-  chmod +x docker_TensorRT_OpenCV_Python.sh
+chmod +x docker_TensorRT_OpenCV_Python.sh
 
-  ./docker_TensorRT_OpenCV_Python.sh run
+./docker_TensorRT_OpenCV_Python.sh run
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;Download and unzip the test images folder in &lt;code class=&quot;highlighter-rouge&quot;&gt;./data/&lt;/code&gt;&lt;/p&gt;
 
-    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  wget http://images.cocodataset.org/zips/test2017.zip
-  unzip test2017.zip ../test2017/
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;wget http://images.cocodataset.org/zips/test2017.zip
+unzip test2017.zip ../test2017/
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;Download the weight file &lt;code class=&quot;highlighter-rouge&quot;&gt;yolov3.weights&lt;/code&gt;&lt;/p&gt;
 
-    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  wget https://pjreddie.com/media/files/yolov3.weights
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;wget https://pjreddie.com/media/files/yolov3.weights
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
   &lt;/li&gt;
-  &lt;li&gt;Then execute YOLOv3 python file:
+  &lt;li&gt;
+    &lt;p&gt;Then execute YOLOv3 python file:&lt;/p&gt;
+
     &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;python darknet.py
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
   &lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Results:&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Results:&lt;/strong&gt;&lt;/p&gt;
+  &lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;The results should be saved in the folder &lt;code class=&quot;highlighter-rouge&quot;&gt;./data/results&lt;/code&gt;&lt;/p&gt;
+
 &lt;p align=&quot;center&quot;&gt;
   &lt;img src=&quot;https://cdn-images-1.medium.com/max/2000/1*ySnKobAGy8_NFze7U0goYQ.png&quot; alt=&quot;pooling&quot; /&gt;
 &lt;/p&gt;
@@ -183,6 +190,7 @@ You can describe a TensorRT network using a C++ or Python API, or you can import
 &lt;p&gt;&lt;img src=&quot;https://cdn-images-1.medium.com/max/2246/1*XM_KOVzJlT1F3sqP1Azfeg.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;The first step is to import the model, which includes loading it from a saved file on disk and converting it to a TensorRT network from its native framework or format. Our example loads the model in ONNX format from the ONNX model.&lt;/p&gt;
+
 &lt;blockquote&gt;
   &lt;p&gt;ONNX is a standard for representing deep learning models enabling them to be transferred between frameworks. (Many frameworks such as Caffe2, Chainer, CNTK, PaddlePaddle, PyTorch, and MXNet support the ONNX format).&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -190,6 +198,7 @@ You can describe a TensorRT network using a C++ or Python API, or you can import
 &lt;p&gt;Next, an optimized TensorRT engine is built based on the input model, target GPU platform, and other configuration parameters specified. The last step is to provide input data to the TensorRT engine to perform inference.&lt;/p&gt;
 
 &lt;p&gt;The sample uses the following components in TensorRT to perform the above steps:&lt;/p&gt;
+
 &lt;ul&gt;
   &lt;li&gt;ONNX parser: takes a trained model in ONNX format as input and populates a network object in TensorRT&lt;/li&gt;
   &lt;li&gt;Builder: takes a network in TensorRT and generates an engine that is optimized for the target platform&lt;/li&gt;
@@ -203,29 +212,33 @@ You can describe a TensorRT network using a C++ or Python API, or you can import
   &lt;li&gt;
     &lt;p&gt;Get the project from GitHub and change the working directory&lt;/p&gt;
 
-    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  git clone https://gitlab.com/aminehy/YOLOv3-Darknet-ONNX-TensorRT.git
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git clone https://gitlab.com/aminehy/YOLOv3-Darknet-ONNX-TensorRT.git
 
-  &lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;YOLOv3-Darknet-ONNX-TensorRT/
+&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;YOLOv3-Darknet-ONNX-TensorRT/
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;Convert the model from Darknet to ONNX. This step will create an engine called: &lt;code class=&quot;highlighter-rouge&quot;&gt;yolov3.onnx&lt;/code&gt;&lt;/p&gt;
 
-    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  python yolov3_to_onnx.py
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;python yolov3_to_onnx.py
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;Convert the model from ONNX to TensorRT. This step will create an engine called: &lt;code class=&quot;highlighter-rouge&quot;&gt;yolov3.trt&lt;/code&gt; and use for the inference&lt;/p&gt;
 
-    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  python onnx_to_tensorrt.py
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;python onnx_to_tensorrt.py
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
   &lt;/li&gt;
-  &lt;li&gt;For this experiment, we set this parameter: builder.fp16_mode = True
-    &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;n&quot;&gt;builder&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fp16_mode&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;builder&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;strict_type_constraints&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;
+  &lt;li&gt;
+    &lt;p&gt;For this experiment, we set this parameter: builder.fp16_mode = True&lt;/p&gt;
+
+    &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;builder&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fp16_mode&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;builder&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;strict_type_constraints&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
   &lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Results:&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Results:&lt;/strong&gt;&lt;/p&gt;
+  &lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p align=&quot;center&quot;&gt;
@@ -259,39 +272,39 @@ You can describe a TensorRT network using a C++ or Python API, or you can import
   &lt;li&gt;
     &lt;p&gt;Compile and build the model&lt;/p&gt;
 
-    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  git submodule update — init — recursive
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git submodule update — init — recursive
 
-  mkdir build
+mkdir build
 
-  &lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;build &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; cmake .. &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; make &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; make install &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; ..
+&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;build &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; cmake .. &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; make &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; make install &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; ..
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;Edit the configuration file and choose between the settings, YOLO 416 or YOLO 608, located in&lt;/p&gt;
 
-    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  ~/TensorRT-Yolov3/tensorRTWrapper/code/include/YoloConfigs.h
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;~/TensorRT-Yolov3/tensorRTWrapper/code/include/YoloConfigs.h
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;You need also to take a look at the configuration file &lt;code class=&quot;highlighter-rouge&quot;&gt;configs.h&lt;/code&gt; located in&lt;/p&gt;
 
-    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  ~/TensorRT-Yolov3/include/configs.h
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;~/TensorRT-Yolov3/include/configs.h
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
   &lt;/li&gt;
   &lt;li&gt;
-    &lt;p&gt;Create the TensorRT engine and run inference on a test image &lt;code class=&quot;highlighter-rouge&quot;&gt;dog.jpg &lt;/code&gt;&lt;/p&gt;
+    &lt;p&gt;Create the TensorRT engine and run inference on a test image &lt;code class=&quot;highlighter-rouge&quot;&gt;dog.jpg&lt;/code&gt;&lt;/p&gt;
 
-    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;c&quot;&gt;# for yolov3–416 (don’t forget to edit YoloConfigs.h for YoloKernel)&lt;/span&gt;
-  ./install/runYolov3 — &lt;span class=&quot;nv&quot;&gt;caffemodel&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;./caffe/yolov3_416.caffemodel &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
-  — &lt;span class=&quot;nv&quot;&gt;prototxt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;./caffe/yolov3_416.prototxt — &lt;span class=&quot;nv&quot;&gt;input&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;./dog.jpg &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
-  — &lt;span class=&quot;nv&quot;&gt;W&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;416 — &lt;span class=&quot;nv&quot;&gt;H&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;416 — &lt;span class=&quot;nv&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;80 — &lt;span class=&quot;nv&quot;&gt;mode&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;fp16
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# for yolov3–416 (don’t forget to edit YoloConfigs.h for YoloKernel)&lt;/span&gt;
+./install/runYolov3 — &lt;span class=&quot;nv&quot;&gt;caffemodel&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;./caffe/yolov3_416.caffemodel &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+— &lt;span class=&quot;nv&quot;&gt;prototxt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;./caffe/yolov3_416.prototxt — &lt;span class=&quot;nv&quot;&gt;input&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;./dog.jpg &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+— &lt;span class=&quot;nv&quot;&gt;W&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;416 — &lt;span class=&quot;nv&quot;&gt;H&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;416 — &lt;span class=&quot;nv&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;80 — &lt;span class=&quot;nv&quot;&gt;mode&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;fp16
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;Once the engine is created, you can pass it as an argument&lt;/p&gt;
 
-    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  ./install/runYolov3 — &lt;span class=&quot;nv&quot;&gt;caffemodel&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;./caffe/yolov3_416.caffemodel
-   — &lt;span class=&quot;nv&quot;&gt;prototxt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;./caffe/yolov3_416.prototxt — &lt;span class=&quot;nv&quot;&gt;input&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;./dog.jpg — &lt;span class=&quot;nv&quot;&gt;W&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;416 — &lt;span class=&quot;nv&quot;&gt;H&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;416 — &lt;span class=&quot;nv&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;80 — &lt;span class=&quot;nv&quot;&gt;enginefile&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;./engine/yolov3_fp32.engine
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;./install/runYolov3 — &lt;span class=&quot;nv&quot;&gt;caffemodel&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;./caffe/yolov3_416.caffemodel
+ — &lt;span class=&quot;nv&quot;&gt;prototxt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;./caffe/yolov3_416.prototxt — &lt;span class=&quot;nv&quot;&gt;input&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;./dog.jpg — &lt;span class=&quot;nv&quot;&gt;W&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;416 — &lt;span class=&quot;nv&quot;&gt;H&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;416 — &lt;span class=&quot;nv&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;80 — &lt;span class=&quot;nv&quot;&gt;enginefile&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;./engine/yolov3_fp32.engine
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
   &lt;/li&gt;
   &lt;li&gt;
@@ -325,7 +338,7 @@ You can describe a TensorRT network using a C++ or Python API, or you can import
   &lt;li&gt;
     &lt;p&gt;TensorRT Release 19.05: &lt;a href=&quot;https://docs.nvidia.com/deeplearning/sdk/tensorrt-container-release-notes/rel_19-05.html#rel_19-05&quot;&gt;https://docs.nvidia.com/deeplearning/sdk/tensorrt-container-release-notes/rel_19-05.html#rel_19-05&lt;/a&gt;&lt;/p&gt;
   &lt;/li&gt;
-&lt;/ul&gt;</content><author><name>M. Amine Hadj-Youcef</name></author><category term="Image classification" /><category term="Computer Vision" /><summary type="html">Optimization of deep learning model</summary></entry><entry><title type="html">Convolutional Neural Network for image classification</title><link href="http://localhost:4000/CNN-for-Image-Classification/" rel="alternate" type="text/html" title="Convolutional Neural Network for image classification" /><published>2019-04-19T00:00:00+02:00</published><updated>2019-04-19T00:00:00+02:00</updated><id>http://localhost:4000/CNN-for-Image-Classification</id><content type="html" xml:base="http://localhost:4000/CNN-for-Image-Classification/">&lt;h1 id=&quot;a-dive-into-an-artificial-intelligence-algorithm&quot;&gt;A Dive into an Artificial Intelligence algorithm&lt;/h1&gt;
+&lt;/ul&gt;</content><author><name>Amine Hadj-Youcef</name></author><category term="Image classification" /><category term="Computer Vision" /><summary type="html">Optimization of deep learning model</summary></entry><entry><title type="html">Convolutional Neural Network for image classification</title><link href="http://localhost:4000/CNN-for-Image-Classification/" rel="alternate" type="text/html" title="Convolutional Neural Network for image classification" /><published>2019-04-19T00:00:00+02:00</published><updated>2019-04-19T00:00:00+02:00</updated><id>http://localhost:4000/CNN-for-Image-Classification</id><content type="html" xml:base="http://localhost:4000/CNN-for-Image-Classification/">&lt;h1 id=&quot;a-dive-into-an-artificial-intelligence-algorithm&quot;&gt;A Dive into an Artificial Intelligence algorithm&lt;/h1&gt;
 
 &lt;p&gt;This article will explain the Convolutional Neural Network (CNN) with an illustration of image classification. It provides a simple implementation of the CNN algorithm using the framework PyTorch on Python. There are many free courses that can be found on the internet. Personally, I suggest the course of &lt;em&gt;Andrej Karpathy&lt;/em&gt; at Stanford university (&lt;a href=&quot;http://twitter.com/karpathy&quot;&gt;@karpathy&lt;/a&gt;). You will learn a lot, it is a step by step course. In addition, it provides many practical strategies to implement the CNN architecture.&lt;/p&gt;
 
@@ -340,6 +353,7 @@ You can describe a TensorRT network using a C++ or Python API, or you can import
 &lt;p&gt;The CNN architecture we used in this article is proposed in &lt;a href=&quot;http://personal.ie.cuhk.edu.hk/~ccloy/project_target_code/index.html&quot;&gt;this paper&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;Here is an illustration of the image classification using CNN architecture&lt;/p&gt;
+
 &lt;p align=&quot;center&quot;&gt;
   &lt;img src=&quot;https://cdn-images-1.medium.com/max/6096/1*JAoTFAsN5HCrRgrJPaBgrg.png&quot; alt=&quot;pooling&quot; /&gt;
 &lt;/p&gt;
@@ -386,8 +400,7 @@ You can describe a TensorRT network using a C++ or Python API, or you can import
 &lt;p&gt;The full code is available in my GitHub repository: &lt;a href=&quot;https://github.com/amineHY/Image-classification-of-MNIST/blob/master/pytorch_mnist_deep_cnn.ipynb&quot;&gt;amineHY/Image-classification-of-MNIST&lt;/a&gt;
 This repository contains notebooks for image classification of the MNIST dataset. The code is quite simple to understand, hopefully, since it mentions all the layers we discussed earlier in an intuitive way.&lt;/p&gt;
 
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
-&lt;span class=&quot;c&quot;&gt;# Implementation of CNN/ConvNet Model using PyTorch (depicted in the picture above)&lt;/span&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# Implementation of CNN/ConvNet Model using PyTorch (depicted in the picture above)&lt;/span&gt;
 
 &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;CNN&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;torch&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nn&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Module&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
 
@@ -532,6 +545,7 @@ This repository contains notebooks for image classification of the MNIST dataset
  — Use the learned parameters to predict the label for a given input image&lt;/p&gt;
 
 &lt;h3 id=&quot;python-implementation-of-training-cnn-in-python-using-pytorch&quot;&gt;Python implementation of training CNN in Python using PyTorch&lt;/h3&gt;
+
 &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'Training the Deep Learning network ...'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
 &lt;span class=&quot;n&quot;&gt;learning_rate&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.001&lt;/span&gt;
@@ -610,4 +624,5 @@ This repository contains notebooks for image classification of the MNIST dataset
 &lt;/p&gt;
 
 &lt;h1 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h1&gt;
-&lt;p&gt;This article attempts to explain briefly the convolutional neural network without going deep into mathematical development. An illustration is provided at each step with a visual explanation, as well as an application of image classification of MNIST dataset. Finally, a python implementation using PyTorch library is presented in order to provide a concrete example of application. Hopefully, you will find it interesting and easy to read.&lt;/p&gt;</content><author><name>M. Amine Hadj-Youcef</name></author><category term="Image classification" /><category term="Computer Vision" /><summary type="html">image classification with deep learning</summary></entry></feed>
+
+&lt;p&gt;This article attempts to explain briefly the convolutional neural network without going deep into mathematical development. An illustration is provided at each step with a visual explanation, as well as an application of image classification of MNIST dataset. Finally, a python implementation using PyTorch library is presented in order to provide a concrete example of application. Hopefully, you will find it interesting and easy to read.&lt;/p&gt;</content><author><name>Amine Hadj-Youcef</name></author><category term="Image classification" /><category term="Computer Vision" /><summary type="html">image classification with deep learning</summary></entry></feed>

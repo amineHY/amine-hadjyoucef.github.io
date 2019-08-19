@@ -19,7 +19,7 @@ locale                   : "en-US"
 title                    : "Welcome to my Personal Website"
 title_separator          : "-"
 subtitle                 : # site tagline that appears below site title in masthead
-name                     : "M. Amine Hadj-Youcef, Ph. D"
+name                     : "Amine Hadj-Youcef, Ph. D"
 description              : "Data scientist profolio."
 url                      : "https://aminehy.github.io/"
 baseurl                  : # the subpath of your site, e.g. "/blog"
@@ -95,7 +95,7 @@ og_image                 : # Open Graph/Twitter default site image
 social:
   type                   : # Person or Organization (defaults to Person)
   name                   : # If the user or organization name differs from the site's name
-  links: # An array of links to social media profiles
+  links:              # An array of links to social media profiles
 
 # Analytics
 analytics:
@@ -107,51 +107,51 @@ analytics:
 
 # Site Author
 author:
-  name             : "M. Amine Hadj-Youcef. Ph.D."
-  avatar           : "/assets/images/photo de profile.jpg"
-  bio              : "Artificial Intelligence, Computer Vision, Machine learning."
-  location         : "Paris, France"
+  name             :  "Amine Hadj-Youcef. Ph. D"
+  avatar           :  "/assets/images/photo_linkedin.png"
+  bio              :  "Artificial Intelligence, Computer Vision, Machine learning."
+  location         :  "Paris, France"
   email            :
   links:
-    - label: "Email"
-      icon: "fas fa-fw fa-envelope-square"
-      url: mailto:hadjyoucef.amine@email.com
+    - label:          "Email"
+      icon:           "fas fa-fw fa-envelope-square"
+      url:            mailto:hadjyoucef.amine@email.com
 
-    - label: "LinkedIn"
-      icon: "fab fa-linkedin"
-      url: "https://www.linkedin.com/in/aminehy/"
+    - label:          "LinkedIn"
+      icon:           "fab fa-linkedin"
+      url:            "https://www.linkedin.com/in/aminehy/"
 
-    - label: "Medium"
-      icon: "fab fa-medium"
-      url: "https://medium.com/@Amine_hy"
+    - label:          "Medium"
+      icon:           "fab fa-medium"
+      url:            "https://medium.com/@Amine_hy"
 
-    - label: "GitHub"
-      icon: "fab fa-fw fa-github"
-      url: "https://github.com/aminehy"
+    - label:          "GitHub"
+      icon:           "fab fa-fw fa-github"
+      url:            "https://github.com/aminehy"
 
 # Site Footer
 footer:
   links:
-# icons: https://fontawesome.com/
-    - label: "LinkedIn"
-      icon: "fab fa-linkedin"
-      url: "https://www.linkedin.com/in/aminehy/"
+# icons:              https://fontawesome.com/
+    - label:          "LinkedIn"
+      icon:           "fab fa-linkedin"
+      url:            "https://www.linkedin.com/in/aminehy/"
 
-    - label: "Medium"
-      icon: "fab fa-medium"
-      url: "https://medium.com/@Amine_hy"
+    - label:          "Medium"
+      icon:           "fab fa-medium"
+      url:            "https://medium.com/@Amine_hy"
 
-    - label: "GitHub"
-      icon: "fab fa-fw fa-github"
-      url: "https://github.com/aminehy"
+    - label:          "GitHub"
+      icon:           "fab fa-fw fa-github"
+      url:            "https://github.com/aminehy"
 
-    - label: "GitLab"
-      icon: "fab fa-fw fa-gitlab"
-      url: "https://gitlab.com/aminehy"
+    - label:          "GitLab"
+      icon:           "fab fa-fw fa-gitlab"
+      url:            "https://gitlab.com/aminehy"
 
-    - label: "ResearshGate"
-      icon: "fab fa-researchgate"
-      url: "https://www.researchgate.net/profile/M_Amine_Hadj-Youcef"
+    - label:          "ResearshGate"
+      icon:           "fab fa-researchgate"
+      url:            "https://www.researchgate.net/profile/M_Amine_Hadj-Youcef"
 
 # Reading Files
 include:
@@ -186,41 +186,41 @@ exclude:
 keep_files:
   - .git
   - .svn
-encoding: "utf-8"
-markdown_ext: "markdown,mkdown,mkdn,mkd,md"
+encoding:             "utf-8"
+markdown_ext:         "markdown,mkdown,mkdn,mkd,md"
 
 
 # Conversion
-markdown: kramdown
-highlighter: rouge
-lsi: false
-excerpt_separator: "\n\n"
-incremental: false
+markdown:             kramdown
+highlighter:          rouge
+lsi:                  false
+excerpt_separator:    "\n\n"
+incremental:          false
 
 
 # Markdown Processing
 kramdown:
-  input: GFM
-  hard_wrap: false
-  auto_ids: true
-  footnote_nr: 1
-  entity_output: as_char
-  toc_levels: 1..6
-  smart_quotes: lsquo,rsquo,ldquo,rdquo
-  enable_coderay: false
+  input:              GFM
+  hard_wrap:          false
+  auto_ids:           true
+  footnote_nr:        1
+  entity_output:      as_char
+  toc_levels:         1..6
+  smart_quotes:       lsquo,rsquo,ldquo,rdquo
+  enable_coderay:     false
 
 
 # Sass/SCSS
 sass:
-  sass_dir: _sass
-  style: compressed # http://sass-lang.com/documentation/file.SASS_REFERENCE.html#output_style
+  sass_dir:           _sass
+  style:              compressed # http://sass-lang.com/documentation/file.SASS_REFERENCE.html#output_style
 
 
 # Outputting
-permalink: /:categories/:title/
-paginate: 5 # amount of posts to show
-paginate_path: /page:num/
-timezone: Europe/Paris # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+permalink:            /:categories/:title/
+paginate:             5 # amount of posts to show
+paginate_path:        /page:num/
+timezone:             Europe/Paris # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 
 
 # Plugins (previously gems:)
@@ -254,70 +254,70 @@ whitelist:
 #  - <base_path/categories/my-awesome-category/index.html ~> path: /categories/
 #  - <base_path/my-awesome-category/index.html ~> path: /
 category_archive:
-  type: liquid
-  path: /categories/
+  type:               liquid
+  path:               /categories/
 tag_archive:
-  type: liquid
-  path: /tags/
+  type:               liquid
+  path:               /tags/
 # https://github.com/jekyll/jekyll-archives
 # jekyll-archives:
 #   enabled:
 #     - categories
 #     - tags
 #   layouts:
-#     category: archive-taxonomy
-#     tag: archive-taxonomy
+#     category:       archive-taxonomy
+#     tag:            archive-taxonomy
 #   permalinks:
-#     category: /categories/:name/
-#     tag: /tags/:name/
+#     category:       /categories/:name/
+#     tag:            /tags/:name/
 
 
 # HTML Compression
 # - http://jch.penibelst.de/
 compress_html:
-  clippings: all
+  clippings:          all
   ignore:
-    envs: development
+    envs:             development
 
 
 # Defaults
 defaults:
   # _posts
   - scope:
-      path: ""
-      type: posts
+      path:           ""
+      type:           posts
     values:
-      layout: single
+      layout:         single
       author_profile: true
-      author: M. Amine Hadj-Youcef
-      read_time: true
-      comments: true
-      share: true
-      related: true
+      author:         Amine Hadj-Youcef
+      read_time:      true
+      comments:       true
+      share:          true
+      related:        true
 
   # _pages
   - scope:
-      path: ""
-      type: pages
+      path:           ""
+      type:           pages
     values:
-      layout: single
+      layout:         single
       author_profile: true
 
   # _portfolio
   - scope:
-      path: ""
-      type: portfolio
+      path:           ""
+      type:           portfolio
     values:
-      layout: single
+      layout:         single
       author_profile: false
-      share: true
+      share:          true
 
 collections:
   portfolio:
-    output: true
-    permalink: /:collection/:path/
+    output:           true
+    permalink:        /:collection/:path/
 
 
 
 
-github: [metadata]
+github:               [metadata]

@@ -8,9 +8,10 @@ excerpt: "image classification with deep learning"
 header:
   image: /assets/images/CNN-image-classification.png
 ---
+
 # A Dive into an Artificial Intelligence algorithm
 
-This article will explain the Convolutional Neural Network (CNN) with an illustration of image classification. It provides a simple implementation of the CNN algorithm using the framework PyTorch on Python. There are many free courses that can be found on the internet. Personally, I suggest the course of *Andrej Karpathy* at Stanford university ([@karpathy](http://twitter.com/karpathy)). You will learn a lot, it is a step by step course. In addition, it provides many practical strategies to implement the CNN architecture.
+This article will explain the Convolutional Neural Network (CNN) with an illustration of image classification. It provides a simple implementation of the CNN algorithm using the framework PyTorch on Python. There are many free courses that can be found on the internet. Personally, I suggest the course of _Andrej Karpathy_ at Stanford university ([@karpathy](http://twitter.com/karpathy)). You will learn a lot, it is a step by step course. In addition, it provides many practical strategies to implement the CNN architecture.
 
 Link to the course: [CS231n Convolutional Neural Networks for Visual Recognition](http://cs231n.github.io/convolutional-networks/)
 
@@ -23,13 +24,14 @@ It consists of feeding the convolutional neural network with images of the train
 The CNN architecture we used in this article is proposed in [this paper](http://personal.ie.cuhk.edu.hk/~ccloy/project_target_code/index.html).
 
 Here is an illustration of the image classification using CNN architecture
+
 <p align="center">
   <img src="https://cdn-images-1.medium.com/max/6096/1*JAoTFAsN5HCrRgrJPaBgrg.png" alt="pooling"/>
 </p>
 
 # Implementation of the CNN in Python using the PyTorch library
 
-The network is implemented as a class called CNN. It contains two main methods. The first method (__init__) defines layers components of the network. In the second method (*forward*) we wire the network and put every component in the desired order (as shown in the picture).
+The network is implemented as a class called CNN. It contains two main methods. The first method (**init**) defines layers components of the network. In the second method (_forward_) we wire the network and put every component in the desired order (as shown in the picture).
 
 The python code bellow is straightforward. The network is defined using the neural network module of Torch. Notice that we already choose hyper-parameters of the network, such as Padding (P), Stride (S) and Kernel_size (F). Also the number of filters at each layer, … .
 
@@ -37,16 +39,15 @@ The input image has four dimensions, (batch_size, num_channel, height, width). T
 
 In the following bullet we will explain the role of each layer of the algorithm:
 
-* *Conv layer*: This is the main layer of the algorithm. It consists of extracting the key features in the input image (sharp edge, smoothness, rounded shape, …). This is done through a set of 2-dimensional convolutions of the image inthe input with one or many filters. Note that the convolution is performed simultaneously for each channel of the input image, e.g. a color image has C=3 channels, RGB: Red, Green, and Blue. The filters are set to have odd size for practical purpose CxFxF, e.g, 3x3x3, 3x5x5. The output of this operation is one scalar value, an artificial neuron. An illustrative animation for the convolution layer is given in [http://cs231n.github.io/convolutional-networks/#conv](http://cs231n.github.io/convolutional-networks/#conv).
+-   _Conv layer_: This is the main layer of the algorithm. It consists of extracting the key features in the input image (sharp edge, smoothness, rounded shape, …). This is done through a set of 2-dimensional convolutions of the image inthe input with one or many filters. Note that the convolution is performed simultaneously for each channel of the input image, e.g. a color image has C=3 channels, RGB: Red, Green, and Blue. The filters are set to have odd size for practical purpose CxFxF, e.g, 3x3x3, 3x5x5. The output of this operation is one scalar value, an artificial neuron. An illustrative animation for the convolution layer is given in <http://cs231n.github.io/convolutional-networks/#conv>.
 
-![Source: [http://cs231n.github.io/convolutional-networks/#conv](http://cs231n.github.io/convolutional-networks/#conv)](https://cdn-images-1.medium.com/max/2000/1*qtinjiZct2w7Dr4XoFixnA.gif)
+![Source: \[http://cs231n.github.io/convolutional-networks/#conv\](http://cs231n.github.io/convolutional-networks/#conv)](https://cdn-images-1.medium.com/max/2000/1*qtinjiZct2w7Dr4XoFixnA.gif)
 
-*Source: [http://cs231n.github.io/convolutional-networks/#conv](http://cs231n.github.io/convolutional-networks/#conv)*
+_Source: <http://cs231n.github.io/convolutional-networks/#conv>_
 
 Furthermore, the Conv layer is applied repeatedly to extract fine features that characterize the input image. The outputs of the Conv layer are called features map (or activation map), where each spatial position (or pixel) represents an artificial neuron.
 
-* *ReLU (Rectifier Linear Units)*: It performs hard thresholding for negative values to zero, and leave positive values untouched, i,e, ReLU(x)=max(0, x). This layer preserves the dynamic range of the feature map.
-
+-   _ReLU (Rectifier Linear Units)_: It performs hard thresholding for negative values to zero, and leave positive values untouched, i,e, ReLU(x)=max(0, x). This layer preserves the dynamic range of the feature map.
 
 <p align="center">
   <img src="https://cdn-images-1.medium.com/max/2000/1*njuH4XVXf-l9pR_RorUOrA.png" alt="pooling"/>
@@ -57,7 +58,6 @@ Furthermore, the Conv layer is applied repeatedly to extract fine features that 
   <img src="https://cdn-images-1.medium.com/max/2000/1*gaD6SJ6kQNVOclE_WkwLNQ.png" alt="pooling"/>
 </p>
 
-
 # How about the Python implementation of CNN?
 
 For this article, I used the neural network framework PyTorch to implement the CNN architecture detailed above.
@@ -65,8 +65,7 @@ For this article, I used the neural network framework PyTorch to implement the C
 The full code is available in my GitHub repository: [amineHY/Image-classification-of-MNIST](https://github.com/amineHY/Image-classification-of-MNIST/blob/master/pytorch_mnist_deep_cnn.ipynb)
 This repository contains notebooks for image classification of the MNIST dataset. The code is quite simple to understand, hopefully, since it mentions all the layers we discussed earlier in an intuitive way.
 
-``` python
-
+```python
 # Implementation of CNN/ConvNet Model using PyTorch (depicted in the picture above)
 
 class CNN(torch.nn.Module):
@@ -128,7 +127,7 @@ Note that all the number mentioned in the input of the methods is parameters. Th
 
 The output of the above code summarizes the network architecture:
 
-``` bash
+```bash
   CNN(
     (layer1): Sequential(
       (0): Conv2d(1, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
@@ -158,13 +157,11 @@ The output of the above code summarizes the network architecture:
   )
 ```
 
-
-
-#  Importing MNIST Dataset
+# Importing MNIST Dataset
 
 In order to acquire the MNIST images, we use a method of torchvision library. Just copy paste this code to download the data. Basically, two datasets are loaded. The training dataset serves as ground truth to compute the network parameters. The testing images
 
-``` python
+```python
   import torch
   import torchvision.datasets as dsets
 
@@ -194,13 +191,13 @@ This is an essential stage of a supervised algorithm. By feeding the algorithm w
 
 The training of the network is composed of two major steps, forward and backward:
 
-* During the forward pass, we feed the network by images of the training set and compute the features map till the end of the network, then we compute the loss function to measure how far / close the solution (predicted label) is from the ground truth label.
+-   During the forward pass, we feed the network by images of the training set and compute the features map till the end of the network, then we compute the loss function to measure how far / close the solution (predicted label) is from the ground truth label.
 
-* The backward pass performs the computation of the loss function’s gradient and updates the filters' parameters.
+-   The backward pass performs the computation of the loss function’s gradient and updates the filters' parameters.
 
 We also need to define an loss function, e.g. [Cross-entropy loss function](https://en.wikipedia.org/wiki/Cross_entropy#Cross-entropy_error_function_and_logistic_regression), and an optimization algorithm, such as [Gradient descent, SGD, Adam](https://arxiv.org/pdf/1412.6980.pdf) (Adaptive moment estimation[)](https://arxiv.org/pdf/1412.6980.pdf)…
 
-![[Source: https://arxiv.org/pdf/1412.6980.pdf](https://arxiv.org/pdf/1412.6980.pdf)](https://cdn-images-1.medium.com/max/2000/1*MOVbwX27vXjzYmfV1NSswQ.png)*[Source: https://arxiv.org/pdf/1412.6980.pdf](https://arxiv.org/pdf/1412.6980.pdf)*
+![\[Source: https://arxiv.org/pdf/1412.6980.pdf\](https://arxiv.org/pdf/1412.6980.pdf)](https://cdn-images-1.medium.com/max/2000/1*MOVbwX27vXjzYmfV1NSswQ.png)_[Source: https://arxiv.org/pdf/1412.6980.pdf](https://arxiv.org/pdf/1412.6980.pdf)_
 
 **What to remember** for training a deep learning algorithm:
 
@@ -211,7 +208,8 @@ We also need to define an loss function, e.g. [Cross-entropy loss function](http
  — Use the learned parameters to predict the label for a given input image
 
 ### Python implementation of training CNN in Python using PyTorch
-``` python
+
+```python
 print('Training the Deep Learning network ...')
 
 learning_rate = 0.001
@@ -289,6 +287,6 @@ The classification algorithm is able to understand the content of these images t
   <img src="https://cdn-images-1.medium.com/max/2000/1*bgm3yCrLs1wvE9UskdBhRA.png" alt="pooling"/>
 </p>
 
-
 # Conclusion
+
 This article attempts to explain briefly the convolutional neural network without going deep into mathematical development. An illustration is provided at each step with a visual explanation, as well as an application of image classification of MNIST dataset. Finally, a python implementation using PyTorch library is presented in order to provide a concrete example of application. Hopefully, you will find it interesting and easy to read.

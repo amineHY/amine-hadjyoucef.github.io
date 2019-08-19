@@ -54,7 +54,7 @@
     {
       "@context": "https://schema.org",
       "@type": "Person",
-      "name": "M. Amine Hadj-Youcef, Ph. D",
+      "name": "Amine Hadj-Youcef, Ph. D",
       "url": "http://localhost:4000",
       "sameAs": null
     }
@@ -344,6 +344,7 @@
 <h1 id="what-is-nvidia-tensorrt">What Is NVIDIA TensorRT?</h1>
 
 <p><img src="https://cdn-images-1.medium.com/max/2000/1*EWiIvB6RjwEZrlSLF1Xttw.png" alt="[https://docs.nvidia.com/deeplearning/sdk/tensorrt-archived/tensorrt_210/tensorrt-user-guide/](https://docs.nvidia.com/deeplearning/sdk/tensorrt-archived/tensorrt_210/tensorrt-user-guide/index.html)" /><em><a href="https://docs.nvidia.com/deeplearning/sdk/tensorrt-archived/tensorrt_210/tensorrt-user-guide/index.html">https://docs.nvidia.com/deeplearning/sdk/tensorrt-archived/tensorrt_210/tensorrt-user-guide/</a></em></p>
+
 <blockquote>
   <p>The core of NVIDIA TensorRT is a C++ library that facilitates high-performance inference on NVIDIA graphics processing units (GPUs). TensorRT takes a trained network, which consists of a network definition and a set of trained parameters, and produces a highly optimized runtime engine which performs inference for that network.
 You can describe a TensorRT network using a C++ or Python API, or you can import an existing Caffe, ONNX, or TensorFlow model using one of the provided parsers.</p>
@@ -377,7 +378,7 @@ You can describe a TensorRT network using a C++ or Python API, or you can import
 
 <p>To check if CUDA is correctly installed on you machine, just enter in the terminal</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    nvidia-smi
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  nvidia-smi
 </code></pre></div></div>
 
 <p>The output should look something like that (I have a <code class="highlighter-rouge">NVIDIA GPU GeForce GTX 1660 Ti/PCIe/SSE2</code>)</p>
@@ -402,19 +403,19 @@ You can describe a TensorRT network using a C++ or Python API, or you can import
   <li>
     <p>First, open a terminal (ctrl+alt + t) and enter this command to pull the docker image</p>
 
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   docker pull aminehy/tensorrt-opencv-python3:version-1.3
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> docker pull aminehy/tensorrt-opencv-python3:version-1.3
 </code></pre></div>    </div>
   </li>
   <li>
     <p>Enable launching GUI applications from inside the docker container bu entering the command</p>
 
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   xhost +
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> xhost +
 </code></pre></div>    </div>
   </li>
   <li>
     <p>Lastly, run the docker container with the command:</p>
 
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  docker run <span class="nt">-it</span> — rm <span class="nt">-v</span> <span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>:/workspace — <span class="nv">runtime</span><span class="o">=</span>nvidia <span class="nt">-w</span> /workspace <span class="nt">-v</span> /tmp/.X11-unix:/tmp/.X11-unix <span class="nt">-e</span> <span class="nv">DISPLAY</span><span class="o">=</span>unix<span class="nv">$DISPLAY</span> aminehy/tensorrt-opencv-python3:version-1.3
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run <span class="nt">-it</span> — rm <span class="nt">-v</span> <span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>:/workspace — <span class="nv">runtime</span><span class="o">=</span>nvidia <span class="nt">-w</span> /workspace <span class="nt">-v</span> /tmp/.X11-unix:/tmp/.X11-unix <span class="nt">-e</span> <span class="nv">DISPLAY</span><span class="o">=</span>unix<span class="nv">$DISPLAY</span> aminehy/tensorrt-opencv-python3:version-1.3
 </code></pre></div>    </div>
   </li>
 </ul>
@@ -429,42 +430,48 @@ You can describe a TensorRT network using a C++ or Python API, or you can import
 <p>In this experiment, we run YOLOv3 model on 500 images and compare the average inference time before and after optimization of the model with NVIDIA TensorRT. The images used in this experiment are from COCO dataset: <a href="http://cocodataset.org/#home">COCO - Common Objects in Context</a>.</p>
 
 <h2 id="1-running-a-non-optimized-yolov3">1) Running a non-optimized YOLOv3</h2>
+
 <p>Link to the project in gitlab: <a href="https://gitlab.com/aminehy/yolov3-darknet">Amine Hy / YOLOv3-DarkNet</a></p>
 
 <ul>
   <li>
     <p>Clone and the repository then run using the script <code class="highlighter-rouge">docker_TensorRT_OpenCV_Python.sh</code>.</p>
 
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  git clone https://gitlab.com/aminehy/yolov3-darknet.git
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://gitlab.com/aminehy/yolov3-darknet.git
 
-  <span class="nb">cd </span>yolov3-darknet
+<span class="nb">cd </span>yolov3-darknet
 
-  chmod +x docker_TensorRT_OpenCV_Python.sh
+chmod +x docker_TensorRT_OpenCV_Python.sh
 
-  ./docker_TensorRT_OpenCV_Python.sh run
+./docker_TensorRT_OpenCV_Python.sh run
 </code></pre></div>    </div>
   </li>
   <li>
     <p>Download and unzip the test images folder in <code class="highlighter-rouge">./data/</code></p>
 
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  wget http://images.cocodataset.org/zips/test2017.zip
-  unzip test2017.zip ../test2017/
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wget http://images.cocodataset.org/zips/test2017.zip
+unzip test2017.zip ../test2017/
 </code></pre></div>    </div>
   </li>
   <li>
     <p>Download the weight file <code class="highlighter-rouge">yolov3.weights</code></p>
 
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  wget https://pjreddie.com/media/files/yolov3.weights
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wget https://pjreddie.com/media/files/yolov3.weights
 </code></pre></div>    </div>
   </li>
-  <li>Then execute YOLOv3 python file:
+  <li>
+    <p>Then execute YOLOv3 python file:</p>
+
     <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python darknet.py
 </code></pre></div>    </div>
   </li>
-  <li><strong>Results:</strong></li>
+  <li>
+    <p><strong>Results:</strong></p>
+  </li>
 </ul>
 
 <p>The results should be saved in the folder <code class="highlighter-rouge">./data/results</code></p>
+
 <p align="center">
   <img src="https://cdn-images-1.medium.com/max/2000/1*ySnKobAGy8_NFze7U0goYQ.png" alt="pooling" />
 </p>
@@ -476,6 +483,7 @@ You can describe a TensorRT network using a C++ or Python API, or you can import
 <p><img src="https://cdn-images-1.medium.com/max/2246/1*XM_KOVzJlT1F3sqP1Azfeg.png" alt="" /></p>
 
 <p>The first step is to import the model, which includes loading it from a saved file on disk and converting it to a TensorRT network from its native framework or format. Our example loads the model in ONNX format from the ONNX model.</p>
+
 <blockquote>
   <p>ONNX is a standard for representing deep learning models enabling them to be transferred between frameworks. (Many frameworks such as Caffe2, Chainer, CNTK, PaddlePaddle, PyTorch, and MXNet support the ONNX format).</p>
 </blockquote>
@@ -483,6 +491,7 @@ You can describe a TensorRT network using a C++ or Python API, or you can import
 <p>Next, an optimized TensorRT engine is built based on the input model, target GPU platform, and other configuration parameters specified. The last step is to provide input data to the TensorRT engine to perform inference.</p>
 
 <p>The sample uses the following components in TensorRT to perform the above steps:</p>
+
 <ul>
   <li>ONNX parser: takes a trained model in ONNX format as input and populates a network object in TensorRT</li>
   <li>Builder: takes a network in TensorRT and generates an engine that is optimized for the target platform</li>
@@ -496,29 +505,33 @@ You can describe a TensorRT network using a C++ or Python API, or you can import
   <li>
     <p>Get the project from GitHub and change the working directory</p>
 
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  git clone https://gitlab.com/aminehy/YOLOv3-Darknet-ONNX-TensorRT.git
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://gitlab.com/aminehy/YOLOv3-Darknet-ONNX-TensorRT.git
 
-  <span class="nb">cd </span>YOLOv3-Darknet-ONNX-TensorRT/
+<span class="nb">cd </span>YOLOv3-Darknet-ONNX-TensorRT/
 </code></pre></div>    </div>
   </li>
   <li>
     <p>Convert the model from Darknet to ONNX. This step will create an engine called: <code class="highlighter-rouge">yolov3.onnx</code></p>
 
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  python yolov3_to_onnx.py
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python yolov3_to_onnx.py
 </code></pre></div>    </div>
   </li>
   <li>
     <p>Convert the model from ONNX to TensorRT. This step will create an engine called: <code class="highlighter-rouge">yolov3.trt</code> and use for the inference</p>
 
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  python onnx_to_tensorrt.py
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python onnx_to_tensorrt.py
 </code></pre></div>    </div>
   </li>
-  <li>For this experiment, we set this parameter: builder.fp16_mode = True
-    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="n">builder</span><span class="o">.</span><span class="n">fp16_mode</span> <span class="o">=</span> <span class="bp">True</span>
-  <span class="n">builder</span><span class="o">.</span><span class="n">strict_type_constraints</span> <span class="o">=</span> <span class="bp">True</span>
+  <li>
+    <p>For this experiment, we set this parameter: builder.fp16_mode = True</p>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">builder</span><span class="o">.</span><span class="n">fp16_mode</span> <span class="o">=</span> <span class="bp">True</span>
+<span class="n">builder</span><span class="o">.</span><span class="n">strict_type_constraints</span> <span class="o">=</span> <span class="bp">True</span>
 </code></pre></div>    </div>
   </li>
-  <li><strong>Results:</strong></li>
+  <li>
+    <p><strong>Results:</strong></p>
+  </li>
 </ul>
 
 <p align="center">
@@ -552,39 +565,39 @@ You can describe a TensorRT network using a C++ or Python API, or you can import
   <li>
     <p>Compile and build the model</p>
 
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  git submodule update — init — recursive
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git submodule update — init — recursive
 
-  mkdir build
+mkdir build
 
-  <span class="nb">cd </span>build <span class="o">&amp;&amp;</span> cmake .. <span class="o">&amp;&amp;</span> make <span class="o">&amp;&amp;</span> make install <span class="o">&amp;&amp;</span> <span class="nb">cd</span> ..
+<span class="nb">cd </span>build <span class="o">&amp;&amp;</span> cmake .. <span class="o">&amp;&amp;</span> make <span class="o">&amp;&amp;</span> make install <span class="o">&amp;&amp;</span> <span class="nb">cd</span> ..
 </code></pre></div>    </div>
   </li>
   <li>
     <p>Edit the configuration file and choose between the settings, YOLO 416 or YOLO 608, located in</p>
 
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  ~/TensorRT-Yolov3/tensorRTWrapper/code/include/YoloConfigs.h
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/TensorRT-Yolov3/tensorRTWrapper/code/include/YoloConfigs.h
 </code></pre></div>    </div>
   </li>
   <li>
     <p>You need also to take a look at the configuration file <code class="highlighter-rouge">configs.h</code> located in</p>
 
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  ~/TensorRT-Yolov3/include/configs.h
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/TensorRT-Yolov3/include/configs.h
 </code></pre></div>    </div>
   </li>
   <li>
-    <p>Create the TensorRT engine and run inference on a test image <code class="highlighter-rouge">dog.jpg </code></p>
+    <p>Create the TensorRT engine and run inference on a test image <code class="highlighter-rouge">dog.jpg</code></p>
 
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="c"># for yolov3–416 (don’t forget to edit YoloConfigs.h for YoloKernel)</span>
-  ./install/runYolov3 — <span class="nv">caffemodel</span><span class="o">=</span>./caffe/yolov3_416.caffemodel <span class="se">\</span>
-  — <span class="nv">prototxt</span><span class="o">=</span>./caffe/yolov3_416.prototxt — <span class="nv">input</span><span class="o">=</span>./dog.jpg <span class="se">\</span>
-  — <span class="nv">W</span><span class="o">=</span>416 — <span class="nv">H</span><span class="o">=</span>416 — <span class="nv">class</span><span class="o">=</span>80 — <span class="nv">mode</span><span class="o">=</span>fp16
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># for yolov3–416 (don’t forget to edit YoloConfigs.h for YoloKernel)</span>
+./install/runYolov3 — <span class="nv">caffemodel</span><span class="o">=</span>./caffe/yolov3_416.caffemodel <span class="se">\</span>
+— <span class="nv">prototxt</span><span class="o">=</span>./caffe/yolov3_416.prototxt — <span class="nv">input</span><span class="o">=</span>./dog.jpg <span class="se">\</span>
+— <span class="nv">W</span><span class="o">=</span>416 — <span class="nv">H</span><span class="o">=</span>416 — <span class="nv">class</span><span class="o">=</span>80 — <span class="nv">mode</span><span class="o">=</span>fp16
 </code></pre></div>    </div>
   </li>
   <li>
     <p>Once the engine is created, you can pass it as an argument</p>
 
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  ./install/runYolov3 — <span class="nv">caffemodel</span><span class="o">=</span>./caffe/yolov3_416.caffemodel
-   — <span class="nv">prototxt</span><span class="o">=</span>./caffe/yolov3_416.prototxt — <span class="nv">input</span><span class="o">=</span>./dog.jpg — <span class="nv">W</span><span class="o">=</span>416 — <span class="nv">H</span><span class="o">=</span>416 — <span class="nv">class</span><span class="o">=</span>80 — <span class="nv">enginefile</span><span class="o">=</span>./engine/yolov3_fp32.engine
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./install/runYolov3 — <span class="nv">caffemodel</span><span class="o">=</span>./caffe/yolov3_416.caffemodel
+ — <span class="nv">prototxt</span><span class="o">=</span>./caffe/yolov3_416.prototxt — <span class="nv">input</span><span class="o">=</span>./dog.jpg — <span class="nv">W</span><span class="o">=</span>416 — <span class="nv">H</span><span class="o">=</span>416 — <span class="nv">class</span><span class="o">=</span>80 — <span class="nv">enginefile</span><span class="o">=</span>./engine/yolov3_fp32.engine
 </code></pre></div>    </div>
   </li>
   <li>
@@ -774,7 +787,7 @@ You can describe a TensorRT network using a C++ or Python API, or you can import
     </ul>
  </div>
 
- <div class="page__footer-copyright">&copy; 2019 M. Amine Hadj-Youcef, Ph. D </div>
+ <div class="page__footer-copyright">&copy; 2019 Amine Hadj-Youcef, Ph. D </div>
 </center>
 
       </footer>

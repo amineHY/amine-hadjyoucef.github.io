@@ -10,32 +10,36 @@ header:
 classes: wide
 ---
 
+* * *
 
-***
 # Summary
-***
 
-- Strong project management skills as demonstrated by 3 successful projects in industrial sectors, biomedical, information and spatial, leading to 6 publications in advanced scientific journals (IEEE Xplore Digital Library)
+* * *
 
-- High-level technical skills in applied mathematics, machine learning, statistics, to unlock information in the structured/unstructured data (signal and image) and deliver valuable insights to provide strong imaging system knowledge, and passion about the development of algorithms in machine learning,
+-   Strong project management skills as demonstrated by 3 successful projects in industrial sectors, biomedical, information and spatial, leading to 6 publications in advanced scientific journals (IEEE Xplore Digital Library)
 
-- Excellent oral and written communication skills resulting in 7 first-author papers and 3 talks
+-   High-level technical skills in applied mathematics, machine learning, statistics, to unlock information in the structured/unstructured data (signal and image) and deliver valuable insights to provide strong imaging system knowledge, and passion about the development of algorithms in machine learning,
 
+-   Excellent oral and written communication skills resulting in 7 first-author papers and 3 talks
 
 ### Fields of expertise
-- Images and Signals Processing
-- Artificial Intelligence & Machine Learning
-- Neural Networks / Deep learning
-- Research and Development (R&D)
-- Project Management
-- Statistics and Bayesian Inference
-- Imaging system knowledge
 
+-   Images and Signals Processing
+-   Artificial Intelligence & Machine Learning
+-   Neural Networks / Deep learning
+-   Research and Development (R&D)
+-   Project Management
+-   Statistics and Bayesian Inference
+-   Imaging system knowledge
 
 # Work Experience
-***
+
+* * *
+
 ### R&D Engineer in Image Processing
-***
+
+* * *
+
 [Signal and Systems Laboratory (L2S)](http://www.l2s.centralesupelec.fr/), Centrale Supélec &  [Spatial Astrophysics Institute (IAS)](http://www.ias.u-psud.fr/), CNRS, France.
 
 10 / 2015 - 11 / 2018
@@ -58,23 +62,24 @@ classes: wide
 
 **Public Talks**  
   ► GDR-ISIS, Paris, France.  
-  ► EUSIPCO 2018, Rome, Italy.    
+  ► EUSIPCO 2018, Rome, Italy.  
   ► EUSIPCO 2017, Kos, Grece.    
 
-**Technical environment**    
+**Technical environment**  
   ► Linux Ubuntu 64-bit  
   ► Python:  Numpy, Scikit-learn, Matplotlib, Pandas  
 
 <br/><br/>
 
 ### Teaching Assistant
-***
+
+* * *
+
 [Ecole Polytech Paris-Sud](http://www.polytech.u-psud.fr/fr/formations/electronique-et-systemes-robotises.html), University of Paris-Sud, France.  
 
 2016-2018  
 
-**Description of the project**: I was in charge of teaching two classes of total number of +60 under graduate students at the engineering school *Polytech Paris-Sud*.
-
+**Description of the project**: I was in charge of teaching two classes of total number of +60 under graduate students at the engineering school _Polytech Paris-Sud_.
 
 **Accomplishments**  
   ► Teaching of Signal Processing  
@@ -82,12 +87,14 @@ classes: wide
   ► Animation of tutorials  
   ► Student assessment and exam preparation  
   ► Teaching contents: Fourier Transform, Linear filtering, Sampling, Applied mathematics, Deterministic random signal processing, basis in statistics, ...  
-  ► Teaching students to perform signal processing in *MATLAB*  
+  ► Teaching students to perform signal processing in _MATLAB_  
 
 <br/><br/>
 
 ### Image Processing Engineer - Computer Vision
-***
+
+* * *
+
 [Synchromedia Laboratory](http://www.synchromedia.ca/), Montreal, Quebec, Canada
 
 02/2015-08/2015
@@ -95,7 +102,7 @@ classes: wide
 **Description of the project**:
   coming soon...
 
-**Accomplishments**    
+**Accomplishments**  
   ► Demonstrated flexibility skills through the development of image processing algorithms for the preservation of historical documents, resulting in a new method for processing document images using a linear mixing model in Matlab  
 
   ► Improved project and time management skills by defining the problem and the project roadmap, Implementing image processing algorithms in Matlab  
@@ -106,9 +113,10 @@ classes: wide
   ► Linux Ubuntu 64-bit  
   ► MATLAB  
 
-
 ### Signal and Image Processing Engineer
-***
+
+* * *
+
 [The Mathematical Institue of Bordeaux](https://www.math.u-bordeaux.fr/imb/spip.php), France.
 
 02/2014 - 07/2014
@@ -125,17 +133,17 @@ classes: wide
   ► Linux Ubuntu 64-bit  
   ► MATLAB  
 
-
-
 ### Machine Learning Engineer - R&D
-***
+
+* * *
+
 Biomedical laboratory, USTHB. Algeria.  
 
 02/2012 - 02/2013  
 
 **Description of the project**: As part of the internship at the end of engineering studies, I held the position of machine learning engineer for the EEG biomedical signal epilepsy detection project. The goal is to anticipate the treatment of the pathology, and protect the individual suffering from the pathology in case of epileptic seizure.
 
-**Accomplishments**    
+**Accomplishments**  
   ► Developed project management skills through the development of a decision support tool for  epilepsy detection from an EEG signals database using machine learning, resulting in the proposition of a new pipeline for the classification of biomedical signals in Matlab
 
   ► Improved writing and communication skills through writing papers, leading to 2 publications in international conferences
@@ -145,22 +153,22 @@ Biomedical laboratory, USTHB. Algeria.
 **Technical environment**  
   ► MATLAB  
 
-**Publication in peer review international conferences**    
+**Publication in peer review international conferences**  
   ► CISTEM'2018  
   ► WoSSPA'2013  
 
+* * *
 
-
-
-***
 # Education
-***
+
+* * *
 
 ### University of Paris-Saclay
-***
+
+* * *
+
 Doctor of Philosophy (PhD), Signal and Image Processing.  
 2015 - 2018
-
 
 **Publications in peew review national/international conference**  
     ► 28th and 28th EUSIPCO (European Signal and Image Processing Conference).  
@@ -168,24 +176,24 @@ Doctor of Philosophy (PhD), Signal and Image Processing.
     ► 25th Colloque GRETSI (Groupe d'Etudes du Traitement du Signal et des Images).  
     ► Co-author of an article published in Astronomy & Astrophysics Journal.  
 
-
 ### University of Bordeaux
-***
+
+* * *
+
 Master's degree, Signal and Image Processing.  
 2013 - 2015  
 
-
 ► Master 2: 2014-2015 (Ranked : 2/21)  
 ► Master 1: 2013-2014
-
 
 <!--
 ###################################
  -->
 
-
 ### Ecole Nationale Polytechnique
-***
+
+* * *
+
 Engineer degree, Electrical engineering.  
 2007 - 2012
 
@@ -193,11 +201,15 @@ Engineer degree, Electrical engineering.
 ► 2009-2012: Electrical and Electronics Engineering  
 
 **Publication in peer review international conference**
-  * WOSSPA 2013 (Workshop on Systems, Signal Processing, and their Applications)
 
-***
+-   WOSSPA 2013 (Workshop on Systems, Signal Processing, and their Applications)
+
+* * *
+
 # Techniques, Software & Instrumentation
-***
+
+* * *
+
   **Programming Languages**: Python, Matlab, Latex, Markdown, RST
 
   **Libraries**: OpenCV, Numpy, Matplotlib, scrikit-learn, PyTorch, TensorFlow, Keras
@@ -208,9 +220,10 @@ Engineer degree, Electrical engineering.
 
   **Instrument**: NVIDIA Development kit TX2, Dual-camera Pensar of Aerialtronics.
 
+* * *
 
-
-***
 # Affiliations &/ Hobbies
-***
+
+* * *
+
 Running, Badminton, Reading, Writing
