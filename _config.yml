@@ -20,7 +20,7 @@ title                    : "Welcome to my Personal Website"
 title_separator          : "-"
 subtitle                 : # site tagline that appears below site title in masthead
 name                     : "Amine Hadj-Youcef, Ph. D"
-description              : "Data scientist profolio."
+description              : "I work at Drone Volt as an Artificial Intelligence Engineer. My fields of expertise include Machine Learning, Computer Vision, Signal & Image processing and Data Science in general."
 url                      : "https://aminehy.github.io/"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
