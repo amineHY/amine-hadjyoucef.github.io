@@ -10,7 +10,7 @@ var store = [{
         "url": "http://localhost:4000/Optimize/",
         "teaser":null},{
         "title": "Pensar SDK, A Rapid Artificial Intelligence Application Development framework",
-        "excerpt":"A Software Development Kit (SDK) for rapid development of artificial based (AI) based Computer Vision (CV) application In the past days I have been using and testing Pensar SDK, a Software Development Kit (SDK) for rapid development of AI-based Computer Vision (CV) application. It allows the development of AI-based Computer...","categories": [],
+        "excerpt":"A Software Development Kit (SDK) for rapid development of artificial based (AI) based Computer Vision (CV) application The original article is published on medium here This article is organized as follow: In the past days I have been using and testing Pensar SDK, a Software Development Kit (SDK) for rapid...","categories": [],
         "tags": ["Computer Vision","Deep learning"],
         "url": "http://localhost:4000/pensarsdk-1/",
         "teaser":null}]
