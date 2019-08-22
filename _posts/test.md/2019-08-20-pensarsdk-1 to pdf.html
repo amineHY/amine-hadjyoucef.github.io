@@ -1,0 +1,327 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+    <title>Pensar SDK, A Rapid Artificial Intelligence Application Development framework on the Edge Device</title>
+    <link type="text/css" rel="stylesheet" href="assets/css/github-markdown.css">
+    <link type="text/css" rel="stylesheet" href="assets/css/pilcrow.css">
+    <link type="text/css" rel="stylesheet" href="assets/css/hljs-github.min.css"/>
+  </head>
+  <body>
+    <article class="markdown-body"><p>title: Pensar SDK, A Rapid Artificial Intelligence Application Development framework
+subtitle: A Software Development Kit (SDK) for rapid development of artificial based (AI) based Computer Vision (CV) application
+layout: single
+classes: wide
+tags: [Computer Vision, Deep learning]
+excerpt: &quot;A Software Development Kit (SDK) for rapid development of artificial intelligence based Computer Vision  application&quot;
+header:
+  image: pensarsdk/pensarsdk_logo_wide.png
+author_profile: true
+--- --&gt;
+<img src="pensarsdk/pensarsdk_logo_wide.png" alt="pensarsdk logo"></p>
+<h1 id="pensar-sdk,-a-rapid-artificial-intelligence-application-development-framework-on-the-edge-device"><a class="header-link" href="#pensar-sdk,-a-rapid-artificial-intelligence-application-development-framework-on-the-edge-device"></a>Pensar SDK, A Rapid Artificial Intelligence Application Development framework on the Edge Device</h1>
+<blockquote>
+<p>A Software Development Kit (SDK) for rapid development of artificial based (AI) based Computer Vision (CV) application</p>
+</blockquote>
+<p><strong>Note</strong>: An online version of this article is published (including a demo) <a href="https://medium.com/swlh/pensar-sdk-1-647f778bc11">here</a></p>
+<p><strong>This article is organized as follow:</strong></p>
+<!-- TOC depthFrom:1 depthTo:2 orderedList:false updateOnSave:false withLinks:false -->
+<pre class="hljs"><code>-<span class="ruby"> Why Pensar SDK?
+</span>-<span class="ruby"> Features of Pensar SDK
+</span>-<span class="ruby"> The concept of Pensar SDK
+</span>-<span class="ruby"> Application Pipeline
+</span>-<span class="ruby"> Use-<span class="hljs-symbol">Case:</span> Development of an Application <span class="hljs-keyword">for</span> Object Detection</span></code></pre><!-- /TOC -->
+<p>In the past days I have been using and testing <a href="https://pensarsdk.com/">Pensar SDK</a>, a Software Development Kit (SDK) for rapid development of AI-based Computer Vision (CV) application. It allows the development of AI-based Computer Vision application that can easily be deployed on <em>Pensar</em>, an embedded camera developed by <a href="https://www.aerialtronics.com/en/products/pensar">Aerialtronics</a>, a manufacturer of unmanned aerial vehicles, commonly known as drones, for aerial photography and videography.</p>
+<p align="center">
+  <img src="pensarsdk/pensar_cover.png" alt="pensar camera"/>
+</p>
+
+<p>In this article I give an overview of Pensar SDK and walk you through development of a demo application implementing object detection to be deployed on the camera <em>Pensar</em>.</p>
+<h2 id="why-pensar-sdk?"><a class="header-link" href="#why-pensar-sdk?"></a>Why Pensar SDK?</h2>
+<p>The domain of Artificial Intelligence is increasingly expanding and has already started disrupting many industries. New deep learning models and use-cases are proposed on a daily basis. The amount of data is flourishing thanks to the availability of the data-generator devices, smartphones, IoT, drones, robots.... On the other side, companies like NVIDIA are pushing the boundaries of computing devices by developing powerful computing (a.k.a, Graphical Processing Unit: GPU) which are faster, smaller, energy-efficient, and cheaper.</p>
+<p>One of the most important fields where AI is making a big step is Computer Vision. It is considered one of the most disrupting fields in today&#39;s world. It started little by little shifting many technologies across industries, from self-driving cars, smart city, video surveillance to robotics, transportation, defense and security, and more. To have an idea, here is a link on the latest workshop from the Computer Vision Foundation listing advanced research in the field: <a href="http://openaccess.thecvf.com/CVPR2019_workshops/menu.py">CVPR 2019 Workshops</a></p>
+<p>If you are a data scientist working on an AI-based computer vision solution and have experience of deploying these models on an edge device (e, g, smart camera), you probably agree with me that this is time (and money) consuming and is no fun at all. Building your development environment from scratch could be a nightmare, especially when the edge device has multiple components. If you don&#39;t strategically plan your solution, you end up wasting too much time setting up a workable development environment, instead of focusing on unlocking information from your data and developing a fast and accurate solution for your business.</p>
+<p>Practically speaking, not every business is able to do that for a lack of skill and knowledge. As a result, Pensar SDK is created to offer a resilient development and deployment solution for business. Pensar SDK is the first R(ai)AD, Rapid artificial intelligence Application Development framework. It is shipped with Pensar, an intelligent dual-camera based on the NVIDIA Jetson TX2. Pensar SDK&#39;s mission is to save time and help businesses to easily and rapidly develop an AI-based computer vision application.</p>
+<!-- Get started immediately with an application framework that takes care of cameras, recordings and communications for you.   Choose an inference engine, add your neural network or   choose from the shipped ones, add your own application   logic and GUI design via python-based plug-ins. All of this   while developing and testing from Visual Studio Code on your laptop and easily deploying on NVIDIA Jetson hardware. -->
+<h2 id="features-of-pensar-sdk"><a class="header-link" href="#features-of-pensar-sdk"></a>Features of Pensar SDK</h2>
+<p>Pensar SDK is more than a list of compiled libraries. It includes many features, among which:</p>
+<ul class="list">
+<li>A complete ready-to-use application framework</li>
+<li>Enables deep learning inference at the edge</li>
+<li>Plug and play pre-trained deep learning models</li>
+<li>Compatible with Linux-based desktop machine (AMD64) and edge device (ARM64) powered with NVIDIA Jetson TX1/TX2</li>
+<li>It supports most common Deep Learning and Computer Vision frameworks:<ul class="list">
+<li>Python/ C++ / Kivy</li>
+<li>OpenCV</li>
+<li>PyTorch</li>
+<li>TensorRT</li>
+<li>...</li>
+</ul>
+</li>
+</ul>
+<ul class="list">
+<li>Possibility to easily collect your data on the fly</li>
+<li>and more features</li>
+</ul>
+<h2 id="the-concept-of-pensar-sdk"><a class="header-link" href="#the-concept-of-pensar-sdk"></a>The concept of Pensar SDK</h2>
+<p>In the figure below I illustrate the workflow of development and deployment of an AI-based computer vision application using Pensar SDK</p>
+<p align="center">
+  <img src="pensarsdk/pensarsdk_workflow.png" alt="pensarsdk setup"/>
+</p>
+
+<p>Pensar SDK is installed on:</p>
+<ul class="list">
+<li>The host machine: from which the developer develop the application (design the application, import the trained neural network, ...) inside an environment that mimic the edge device</li>
+<li>The Edge device: Pensar SDK needs to be installed on the edge device to ensure a resilent and easy deployment.</li>
+</ul>
+<p><strong>Note</strong>: Please note that Pensar SDK has no tool to help you train your neural network. To do that you can use tool such as Amazon AWS, Google cloud platform, Azure ...</p>
+<h2 id="application-pipeline"><a class="header-link" href="#application-pipeline"></a>Application Pipeline</h2>
+<p>The figure below illustrates the application development pipeline:</p>
+<p align="center">
+  <img src="pensarsdk/application_pipeline.png" alt="pensarsdk pipeline"/>
+</p>
+
+
+<h3 id="preprocessor-pipeline"><a class="header-link" href="#preprocessor-pipeline"></a>Preprocessor pipeline</h3>
+<p>Here the trained deep learning model is parsed. The user can either use the installed one or import his trained model. The <code>preprocessor</code> takes care of all the hardware acceleration and optimization of AI/CV libraries.</p>
+<h3 id="plugin-pipeline"><a class="header-link" href="#plugin-pipeline"></a>Plugin pipeline</h3>
+<p>This is the core of the application that the user must configure and personalized. It is a plugin-based structure, where the preprocessed video passes through each one of them.</p>
+<div class="page"/>
+
+<h2 id="use-case:-development-of-an-application-for-object-detection"><a class="header-link" href="#use-case:-development-of-an-application-for-object-detection"></a>Use-Case: Development of an Application for Object Detection</h2>
+<p>At the input, the application takes a video captured with the edge device (the camera Pensar of Aerialtronics) and outputs the same video with an overlay from the inference.</p>
+<p>The figure below illustrates the application development pipeline:</p>
+<p align="center">
+  <img src="pensarsdk/application_pipeline_object_detection.png" alt="pensarsdk pipeline application"/>
+</p>
+
+<p>Let&#39;s see how this is done in practice on my laptop computer. I have Ubuntu 18.04 64-bits installed and NVIDIA GPU GeForce GTX 1660 Ti (I know it is not the best :)).</p>
+<h3 id="create-the-application-folder"><a class="header-link" href="#create-the-application-folder"></a>Create the Application Folder</h3>
+<p>By running the script <code>new_app_skeleton.sh</code>, a new application folder is created with the name you enter. The folder is not empty, it contains a template application files that you have to edit and adapt to the desired application.</p>
+<pre class="hljs"><code>user@user-host-machine:~/pensarsdk/applications$ ./new_app_skeleton.sh
+
+<span class="hljs-string">"This script can be used to create a new plugin-manager application
+ skeleton with a custom name, based on the hello_world example.
+
+The name must be given in snake case (https://en.wikipedia.org/wiki/Snake_case)
+ and the script will take care of appropriate CamelCase conversion for class names.
+
+The skeleton app will be composed of a single python plugin, with an
+ empty .kv GUI file, no neural network application and will be
+ equivalent in functionality to the hello_world application."</span>
+
+Please enter the name of the app you want to create:
+my_app</code></pre><p>The application folder is created with a path</p>
+<pre class="hljs"><code>~/pensarsdk/applications/my_app</code></pre><h3 id="launch-vs-code-from-inside-the-development-environment"><a class="header-link" href="#launch-vs-code-from-inside-the-development-environment"></a>Launch VS Code from Inside the Development Environment</h3>
+<p>  To launch Visual Studio Code, simply enter in the terminal</p>
+<pre class="hljs"><code> code .</code></pre><h3 id="configure-the-application"><a class="header-link" href="#configure-the-application"></a>Configure the Application</h3>
+<p>We now have to configure the application. To do that simply edit the file <code>my_app.xml</code>, particularly, the <code>preprocessor_pipeline</code> and the <code>plugins_pipeline</code>.</p>
+<pre class="hljs"><code><span class="php"><span class="hljs-meta">&lt;?</span>xml version=<span class="hljs-string">"1.0"</span> encoding=<span class="hljs-string">"UTF-8"</span><span class="hljs-meta">?&gt;</span></span>
+<span class="hljs-tag">&lt;<span class="hljs-name">plugin_manager_pipeline</span>&gt;</span>
+
+  # Insert a title for your application, simple text-markup can be used (i.e. [/b])
+  <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>[b][color=ff0000]HelloWorld[/color][/b]<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+
+  # Configure the preprocessor to perform inference using your neural network or ones of neural
+  # networks included in the framework.
+  # In this example we use YOLOv2-tiny included in the framework, it is based on DarkNet.
+  <span class="hljs-tag">&lt;<span class="hljs-name">preprocessor_pipeline</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">video_capture</span> <span class="hljs-attr">selected</span>=<span class="hljs-string">"0"</span> /&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">neural_network</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"Darknet"</span> <span class="hljs-attr">confidence</span>=<span class="hljs-string">"0.6"</span> <span class="hljs-attr">frame_resize</span>=<span class="hljs-string">"1.0"</span> <span class="hljs-attr">time_subsampling</span>=<span class="hljs-string">"1"</span>&gt;</span>
+
+          # Specify configuration file (.cgf) and the weights file (.weights)
+          <span class="hljs-tag">&lt;<span class="hljs-name">load_params</span>&gt;</span>[darknet/yolov3-320.cfg, darknet/yolov3.weights]<span class="hljs-tag">&lt;/<span class="hljs-name">load_params</span>&gt;</span>
+
+          # Specify label file, in this case we use COCO labels
+        <span class="hljs-tag">&lt;<span class="hljs-name">labels</span>&gt;</span>darknet/coco.names<span class="hljs-tag">&lt;/<span class="hljs-name">labels</span>&gt;</span>
+
+      <span class="hljs-tag">&lt;/<span class="hljs-name">neural_network</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">preprocessor_pipeline</span>&gt;</span>
+
+  # Insert plugins in the right order to build the processing pipe
+  <span class="hljs-tag">&lt;<span class="hljs-name">plugins_pipeline</span>&gt;</span>
+      # Import library plugin (located in /usr/bin/pensarsdk/plugins/preprocessor_inference.py)
+      <span class="hljs-tag">&lt;<span class="hljs-name">plugin</span> <span class="hljs-attr">modulename</span>=<span class="hljs-string">"preprocessor_inference"</span> <span class="hljs-attr">classname</span>=<span class="hljs-string">"PreProcessorInference"</span> <span class="hljs-attr">enabled</span>=<span class="hljs-string">"True"</span> /&gt;</span>
+
+      # Add custom (user made) plugins. To be noticed that plugins can include a .kv if a GUI is needed.
+      <span class="hljs-tag">&lt;<span class="hljs-name">plugin</span> <span class="hljs-attr">modulename</span>=<span class="hljs-string">"filter"</span> <span class="hljs-attr">classname</span>=<span class="hljs-string">"Filter"</span> <span class="hljs-attr">enabled</span>=<span class="hljs-string">"True"</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">config</span> <span class="hljs-attr">target_type</span>=<span class="hljs-string">"[ bottle, chair, tvmonitor, book, cup, keyboard ]"</span>/&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">plugin</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">plugin</span> <span class="hljs-attr">modulename</span>=<span class="hljs-string">"visualize"</span> <span class="hljs-attr">classname</span>=<span class="hljs-string">"Visualize"</span> <span class="hljs-attr">enabled</span>=<span class="hljs-string">"True"</span> /&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">plugins_pipeline</span>&gt;</span>
+
+<span class="hljs-tag">&lt;/<span class="hljs-name">plugin_manager_pipeline</span>&gt;</span></code></pre><h3 id="create-your-personalized-plugins"><a class="header-link" href="#create-your-personalized-plugins"></a>Create your Personalized Plugins</h3>
+<p>You can either use the predefined plugins or define yours. On the left of <code>VS Code</code> you find a list of all installed plugins under <code>Framework Plugins</code>, among which <code>pre_processor_inference.py</code>. You can also define your personalized plugins, in our case, <code>filter.py</code> and <code>visualize.py</code>.</p>
+<ul class="list">
+<li><p><code>filter.py</code>:</p>
+<pre class="hljs"><code><span class="hljs-keyword">from</span> kivy.uix.boxlayout <span class="hljs-keyword">import</span> BoxLayout
+<span class="hljs-keyword">from</span> kivy.graphics.texture <span class="hljs-keyword">import</span> Texture
+<span class="hljs-keyword">from</span> kivy.properties <span class="hljs-keyword">import</span> *
+<span class="hljs-keyword">from</span> pluginmanager.utility <span class="hljs-keyword">import</span> *
+<span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+<span class="hljs-keyword">import</span> cv2
+
+<span class="hljs-comment"># Name of the plugin: Filter</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Filter</span><span class="hljs-params">(BoxLayout)</span>:</span>
+  name = <span class="hljs-string">"Filter"</span>
+  font_overlay = cv2.FONT_HERSHEY_SIMPLEX
+
+  <span class="hljs-comment"># GUI parameters</span>
+  label_text = StringProperty(<span class="hljs-string">"Switch Filtering ON/OFF:"</span>)
+  switch_active = BooleanProperty()
+  labels_list = ListProperty()
+  allowed_label = StringProperty()
+
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">onCreate</span><span class="hljs-params">(self, storage)</span>:</span>
+    self.labels_list = self.config[<span class="hljs-string">'target_type'</span>]
+    self.allowed_label = self.labels_list[<span class="hljs-number">0</span>]
+    self.switch_active = <span class="hljs-keyword">False</span>
+
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">labelChange</span><span class="hljs-params">(self, label)</span>:</span>
+    self.allowed_label = label
+
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">process</span><span class="hljs-params">(self, primary_input_frame, secondary_input_frame, output_frame, frame_storage, storage)</span>:</span>
+    filtered_objects = []
+
+    <span class="hljs-keyword">if</span> (<span class="hljs-string">'object_locations'</span> <span class="hljs-keyword">in</span> frame_storage) <span class="hljs-keyword">and</span> (frame_storage[<span class="hljs-string">'object_locations'</span>]):
+        cv2.putText(output_frame, <span class="hljs-string">"Detection"</span>, (<span class="hljs-number">50</span>, <span class="hljs-number">50</span>),
+                    self.font_overlay, <span class="hljs-number">1.0</span>, (<span class="hljs-number">0</span>, <span class="hljs-number">255</span>, <span class="hljs-number">0</span>), <span class="hljs-number">3</span>, <span class="hljs-number">8</span>)
+
+        <span class="hljs-keyword">for</span> object_location <span class="hljs-keyword">in</span> frame_storage[<span class="hljs-string">'object_locations'</span>]:
+            <span class="hljs-keyword">if</span> self.switch_active == <span class="hljs-keyword">True</span>:
+                cv2.putText(output_frame, <span class="hljs-string">"Object Filtering: ON"</span>,
+                            (<span class="hljs-number">50</span>, <span class="hljs-number">80</span>), self.font_overlay, <span class="hljs-number">1.0</span>, (<span class="hljs-number">0</span>, <span class="hljs-number">255</span>, <span class="hljs-number">0</span>), <span class="hljs-number">3</span>, <span class="hljs-number">8</span>)
+                <span class="hljs-keyword">if</span> object_location[<span class="hljs-string">'label'</span>] == self.allowed_label:
+                    filtered_objects.append(object_location)
+            <span class="hljs-keyword">else</span>:
+                cv2.putText(output_frame, <span class="hljs-string">"Object Filtering: OFF"</span>,
+                            (<span class="hljs-number">50</span>, <span class="hljs-number">80</span>), self.font_overlay, <span class="hljs-number">1.0</span>, (<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">255</span>), <span class="hljs-number">3</span>, <span class="hljs-number">8</span>)
+                filtered_objects.append(object_location)
+
+        frame_storage[<span class="hljs-string">'filtered_objects'</span>] = filtered_objects
+    <span class="hljs-keyword">else</span>:
+        cv2.putText(output_frame, <span class="hljs-string">"No Detection"</span>, (<span class="hljs-number">50</span>, <span class="hljs-number">50</span>), self.font_overlay, <span class="hljs-number">1.0</span>, (<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">255</span>), <span class="hljs-number">3</span>, <span class="hljs-number">8</span>)</code></pre></li>
+<li><p><code>visualize.py</code>:</p>
+<pre class="hljs"><code><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Visualize</span><span class="hljs-params">(BoxLayout)</span>:</span>
+   name = <span class="hljs-string">"Visualize"</span>
+
+   <span class="hljs-comment"># GUI parameters</span>
+   label_text = StringProperty(<span class="hljs-string">"Display overlay:"</span>)
+   switch_active = BooleanProperty()
+
+   <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">process</span><span class="hljs-params">(self, primary_input_frame, secondary_input_frame, output_frame, frame_storage, storage)</span>:</span>
+       <span class="hljs-string">"""
+       This method performs visualization of overlays for each detected object in each frame image.
+       It uses OpenCV function to draw a rectangle and adds a text to display the confidence of the detection.
+       """</span>
+
+       <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> <span class="hljs-string">'filtered_objects'</span> <span class="hljs-keyword">in</span> frame_storage:
+           print(<span class="hljs-string">'No object detected'</span>)
+           <span class="hljs-keyword">return</span>
+
+       <span class="hljs-keyword">for</span> filtered_object <span class="hljs-keyword">in</span> frame_storage[<span class="hljs-string">'filtered_objects'</span>]:
+         <span class="hljs-keyword">if</span> self.switch_active:
+           roi = filtered_object[<span class="hljs-string">'roi'</span>]
+           pt1 = (roi[<span class="hljs-number">0</span>],roi[<span class="hljs-number">1</span>])
+           pt2 = (roi[<span class="hljs-number">2</span>],roi[<span class="hljs-number">3</span>])
+           ptText = (roi[<span class="hljs-number">0</span>], roi[<span class="hljs-number">1</span>] - <span class="hljs-number">20</span>)
+           colorOverlay = (<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">255</span>)
+           fontOverlay = cv2.FONT_HERSHEY_SIMPLEX
+           textOverlay = <span class="hljs-string">"{0:s} {1:2.2f}%"</span>.format(filtered_object[<span class="hljs-string">'label'</span>], filtered_object[<span class="hljs-string">'confidence'</span>]*<span class="hljs-number">100</span>)
+
+           cv2.rectangle(output_frame, pt1, pt2, colorOverlay, <span class="hljs-number">-4</span>, <span class="hljs-number">8</span>)
+           cv2.putText(output_frame, textOverlay, ptText, fontOverlay, <span class="hljs-number">1.0</span>, colorOverlay, <span class="hljs-number">3</span>, <span class="hljs-number">8</span>)</code></pre></li>
+</ul>
+<h3 id="personalize-the-gui"><a class="header-link" href="#personalize-the-gui"></a>Personalize the GUI</h3>
+<p>Say we want to personalize the GUI of the application, for instance, I want to create a button to turn on/off filtering and add a spinner to select the label of the object of interest. To do that you need to create and edit a kivy file for each desired plugin, in our case <code>filter.py</code> and <code>visualize.kv</code>.</p>
+<ul class="list">
+<li><code>visualize.kv</code>:</li>
+</ul>
+<pre class="hljs"><code>    &lt;Visualize@BoxLayout:
+<span class="hljs-attr">         orientation:</span> <span class="hljs-string">"horizontal"</span>
+<span class="hljs-attr">         size_hint:</span> <span class="hljs-number">1</span>, <span class="hljs-number">1</span>
+
+<span class="hljs-attr">         switch_active:</span> enable_switch.active
+
+<span class="hljs-attr">         Label:</span>
+<span class="hljs-attr">             size_hint:</span> <span class="hljs-number">0.5</span>, <span class="hljs-number">1</span>
+<span class="hljs-attr">             text:</span> root.label_text
+
+<span class="hljs-attr">         Switch:</span>
+<span class="hljs-attr">             id:</span> enable_switch
+<span class="hljs-attr">             size_hint:</span> <span class="hljs-number">0.5</span>, <span class="hljs-number">1</span>
+<span class="hljs-attr">             active:</span> <span class="hljs-literal">True</span></code></pre><ul class="list">
+<li><p><code>filter.kv</code></p>
+<pre class="hljs"><code>&lt;Filter@BoxLayout&gt;:
+<span class="hljs-attr">    BoxLayout:</span>
+<span class="hljs-attr">        orientation:</span> <span class="hljs-string">"horizontal"</span>
+<span class="hljs-attr">        size_hint:</span> <span class="hljs-number">1</span>, <span class="hljs-number">1</span>
+<span class="hljs-attr">        height:</span> <span class="hljs-string">'48dp'</span>
+
+<span class="hljs-attr">        switch_active:</span> enable_switch.active
+
+        <span class="hljs-comment"># Give lable</span>
+<span class="hljs-attr">        Label:</span>
+<span class="hljs-attr">            size_hint:</span> <span class="hljs-number">1</span>, <span class="hljs-number">1</span>
+<span class="hljs-attr">            text:</span> root.label_text
+<span class="hljs-attr">            markup:</span> <span class="hljs-literal">True</span>
+<span class="hljs-attr">            text_size:</span> self.size
+            halign : <span class="hljs-string">'center'</span>
+            valign : <span class="hljs-string">'center'</span>
+
+        <span class="hljs-comment"># Create switch</span>
+<span class="hljs-attr">        Switch:</span>
+<span class="hljs-attr">            id:</span> enable_switch
+<span class="hljs-attr">            size_hint:</span> <span class="hljs-number">1</span>, <span class="hljs-number">1</span>
+
+<span class="hljs-attr">            active:</span> <span class="hljs-literal">True</span> if root.switch_active == <span class="hljs-literal">True</span> else <span class="hljs-literal">False</span>
+<span class="hljs-attr">            on_active:</span> root.switch_active = self.active
+
+<span class="hljs-attr">        Spinner:</span>
+<span class="hljs-attr">            id:</span> labels_spinner
+            size_hint : (<span class="hljs-number">0.5</span>, <span class="hljs-number">0.5</span>)
+
+<span class="hljs-attr">            pos_hint:</span> {<span class="hljs-string">'x'</span>: <span class="hljs-number">.5</span>, <span class="hljs-string">'y'</span>:<span class="hljs-number">.5</span>}
+            <span class="hljs-comment"># size: 100, 44</span>
+
+<span class="hljs-attr">            values:</span> root.labels_list
+<span class="hljs-attr">            text:</span> root.allowed_label
+<span class="hljs-attr">            on_text:</span> root.labelChange(self.text)</code></pre></li>
+</ul>
+<h3 id="run-the-application"><a class="header-link" href="#run-the-application"></a>Run the Application</h3>
+<p>To run the application, two choices are possible, either:</p>
+<ul class="list">
+<li><p>use the debug mode by pressing F5 then again F5 to launch the application.</p>
+</li>
+<li><p>Or, you can run the application directly from the application folder</p>
+<pre class="hljs"><code>run_pensar.sh <span class="hljs-_">-a</span> my_app.xml</code></pre></li>
+</ul>
+<p>A GUI should pop-up in full screen running the created</p>
+<p align="center">
+  <img src="pensarsdk/Screenshot from 2019-08-16 15-24-12.png" alt="demo object detection"/>
+</p>
+
+
+<p><strong>Note</strong>: This GUI is created and adapted for Aerialtronics camera, Pensar, notice the setup for the twin cameras. Thanks to Pensar SDK, we can develop and test the application on the host machine before deployment on the camera.</p>
+<div class="page"/>
+
+<h3 id="what-to-do-next?"><a class="header-link" href="#what-to-do-next?"></a>What to do next?</h3>
+<ul class="list">
+<li>Let me know what you think in the comment section and/or direct message me on <a href="https://www.linkedin.com/in/aminehy/">LinkedIn</a>.</li>
+<li><p>Visit the official website <a href="https://pensarsdk.com/">https://pensarsdk.com/</a> to learn more about this solution.</p>
+</li>
+<li><p>You are a professional and you are interested in Pensar SDK solution, please feel free to contact Aerialtronics staff <a href="https://pensarsdk.com/">here</a>.</p>
+</li>
+</ul>
+<h3 id="want-to-read-more-?"><a class="header-link" href="#want-to-read-more-?"></a>Want to read more ?</h3>
+<p>Checkout my past articles on <a href="https://medium.com/@Amine_hy">medium</a>:</p>
+<ul class="list">
+<li><p><a href="https://towardsdatascience.com/have-you-optimized-your-deep-learning-model-before-deployment-cdc3aa7f413d">Have you Optimized your Deep Learning Model Before Deployment?</a></p>
+</li>
+<li><p><a href="https://towardsdatascience.com/convolutional-neural-network-for-image-classification-with-implementation-on-python-using-pytorch-7b88342c9ca9">Deep Learning for image classification w/ implementation in PyTorch</a></p>
+</li>
+</ul>
+    </article>
+  </body>
+</html>
