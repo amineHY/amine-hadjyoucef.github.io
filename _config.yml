@@ -206,9 +206,11 @@ kramdown:
   auto_ids:           true
   footnote_nr:        1
   entity_output:      as_char
-  toc_levels:         1..6
+  toc_levels:         1..2
   smart_quotes:       lsquo,rsquo,ldquo,rdquo
   enable_coderay:     false
+  syntax_highlighter: rouge
+  parse_block_html:   true
 
 
 # Sass/SCSS
@@ -304,17 +306,17 @@ defaults:
       layout:         single
       author_profile: true
 
-  # _portfolio
+  # _projects
   - scope:
       path:           ""
-      type:           portfolio
+      type:           projects
     values:
       layout:         single
-      author_profile: false
+      author_profile: true
       share:          true
 
 collections:
-  portfolio:
+  projects:
     output:           true
     permalink:        /:collection/:path/
 

@@ -9,17 +9,19 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>List of my scientific publications - Amine Hadj-Youcef</title>
-<meta name="description" content="I work at Drone Volt as an Artificial Intelligence Engineer. My fields of expertise include Machine Learning, Computer Vision, Signal &amp; Image processing and Data Science in general.">
+<!-- begin _includes/seo.html --><title>Publications - Amine Hadj-Youcef</title>
+<meta name="description" content="All my peer-reviewed papers are listed in this page">
 
 
 
 <meta property="og:type" content="website">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="Amine Hadj-Youcef">
-<meta property="og:title" content="List of my scientific publications">
+<meta property="og:title" content="Publications">
 <meta property="og:url" content="http://localhost:4000/publications/">
 
+
+  <meta property="og:description" content="All my peer-reviewed papers are listed in this page">
 
 
 
@@ -50,7 +52,7 @@
     {
       "@context": "https://schema.org",
       "@type": "Person",
-      "name": "Amine Hadj-Youcef",
+      "name": "Aminzzzzzzzze Hadj-Youcef",
       "url": "http://localhost:4000",
       "sameAs": null
     }
@@ -130,11 +132,11 @@
           
         </a>
         <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/resume/" >Resume</a>
+            </li><li class="masthead__menu-item">
               <a href="/articles/" >Articles</a>
             </li><li class="masthead__menu-item">
               <a href="/publications/" >Publications</a>
-            </li><li class="masthead__menu-item">
-              <a href="/resume/" >Resume</a>
             </li><li class="masthead__menu-item">
               <a href="/about/" >About</a>
             </li></ul>
@@ -164,12 +166,41 @@
 
 
 
-<div class="page__hero"
-  style=" "
+<div class="page__hero--overlay"
+  style=" background-image: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url('/assets/images/pub.png');"
 >
   
-    <img src="/assets/images/pub.png" alt="List of my scientific publications" class="page__hero-image">
+    <div class="wrapper">
+      <h1 id="page-title" class="page__title" itemprop="headline">
+        
+          Publications
+
+        
+      </h1>
+      
+        <p class="page__lead">All my peer-reviewed papers are listed in this page
+</p>
+      
+      
+      
+      
+        <p>
+        
+          
+          <a href="/publications/#Journals-papers" class="btn btn--light-outline btn--large">Journals Papers</a>
+        
+          
+          <a href="/publications/#International-Conferences" class="btn btn--light-outline btn--large">International Conferences</a>
+        
+          
+          <a href="/publications/#National-Conferences" class="btn btn--light-outline btn--large">National Conferences</a>
+        
+      
+    </div>
   
+  
+    <span class="page__hero-caption">Photo credit: <a href="https://unsplash.com"><strong>Unsplash</strong></a>
+</span>
   
 </div>
 
@@ -300,65 +331,40 @@
 
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="List of my scientific publications">
-    
+    <meta itemprop="headline" content="Publications">
+    <meta itemprop="description" content="All my peer-reviewed papers are listed in this page">
     
     
 
     <div class="page__inner-wrap">
       
-        <header>
-          <h1 id="page-title" class="page__title" itemprop="headline">List of my scientific publications
-</h1>
-          
-        </header>
-      
 
       <section class="page__content" itemprop="text">
         
-        <ul>
-  <li>
-    <p><a href="#international-journals-with-peer-review">International journals with peer review</a></p>
-  </li>
-  <li>
-    <p><a href="#international-conferences-with-peer-review">International conferences with peer review</a></p>
-  </li>
-  <li>
-    <p><a href="#national-conferences-with-peer-review">National conferences with peer review</a></p>
-  </li>
-  <li>
-    <p><a href="#seminars">Seminars</a></p>
-  </li>
-  <li>
-    <p><a href="#talks">Talks</a></p>
-  </li>
-</ul>
-
-<hr />
-
-<h1 id="international-journals-with-peer-review">International journals with peer review</h1>
-
-<hr />
+        <h1 id="Journals-papers">Journals Papers</h1>
 
 <h2 id="convolution-kernels-for-multi-wavelength-imaging">Convolution kernels for multi-wavelength imaging</h2>
 
-<hr />
+<ul>
+  <li><strong>Authors</strong>: Alexandre Boucaud, Marco Bocchio, Alain Abergel, François Orieux, Hervé Dole, M. A Hadj-Youcef</li>
+  <li><strong>Publication date</strong>: 2016/12/1</li>
+  <li><strong>Journal</strong>: Astronomy &amp; Astrophysics</li>
+  <li><strong>Volume</strong>: 596</li>
+  <li><strong>Pages</strong>: A63</li>
+  <li>
+    <p><strong>Publisher</strong>: EDP Sciences</p>
+  </li>
+  <li>
+    <p><strong>Abstract</strong>: Astrophysical images issued from different instruments and/or spectral bands often require to be processed together, either for fitting or comparison purposes. However each image is affected by an instrumental response, also known as point-spread function (PSF), that depends on the characteristics of the instrument as well as the wavelength and the observing strategy. Given the knowledge of the PSF in each band, a straightforward way of processing images is to homogenise them all to a target PSF using convolution kernels, so that they appear as if they had been acquired by the same instrument. We propose an algorithm that generates such PSF-matching kernels, based on Wiener filtering with a tunable regularisation parameter. This method ensures all anisotropic features in the PSFs to be taken into account. We compare our method to existing procedures using measured Herschel/PACS and SPIRE PSFs and simulated JWST/MIRI PSFs. Significant gains up to two orders of magnitude are obtained with respect to the use of kernels computed assuming Gaussian or circularised PSFs. A software to compute these kernels is available in <a href="https://github.com/aboucaud/pypher">GitHub</a>.</p>
+  </li>
+  <li>Read the full paper <a href="/assets/pdf/A_&amp;_A.pdf">here</a>.</li>
+  <li>Here is the <a href="https://www.aanda.org/articles/aa/full_html/2016/12/aa29080-16/aa29080-16.html">link</a> in the web.</li>
+</ul>
 
-<p><strong>Authors</strong>: Alexandre Boucaud, Marco Bocchio, Alain Abergel, François Orieux, Hervé Dole, M. A Hadj-Youcef<br />
-<strong>Publication date</strong>: 2016/12/1<br />
-<strong>Journal</strong>: Astronomy &amp; Astrophysics<br />
-<strong>Volume</strong>: 596<br />
-<strong>Pages</strong>: A63<br />
-<strong>Publisher</strong>: EDP Sciences</p>
-
-<p><strong>Abstract</strong>: Astrophysical images issued from different instruments and/or spectral bands often require to be processed together, either for fitting or comparison purposes. However each image is affected by an instrumental response, also known as point-spread function (PSF), that depends on the characteristics of the instrument as well as the wavelength and the observing strategy. Given the knowledge of the PSF in each band, a straightforward way of processing images is to homogenise them all to a target PSF using convolution kernels, so that they appear as if they had been acquired by the same instrument. We propose an algorithm that generates such PSF-matching kernels, based on Wiener filtering with a tunable regularisation parameter. This method ensures all anisotropic features in the PSFs to be taken into account. We compare our method to existing procedures using measured Herschel/PACS and SPIRE PSFs and simulated JWST/MIRI PSFs. Significant gains up to two orders of magnitude are obtained with respect to the use of kernels computed assuming Gaussian or circularised PSFs. A software to compute these kernels is available in <a href="https://github.com/aboucaud/pypher">GitHub</a>.</p>
-
-<p>► Read the full paper <a href="/assets/pdf/A_&amp;_A.pdf">here</a>.<br />
-► Here is the <a href="https://www.aanda.org/articles/aa/full_html/2016/12/aa29080-16/aa29080-16.html">link</a> in the web.
-<br /><br />
+<p><br /><br />
 <br /><br /></p>
 
-<h1 id="international-conferences-with-peer-review">International conferences with peer review</h1>
+<h1 id="International-Conferences">International Conferences</h1>
 
 <hr />
 
@@ -366,88 +372,100 @@
 
 <hr />
 
-<p><strong>Authors</strong>: MA Hadj-Youcef, François Orieux, Aurélia Fraysse, Alain Abergel<br />
-<strong>Publication date</strong>: 2018/9/3<br />
-<strong>Conference</strong>: EUSIPCO 2018, The 26th European Signal Processing Conference (EUSIPCO)<br />
-<strong>Location</strong>: Rome, Italy.<br />
-<strong>Pages</strong>: 1980-1984<br />
-<strong>Publisher</strong>: IEEE</p>
+<ul>
+  <li><strong>Authors</strong>: MA Hadj-Youcef, François Orieux, Aurélia Fraysse, Alain Abergel</li>
+  <li><strong>Publication date</strong>: 2018/9/3</li>
+  <li><strong>Conference</strong>: EUSIPCO 2018, The 26th European Signal Processing Conference (EUSIPCO)</li>
+  <li><strong>Location</strong>: Rome, Italy.</li>
+  <li><strong>Pages</strong>: 1980-1984</li>
+  <li>
+    <p><strong>Publisher</strong>: IEEE</p>
+  </li>
+  <li>
+    <p><strong>Abstract</strong>: This paper deals with the reconstruction of a 3-D spatio-spectral object observed by a multi-spectral imaging system, where the original object is blurred with a spectral-variant PSF (Point Spread Function) and integrated over few broad spectral bands. In order to tackle this ill-posed problem, we propose a linear forward model that accounts for direct (or auto) channels and between (or cross) channels degradation, by modeling the imaging system response and the spectral distribution of the object with a piecewise linear function. Reconstruction based on regularization method is proposed, by enforcing spatial and spectral smoothness of the object. We test our approach on simulated data of the Mid-InfraRed Instrument (MIRI) Imager of the James Webb Space Telescope (JWST). Results on simulated multi-spectral data show a significant improvement over the conventional multichannel method.</p>
+  </li>
+  <li>Read the full paper <a href="/assets/pdf/eusipco_2018.pdf">here</a>.</li>
+  <li>Here is the <a href="https://ieeexplore.ieee.org/abstract/document/8553166">link</a> on the web.</li>
+</ul>
 
-<p><strong>Abstract</strong>: This paper deals with the reconstruction of a 3-D spatio-spectral object observed by a multi-spectral imaging system, where the original object is blurred with a spectral-variant PSF (Point Spread Function) and integrated over few broad spectral bands. In order to tackle this ill-posed problem, we propose a linear forward model that accounts for direct (or auto) channels and between (or cross) channels degradation, by modeling the imaging system response and the spectral distribution of the object with a piecewise linear function. Reconstruction based on regularization method is proposed, by enforcing spatial and spectral smoothness of the object. We test our approach on simulated data of the Mid-InfraRed Instrument (MIRI) Imager of the James Webb Space Telescope (JWST). Results on simulated multi-spectral data show a significant improvement over the conventional multichannel method.</p>
-
-<p>► Read the full paper <a href="/assets/pdf/eusipco_2018.pdf">here</a>.<br />
-► Here is the <a href="https://ieeexplore.ieee.org/abstract/document/8553166">link</a> on the web.
-<br /><br /></p>
+<p><br /><br /></p>
 
 <h2 id="restoration-from-multi-spectral-blurred-data-with-non-stationary-instrument-response">Restoration from multi-spectral blurred data with non-stationary instrument response</h2>
 
 <hr />
 
-<p><strong>Authors</strong>: M. A. Hadj-Youcef, François Orieux, Aurélia Fraysse, Alain Abergel<br />
-<strong>Publication date</strong>: 2017/8/28<br />
-<strong>Conference</strong>: EUSIPCO 2017, The 25th European Signal Processing Conference (EUSIPCO)<br />
-<strong>Location</strong>: Kos, Greece.<br />
-<strong>Pages</strong>: 503-507<br />
-<strong>Publisher</strong>: IEEE</p>
+<ul>
+  <li><strong>Authors</strong>: M. A. Hadj-Youcef, François Orieux, Aurélia Fraysse, Alain Abergel</li>
+  <li><strong>Publication date</strong>: 2017/8/28</li>
+  <li><strong>Conference</strong>: EUSIPCO 2017, The 25th European Signal Processing Conference (EUSIPCO)</li>
+  <li><strong>Location</strong>: Kos, Greece.</li>
+  <li><strong>Pages</strong>: 503-507</li>
+  <li>
+    <p><strong>Publisher</strong>: IEEE</p>
+  </li>
+  <li>
+    <p>*Abstract**: In this paper we propose an approach of image restoration from multi-spectral data provided by an imaging system. We specifically address two topics: (i) Development of a multi-wavelength direct model for non-stationary instrument response that includes a spatial convolution and a spectral integration, (ii) Implementation of multi-spectral image restoration using a regularized least-square, based on a quadratic criterion and minimized by a gradient algorithm. We test our approach on simulated data of the Mid-InfraRed Instrument IMager (MIRIM) of the James Webb Space Telescope (JWST). Our method shows a clear increase of spatial resolution compare to conventional methods.</p>
+  </li>
+  <li>Read the full paper <a href="/assets/pdf/eusipco-20171.pdf">here</a>.</li>
+  <li>Here is the <a href="https://ieeexplore.ieee.org/abstract/document/8081258">link</a> on the web.</li>
+</ul>
 
-<p><strong>Abstract</strong>: In this paper we propose an approach of image restoration from multi-spectral data provided by an imaging system. We specifically address two topics: (i) Development of a multi-wavelength direct model for non-stationary instrument response that includes a spatial convolution and a spectral integration, (ii) Implementation of multi-spectral image restoration using a regularized least-square, based on a quadratic criterion and minimized by a gradient algorithm. We test our approach on simulated data of the Mid-InfraRed Instrument IMager (MIRIM) of the James Webb Space Telescope (JWST). Our method shows a clear increase of spatial resolution compare to conventional methods.</p>
-
-<p>► Read the full paper <a href="/assets/pdf/eusipco-20171.pdf">here</a>.<br />
-► Here is the <a href="https://ieeexplore.ieee.org/abstract/document/8081258">link</a> on the web.
-<br /><br /></p>
+<p><br /><br /></p>
 
 <h2 id="detection-of-epileptics-during-seizure-free-periods">Detection of epileptics during seizure free periods</h2>
 
-<hr />
-
-<p><strong>Authors</strong>: M.A. Hadj-Youcef, M. Adnane, A Bousbia-Salah<br />
-<strong>Publication date</strong>: 2013/12/5<br />
-<strong>Conference</strong>: WOSSPA 2013 : The 9th International Workshop on Systems, Signal Processing and their applications<br />
-<strong>Location</strong>: Algiers, Algeria.<br />
-<strong>Pages</strong>: 209 - 213<br />
-<strong>Publisher</strong>: IEEE</p>
-
-<p><strong>Abstract</strong>: In this paper the problematic of epileptic detection is treated. An algorithm of EEG signal classification into two classes: Healthy and Epileptics is developed. The difference with conventional methods is the use of free seizure epileptic records. A good classification accuracy means that it is possible to detect an epileptic in normal state or at an early stage of epilepsy. The raw EEG signal is decomposed using discrete wavelet transform (DWT). Then, principal component analysis (PCA) allows dimensionality reduction and better representation of the data. Several features are extracted and used in support vector machine (SVM) classifier. Results show satisfactory classification accuracy comparable or better than those reported in literature.</p>
-
-<p>► Read the full paper <a href="/assets/pdf/WOSSPA_2013.pdf">here</a>.<br />
-► Here is the <a href="https://ieeexplore.ieee.org/abstract/document/6602363">link</a> to the paper on the web.</p>
+<ul>
+  <li><strong>Authors</strong>: M.A. Hadj-Youcef, M. Adnane, A Bousbia-Salah</li>
+  <li><strong>Publication date</strong>: 2013/12/5</li>
+  <li><strong>Conference</strong>: WOSSPA 2013 : The 9th International Workshop on Systems, Signal Processing and their applications</li>
+  <li><strong>Location</strong>: Algiers, Algeria.</li>
+  <li><strong>Pages</strong>: 209 - 213</li>
+  <li>
+    <p><strong>Publisher</strong>: IEEE</p>
+  </li>
+  <li>
+    <p><strong>Abstract</strong>: In this paper the problematic of epileptic detection is treated. An algorithm of EEG signal classification into two classes: Healthy and Epileptics is developed. The difference with conventional methods is the use of free seizure epileptic records. A good classification accuracy means that it is possible to detect an epileptic in normal state or at an early stage of epilepsy. The raw EEG signal is decomposed using discrete wavelet transform (DWT). Then, principal component analysis (PCA) allows dimensionality reduction and better representation of the data. Several features are extracted and used in support vector machine (SVM) classifier. Results show satisfactory classification accuracy comparable or better than those reported in literature.</p>
+  </li>
+  <li>Read the full paper <a href="/assets/pdf/WOSSPA_2013.pdf">here</a>.</li>
+  <li>Here is the <a href="https://ieeexplore.ieee.org/abstract/document/6602363">link</a> to the paper on the web.</li>
+</ul>
 
 <p><br /><br />
 <br /><br /></p>
 
-<h1 id="national-conferences-with-peer-review">National conferences with peer review</h1>
+<h1 id="National-Conferences">National Conferences</h1>
 
 <hr />
 
 <h2 id="restauration-dobjets-astrophysiques-à-partir-de-données-multi-spectrales-floues-et-dune-réponse-instrument-non-stationnaire">Restauration d’objets astrophysiques à partir de données multi-spectrales floues et d’une réponse instrument non-stationnaire</h2>
 
-<hr />
-
-<p><strong>Authors</strong>: M. A. Hadj-Youcef, François Orieux, Aurélia Fraysse, Alain Abergel<br />
-<strong>Publication date</strong>: 2017/9/5<br />
-<strong>Conference</strong>: 26eme Colloque GRETSI Traitement du Signal &amp; des Images, GRETSI 2017 <br />
-<strong>Location</strong>: Juan Les Pins, France.</p>
-
-<p><strong>Abstract</strong>: In this paper we deal with the restoration of astrophysical objects from multi-spectral data acquired by an imager on board of a space telescope. The problems we address are the spatial resolution limitation caused by the spectral varying optical response and the broadband spectral integration of the object. Indeed, we develop an instrument model that takes into account these effects, and we propose a direct model by exploiting all the data from different spectral band jointly. The restoration of the object is implemented using the regularized least squares method, and the solution is computed by the conjugate gradient algorithm. We test our approach on simulated imagery data from the Mid-InfraRed Instrument (MIRI) on board the future James Webb Space Telescope (JWST). Our method shows a significant increase in spatial and spectral resolution compared to conventional methods.</p>
-
-<p>► Read the full paper <a href="/assets/pdf/GRETSI_2017.pdf">here</a>.<br />
-► Here is the <a href="https://jeannicod.ccsd.cnrs.fr/SUP_LSS/hal-01596257v1">link</a> to the paper on the web.</p>
-
-<p><br /><br /></p>
-
-<h1 id="seminars">Seminars</h1>
-
-<hr />
-
-<p>Coming soon</p>
+<ul>
+  <li><strong>Authors</strong>: M. A. Hadj-Youcef, François Orieux, Aurélia Fraysse, Alain Abergel</li>
+  <li><strong>Publication date</strong>: 2017/9/5</li>
+  <li><strong>Conference</strong>: 26eme Colloque GRETSI Traitement du Signal &amp; des Images, GRETSI 2017</li>
+  <li><strong>Location</strong>: Juan Les Pins, France.</li>
+  <li>
+    <p><strong>Abstract</strong>: In this paper we deal with the restoration of astrophysical objects from multi-spectral data acquired by an imager on board of a space telescope. The problems we address are the spatial resolution limitation caused by the spectral varying optical response and the broadband spectral integration of the object. Indeed, we develop an instrument model that takes into account these effects, and we propose a direct model by exploiting all the data from different spectral band jointly. The restoration of the object is implemented using the regularized least squares method, and the solution is computed by the conjugate gradient algorithm. We test our approach on simulated imagery data from the Mid-InfraRed Instrument (MIRI) on board the future James Webb Space Telescope (JWST). Our method shows a significant increase in spatial and spectral resolution compared to conventional methods.</p>
+  </li>
+  <li>Read the full paper <a href="/assets/pdf/GRETSI_2017.pdf">here</a>.</li>
+  <li>Here is the <a href="https://jeannicod.ccsd.cnrs.fr/SUP_LSS/hal-01596257v1">link</a> to the paper on the web.</li>
+</ul>
 
 <p><br /><br /></p>
 
-<h1 id="talks">Talks</h1>
+<!-- # Seminars
 
-<hr />
+* * *
 
-<p>coming soon</p>
+Coming soon
+
+<br/><br/>
+
+# Talks
+
+* * *
+
+coming soon -->
 
         
       </section>
@@ -513,7 +531,7 @@
     </ul>
  </div>
 
- <div class="page__footer-copyright">&copy; 2019 Amine Hadj-Youcef </div>
+ <div class="page__footer-copyright">&copy; 2020 Aminzzzzzzzze Hadj-Youcef </div>
 </center>
 
       </footer>

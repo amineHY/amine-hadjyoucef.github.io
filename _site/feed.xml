@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-12-30T23:45:21+01:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Amine Hadj-Youcef</title><subtitle>I work at Drone Volt as an Artificial Intelligence Engineer. My fields of expertise include Machine Learning, Computer Vision, Signal &amp; Image processing and Data Science in general.</subtitle><author><name>Amine Hadj-Youcef</name></author><entry><title type="html">Pensar SDK, A Rapid Artificial Intelligence Application Development framework</title><link href="http://localhost:4000/pensarsdk-1/" rel="alternate" type="text/html" title="Pensar SDK, A Rapid Artificial Intelligence Application Development framework" /><published>2019-08-20T00:00:00+02:00</published><updated>2019-08-20T00:00:00+02:00</updated><id>http://localhost:4000/pensarsdk-1</id><content type="html" xml:base="http://localhost:4000/pensarsdk-1/">&lt;!-- ![pensarsdk logo](pensarsdk/pensarsdk_logo_wide.png)
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-01-01T17:09:31+01:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Amine Hadj-Youcef</title><subtitle>I work at Drone Volt as an Artificial Intelligence Engineer. My fields of expertise include Machine Learning, Computer Vision, Signal &amp; Image processing and Data Science in general.</subtitle><author><name>Amine Hadj-Youcef</name></author><entry><title type="html">Pensar SDK, A Rapid Artificial Intelligence Application Development framework</title><link href="http://localhost:4000/pensarsdk-1/" rel="alternate" type="text/html" title="Pensar SDK, A Rapid Artificial Intelligence Application Development framework" /><published>2019-08-20T00:00:00+02:00</published><updated>2019-08-20T00:00:00+02:00</updated><id>http://localhost:4000/pensarsdk-1</id><content type="html" xml:base="http://localhost:4000/pensarsdk-1/">&lt;!-- ![pensarsdk logo](pensarsdk/pensarsdk_logo_wide.png)
 
 # Pensar SDK, A Rapid Artificial Intelligence Application Development framework --&gt;
 
@@ -395,13 +395,13 @@ my_app
 
 &lt;p&gt;This article presents how to use NVIDIA TensorRT to optimize a deep learning model that you want to deploy on the edge device (mobile, camera, robot, car ….). For instance, the intelligent double spectrum camera of Aerialtronics: &lt;em&gt;Pensar&lt;/em&gt; &lt;a href=&quot;https://pensarsdk.com/&quot;&gt;https://pensarsdk.com/&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://cdn-images-1.medium.com/max/2280/1*kF5CrVqanC408hSvNYO1lg.png&quot; alt=&quot;[https://pensarsdk.com/](https://pensarsdk.com/)&quot; /&gt;&lt;br /&gt;
+&lt;p&gt;&lt;img src=&quot;https://cdn-images-1.medium.com/max/2280/1*kF5CrVqanC408hSvNYO1lg.png&quot; alt=&quot;[https://pensarsdk.com/](https://pensarsdk.com/)&quot; /&gt;
 &lt;em&gt;Source: &lt;a href=&quot;https://pensarsdk.com/&quot;&gt;https://pensarsdk.com/&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
 
 &lt;p&gt;Which has onboard an NVIDIA Jetson TX2 GPU&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://cdn-images-1.medium.com/max/2000/1*QRaU5AHVxGZeKAqwpriktg.png&quot; alt=&quot;[https://developer.nvidia.com/embedded/jetson-tx2-developer-kit](https://developer.nvidia.com/embedded/jetson-tx2)&quot; /&gt;&lt;br /&gt;
-&lt;em&gt;Source: &lt;a href=&quot;https://developer.nvidia.com/embedded/jetson-tx2&quot;&gt;https://developer.nvidia.com/embedded/jetson-tx2-developer-kit&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://cdn-images-1.medium.com/max/2000/1*QRaU5AHVxGZeKAqwpriktg.png&quot; alt=&quot;[https://developer.nvidia.com/embedded/jetson-tx2-developer-kit](https://developer.nvidia.com/embedded/jetson-tx2)&quot; /&gt;
+&lt;em&gt;Source: &lt;a href=&quot;https://developer.nvidia.com/embedded/jetson-tx2&quot;&gt;NVIDIA Jetson&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
 
 &lt;p&gt;This article is organized as follows:&lt;/p&gt;
 

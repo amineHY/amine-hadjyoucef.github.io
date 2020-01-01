@@ -1,22 +1,31 @@
 ---
-title: Education
-subtitle: Summary of education
-permalink: /education/
-layout: "single"
-icon: fa-book
-<!-- header:
-  image: assets/images/banner_publications.jpg -->
-toc: true
+title: Projects
+layout: collection
+permalink: /projects/
+collection: projects
+entries_layout: grid
+classes: wide
+#---------------------------------------------------------------------#
+author_profile: true
+excerpt: "Find here the list of my projects"
+#---------------------------------------------------------------------#
+header:
+#   image: /assets/images/project.jpg
+  overlay_image: /assets/images/project.jpg
+  overlay_filter: 0.65 # same as adding an opacity of 0.5 to a black background
+  caption: "Photo by Octavian Dan on [**Unsplash**](https://unsplash.com)"
+  # actions:
+  # - label: "Journals"
+  #   url: "/publications/"
+
+  # - label: "International Conferences"
+  #   url: "/resume/"
+
+  # - label: "National Conferences"
+  #   url: "/projects/"
+#---------------------------------------------------------------------#
+toc: false
+toc_label: "Table of Contents"
+toc_icon: "cog"
+#---------------------------------------------------------------------#
 ---
-
-
-
-I love books! Here are some I'm reading now:
-
-1. Robert Burton: *The Anatomy of Melancholy*
-2. Robert Musil: *The Man Without Qualities*
-8. William Thackeray: *Pendennis*
-9. Karl Marx: *Capital*
-10. James Woodforde: *The Diary of A Country Parson*
-
-source: [The Guardian](https://www.theguardian.com/books/booksblog/2011/jan/04/best-boring-books)

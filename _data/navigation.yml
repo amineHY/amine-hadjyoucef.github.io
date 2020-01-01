@@ -1,6 +1,9 @@
 # main links
 main:
 
+  - title: "Resume"
+    url: /resume/
+
   # - title: "Projects"
   #   url: /projects/
 
@@ -10,16 +13,5 @@ main:
   - title: "Publications"
     url: /publications/
 
-  - title: "Resume"
-    url: /resume/
-
   - title: "About"
     url: /about/
-
-  # - title: LinkedIn
-  #   url: "https://www.linkedin.com/in/aminehy/"
-
-  # - title: "Sample Collections"
-  #   url: /collection-archive/
-  # - title: "Sitemap"
-  #   url: /sitemap/

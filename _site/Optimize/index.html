@@ -54,7 +54,7 @@
     {
       "@context": "https://schema.org",
       "@type": "Person",
-      "name": "Amine Hadj-Youcef",
+      "name": "Aminzzzzzzzze Hadj-Youcef",
       "url": "http://localhost:4000",
       "sameAs": null
     }
@@ -134,11 +134,11 @@
           
         </a>
         <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/resume/" >Resume</a>
+            </li><li class="masthead__menu-item">
               <a href="/articles/" >Articles</a>
             </li><li class="masthead__menu-item">
               <a href="/publications/" >Publications</a>
-            </li><li class="masthead__menu-item">
-              <a href="/resume/" >Resume</a>
             </li><li class="masthead__menu-item">
               <a href="/about/" >About</a>
             </li></ul>
@@ -174,6 +174,9 @@
   
     <img src="/assets/images/tensorrt.png" alt="Have you Optimized your Deep Learning Model Before Deployment?" class="page__hero-image">
   
+  
+    <span class="page__hero-caption">nvidia.com
+</span>
   
 </div>
 
@@ -293,17 +296,49 @@
 
       <section class="page__content" itemprop="text">
         
+          <aside class="sidebar__right ">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-cog"></i> Table of Contents</h4></header>
+              <ul class="toc__menu">
+  <li><a href="#illustration-on-an-ai-based-computer-vision-application">Illustration on an AI-based Computer Vision application.</a>
+    <ul>
+      <li><a href="#why-do-i-need-an-optimized-deep-learning-model">Why do I need an optimized deep learning model?</a></li>
+      <li><a href="#pre-deployment-optimization-workflow">Pre-Deployment Optimization Workflow</a></li>
+    </ul>
+  </li>
+  <li><a href="#what-is-nvidia-tensorrt">What Is NVIDIA TensorRT?</a></li>
+  <li><a href="#setup-of-a-development-environment-using-docker">Setup of a Development Environment using docker</a>
+    <ul>
+      <li><a href="#docker">Docker</a></li>
+      <li><a href="#install-docker-ce">Install Docker-CE</a></li>
+      <li><a href="#install-cuda">Install CUDA</a></li>
+      <li><a href="#run-the-docker-image">Run the docker image</a></li>
+    </ul>
+  </li>
+  <li><a href="#computer-vision-application-object-detection-with-yolov3">Computer Vision Application: Object Detection with YOLOv3</a>
+    <ul>
+      <li><a href="#1-running-a-non-optimized-yolov3">1) Running a non-optimized YOLOv3</a></li>
+      <li><a href="#2-optimizing-and-running-yolov3-using-nvidia-tensorrt-in-python">2) Optimizing and Running YOLOv3 using NVIDIA TensorRT in Python</a></li>
+      <li><a href="#3-optimizing-and-running-yolov3-using-nvidia-tensorrt-by-importing-a-caffe-model-in-c">3) Optimizing and Running YOLOv3 using NVIDIA TensorRT by importing a Caffe model in C++</a></li>
+    </ul>
+  </li>
+  <li><a href="#conclusion">Conclusion</a></li>
+  <li><a href="#references">References</a></li>
+</ul>
+            </nav>
+          </aside>
+        
         <h1 id="illustration-on-an-ai-based-computer-vision-application">Illustration on an AI-based Computer Vision application.</h1>
 
 <p>This article presents how to use NVIDIA TensorRT to optimize a deep learning model that you want to deploy on the edge device (mobile, camera, robot, car ….). For instance, the intelligent double spectrum camera of Aerialtronics: <em>Pensar</em> <a href="https://pensarsdk.com/">https://pensarsdk.com/</a></p>
 
-<p><img src="https://cdn-images-1.medium.com/max/2280/1*kF5CrVqanC408hSvNYO1lg.png" alt="[https://pensarsdk.com/](https://pensarsdk.com/)" /><br />
+<p><img src="https://cdn-images-1.medium.com/max/2280/1*kF5CrVqanC408hSvNYO1lg.png" alt="[https://pensarsdk.com/](https://pensarsdk.com/)" />
 <em>Source: <a href="https://pensarsdk.com/">https://pensarsdk.com/</a></em></p>
 
 <p>Which has onboard an NVIDIA Jetson TX2 GPU</p>
 
-<p><img src="https://cdn-images-1.medium.com/max/2000/1*QRaU5AHVxGZeKAqwpriktg.png" alt="[https://developer.nvidia.com/embedded/jetson-tx2-developer-kit](https://developer.nvidia.com/embedded/jetson-tx2)" /><br />
-<em>Source: <a href="https://developer.nvidia.com/embedded/jetson-tx2">https://developer.nvidia.com/embedded/jetson-tx2-developer-kit</a></em></p>
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*QRaU5AHVxGZeKAqwpriktg.png" alt="[https://developer.nvidia.com/embedded/jetson-tx2-developer-kit](https://developer.nvidia.com/embedded/jetson-tx2)" />
+<em>Source: <a href="https://developer.nvidia.com/embedded/jetson-tx2">NVIDIA Jetson</a></em></p>
 
 <p>This article is organized as follows:</p>
 
@@ -673,16 +708,27 @@ mkdir build
 
       <section class="page__share">
   
-    <h4 class="page__share-title">Share on</h4>
+  <h4 class="page__share-title">Share on</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=Have+you+Optimized+your+Deep+Learning+Model+Before+Deployment%3F%20http%3A%2F%2Flocalhost%3A4000%2FOptimize%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=Have+you+Optimized+your+Deep+Learning+Model+Before+Deployment%3F%20http%3A%2F%2Flocalhost%3A4000%2FOptimize%2F"
+    class="btn btn--twitter"
+    onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+    title="Share on Twitter"><i
+      class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2FOptimize%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2FOptimize%2F"
+    class="btn btn--facebook"
+    onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+    title="Share on Facebook"><i
+      class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2FOptimize%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2FOptimize%2F"
+    class="btn btn--linkedin"
+    onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+    title="Share on LinkedIn"><i
+      class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
-
 
       
   <nav class="pagination">
@@ -826,7 +872,7 @@ mkdir build
     </ul>
  </div>
 
- <div class="page__footer-copyright">&copy; 2019 Amine Hadj-Youcef </div>
+ <div class="page__footer-copyright">&copy; 2020 Aminzzzzzzzze Hadj-Youcef </div>
 </center>
 
       </footer>
