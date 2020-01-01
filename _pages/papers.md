@@ -1,8 +1,8 @@
 ---
 #---------------------------------------------------------------------#
-title: Publications
+title: Papers
 subtitle: Scientific journals, international conferences, seminars
-permalink: /publications/
+permalink: /papers/
 layout: single
 author_profile: true
 classes: wide
@@ -15,13 +15,13 @@ header:
   caption: "Photo credit: [**Unsplash**](https://unsplash.com)"
   actions:
   - label: "Journals Papers"
-    url: "/publications/#Journals-papers"
+    url: "/papers/#Journals-papers"
 
   - label: "International Conferences"
-    url: "/publications/#International-Conferences"
+    url: "/papers/#International-Conferences"
 
   - label: "National Conferences"
-    url: "/publications/#National-Conferences"
+    url: "/papers/#National-Conferences"
 #---------------------------------------------------------------------#
 toc: false
 toc_label: "Table of Contents"

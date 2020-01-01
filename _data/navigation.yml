@@ -10,8 +10,8 @@ main:
   - title: "Articles"
     url: /articles/
 
-  - title: "Publications"
-    url: /publications/
+  - title: "Papers"
+    url: /papers/
 
   - title: "About"
     url: /about/
