@@ -23,8 +23,10 @@ header:
       url: "/resume/#Education"
 
     - label: "Tech Skills"
-      url: "/ resume/#Tech-Skills"
+      url: "/resume/#Tech-Skills"
 
+    - label: "PDF"
+      url: "assets/pdf/cv_2020.pdf"
   #---------------------------------------------------------#
 # toc: true
 toc_label: "On this page"
