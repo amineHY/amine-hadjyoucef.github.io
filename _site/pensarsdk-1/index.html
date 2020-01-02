@@ -424,7 +424,7 @@ The original article is published on medium <a href="https://medium.com/swlh/pen
 
 <h3 id="preprocessor-pipeline">Preprocessor pipeline</h3>
 
-<p>Here the trained deep learning model is parsed. The user can either use the installed one or import his trained model. The <code class="highlighter-rouge">preprocessor</code> takes care of all the hardware acceleration and optimization of AI/CV libraries.</p>
+<p>Here the trained deep learning model is parsed. The user can either use the installed one or import his trained model. The <code class="language-plaintext highlighter-rouge">preprocessor</code> takes care of all the hardware acceleration and optimization of AI/CV libraries.</p>
 
 <h3 id="plugin-pipeline">Plugin pipeline</h3>
 
@@ -444,7 +444,7 @@ The original article is published on medium <a href="https://medium.com/swlh/pen
 
 <h3 id="create-the-application-folder">Create the Application Folder</h3>
 
-<p>By running the script <code class="highlighter-rouge">new_app_skeleton.sh</code>, a new application folder is created with the name you enter. The folder is not empty, it contains a template application files that you have to edit and adapt to the desired application.</p>
+<p>By running the script <code class="language-plaintext highlighter-rouge">new_app_skeleton.sh</code>, a new application folder is created with the name you enter. The folder is not empty, it contains a template application files that you have to edit and adapt to the desired application.</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>user@user-host-machine:~/pensarsdk/applications<span class="nv">$ </span>./new_app_skeleton.sh
 
@@ -476,7 +476,7 @@ my_app
 
 <h3 id="configure-the-application">Configure the Application</h3>
 
-<p>We now have to configure the application. To do that simply edit the file <code class="highlighter-rouge">my_app.xml</code>, particularly, the <code class="highlighter-rouge">preprocessor_pipeline</code> and the <code class="highlighter-rouge">plugins_pipeline</code>.</p>
+<p>We now have to configure the application. To do that simply edit the file <code class="language-plaintext highlighter-rouge">my_app.xml</code>, particularly, the <code class="language-plaintext highlighter-rouge">preprocessor_pipeline</code> and the <code class="language-plaintext highlighter-rouge">plugins_pipeline</code>.</p>
 
 <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
 <span class="nt">&lt;plugin_manager_pipeline&gt;</span>
@@ -517,11 +517,11 @@ my_app
 
 <h3 id="create-your-personalized-plugins">Create your Personalized Plugins</h3>
 
-<p>You can either use the predefined plugins or define yours. On the left of <code class="highlighter-rouge">VS Code</code> you find a list of all installed plugins under <code class="highlighter-rouge">Framework Plugins</code>, among which <code class="highlighter-rouge">pre_processor_inference.py</code>. You can also define your personalized plugins, in our case, <code class="highlighter-rouge">filter.py</code> and <code class="highlighter-rouge">visualize.py</code>.</p>
+<p>You can either use the predefined plugins or define yours. On the left of <code class="language-plaintext highlighter-rouge">VS Code</code> you find a list of all installed plugins under <code class="language-plaintext highlighter-rouge">Framework Plugins</code>, among which <code class="language-plaintext highlighter-rouge">pre_processor_inference.py</code>. You can also define your personalized plugins, in our case, <code class="language-plaintext highlighter-rouge">filter.py</code> and <code class="language-plaintext highlighter-rouge">visualize.py</code>.</p>
 
 <ul>
   <li>
-    <p><code class="highlighter-rouge">filter.py</code>:</p>
+    <p><code class="language-plaintext highlighter-rouge">filter.py</code>:</p>
 
     <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">kivy.uix.boxlayout</span> <span class="kn">import</span> <span class="n">BoxLayout</span>
 <span class="kn">from</span> <span class="nn">kivy.graphics.texture</span> <span class="kn">import</span> <span class="n">Texture</span>
@@ -530,13 +530,13 @@ my_app
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
 <span class="kn">import</span> <span class="nn">cv2</span>
 
-<span class="c"># Name of the plugin: Filter</span>
-<span class="k">class</span> <span class="nc">Filter</span><span class="p">(</span><span class="n">BoxLayout</span><span class="p">):</span>
+<span class="c1"># Name of the plugin: Filter
+</span><span class="k">class</span> <span class="nc">Filter</span><span class="p">(</span><span class="n">BoxLayout</span><span class="p">):</span>
   <span class="n">name</span> <span class="o">=</span> <span class="s">"Filter"</span>
   <span class="n">font_overlay</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">FONT_HERSHEY_SIMPLEX</span>
 
-  <span class="c"># GUI parameters</span>
-  <span class="n">label_text</span> <span class="o">=</span> <span class="n">StringProperty</span><span class="p">(</span><span class="s">"Switch Filtering ON/OFF:"</span><span class="p">)</span>
+  <span class="c1"># GUI parameters
+</span>  <span class="n">label_text</span> <span class="o">=</span> <span class="n">StringProperty</span><span class="p">(</span><span class="s">"Switch Filtering ON/OFF:"</span><span class="p">)</span>
   <span class="n">switch_active</span> <span class="o">=</span> <span class="n">BooleanProperty</span><span class="p">()</span>
   <span class="n">labels_list</span> <span class="o">=</span> <span class="n">ListProperty</span><span class="p">()</span>
   <span class="n">allowed_label</span> <span class="o">=</span> <span class="n">StringProperty</span><span class="p">()</span>
@@ -573,13 +573,13 @@ my_app
 </code></pre></div>    </div>
   </li>
   <li>
-    <p><code class="highlighter-rouge">visualize.py</code>:</p>
+    <p><code class="language-plaintext highlighter-rouge">visualize.py</code>:</p>
 
     <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Visualize</span><span class="p">(</span><span class="n">BoxLayout</span><span class="p">):</span>
    <span class="n">name</span> <span class="o">=</span> <span class="s">"Visualize"</span>
 
-   <span class="c"># GUI parameters</span>
-   <span class="n">label_text</span> <span class="o">=</span> <span class="n">StringProperty</span><span class="p">(</span><span class="s">"Display overlay:"</span><span class="p">)</span>
+   <span class="c1"># GUI parameters
+</span>   <span class="n">label_text</span> <span class="o">=</span> <span class="n">StringProperty</span><span class="p">(</span><span class="s">"Display overlay:"</span><span class="p">)</span>
    <span class="n">switch_active</span> <span class="o">=</span> <span class="n">BooleanProperty</span><span class="p">()</span>
 
    <span class="k">def</span> <span class="nf">process</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">primary_input_frame</span><span class="p">,</span> <span class="n">secondary_input_frame</span><span class="p">,</span> <span class="n">output_frame</span><span class="p">,</span> <span class="n">frame_storage</span><span class="p">,</span> <span class="n">storage</span><span class="p">):</span>
@@ -600,7 +600,7 @@ my_app
            <span class="n">ptText</span> <span class="o">=</span> <span class="p">(</span><span class="n">roi</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">roi</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="mi">20</span><span class="p">)</span>
            <span class="n">colorOverlay</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">255</span><span class="p">)</span>
            <span class="n">fontOverlay</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">FONT_HERSHEY_SIMPLEX</span>
-           <span class="n">textOverlay</span> <span class="o">=</span> <span class="s">"{0:s} {1:2.2f}</span><span class="si">%</span><span class="s">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">filtered_object</span><span class="p">[</span><span class="s">'label'</span><span class="p">],</span> <span class="n">filtered_object</span><span class="p">[</span><span class="s">'confidence'</span><span class="p">]</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span>
+           <span class="n">textOverlay</span> <span class="o">=</span> <span class="s">"{0:s} {1:2.2f}</span><span class="si">%</span><span class="s">"</span><span class="o">.</span><span class="nb">format</span><span class="p">(</span><span class="n">filtered_object</span><span class="p">[</span><span class="s">'label'</span><span class="p">],</span> <span class="n">filtered_object</span><span class="p">[</span><span class="s">'confidence'</span><span class="p">]</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span>
 
            <span class="n">cv2</span><span class="o">.</span><span class="n">rectangle</span><span class="p">(</span><span class="n">output_frame</span><span class="p">,</span> <span class="n">pt1</span><span class="p">,</span> <span class="n">pt2</span><span class="p">,</span> <span class="n">colorOverlay</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
            <span class="n">cv2</span><span class="o">.</span><span class="n">putText</span><span class="p">(</span><span class="n">output_frame</span><span class="p">,</span> <span class="n">textOverlay</span><span class="p">,</span> <span class="n">ptText</span><span class="p">,</span> <span class="n">fontOverlay</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">colorOverlay</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
@@ -610,13 +610,13 @@ my_app
 
 <h3 id="personalize-the-gui">Personalize the GUI</h3>
 
-<p>Say we want to personalize the GUI of the application, for instance, I want to create a button to turn on/off filtering and add a spinner to select the label of the object of interest. To do that you need to create and edit a kivy file for each desired plugin, in our case <code class="highlighter-rouge">filter.py</code> and <code class="highlighter-rouge">visualize.kv</code>.</p>
+<p>Say we want to personalize the GUI of the application, for instance, I want to create a button to turn on/off filtering and add a spinner to select the label of the object of interest. To do that you need to create and edit a kivy file for each desired plugin, in our case <code class="language-plaintext highlighter-rouge">filter.py</code> and <code class="language-plaintext highlighter-rouge">visualize.kv</code>.</p>
 
 <ul>
   <li>
-    <p><code class="highlighter-rouge">visualize.kv</code>:</p>
+    <p><code class="language-plaintext highlighter-rouge">visualize.kv</code>:</p>
 
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;Visualize@BoxLayout:
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;Visualize@BoxLayout:
      orientation: "horizontal"
      size_hint: 1, 1
 
@@ -633,9 +633,9 @@ my_app
 </code></pre></div>    </div>
   </li>
   <li>
-    <p><code class="highlighter-rouge">filter.kv</code></p>
+    <p><code class="language-plaintext highlighter-rouge">filter.kv</code></p>
 
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;Filter@BoxLayout&gt;:
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;Filter@BoxLayout&gt;:
     BoxLayout:
         orientation: "horizontal"
         size_hint: 1, 1

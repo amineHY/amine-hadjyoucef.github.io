@@ -31,7 +31,7 @@
 
 
 
-  <meta property="article:published_time" content="2020-01-02T10:14:56+01:00">
+  <meta property="article:published_time" content="2020-01-02T13:39:24+01:00">
 
 
 
@@ -187,7 +187,7 @@
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
     <meta itemprop="headline" content="YOLOv3-for-custum-objects">
     <meta itemprop="description" content="Train YOLO obect detector on custom dataset">
-    
+    <meta itemprop="datePublished" content="January 02, 2020">
     
 
     <div class="page__inner-wrap">
@@ -208,22 +208,22 @@
 
 <p>The annotations need to be converted into YOLO format, which is :</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;class_id, x_c/W, y_c/H, h/H, w/W&gt;
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;class_id, x_c/W, y_c/H, h/H, w/W&gt;
 </code></pre></div></div>
 
-<h2 id="install-ai-lab">Install <code class="highlighter-rouge">AI-lab</code></h2>
+<h2 id="install-ai-lab">Install <code class="language-plaintext highlighter-rouge">AI-lab</code></h2>
 
 <p>First, launch the docker image <a href="https://github.com/amineHY/AI-LAB">AI-LAB</a> to start developing by pulling it from the Docker Hub registry</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker pull aminehy/ai-lab
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker pull aminehy/ai-lab
 </code></pre></div></div>
 
 <p>Run this command to let docker transfer and access the display on the screen</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>xhost +
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>xhost +
 </code></pre></div></div>
 
 <p>Finally, run the AI-lab and start your development</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run -it --rm -v $(pwd):/workspace -w /workspace -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=$DISPLAY --runtime=nvidia -p 8888:8888 -p 6006:6006 aminehy/ai-lab
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run -it --rm -v $(pwd):/workspace -w /workspace -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=$DISPLAY --runtime=nvidia -p 8888:8888 -p 6006:6006 aminehy/ai-lab
 </code></pre></div></div>
 
 <p>Done !</p>
@@ -236,12 +236,12 @@
 
 <ol>
   <li>
-    <p>Create a customized configuration file for YOLO model from  <code class="highlighter-rouge">cfg/yolov3.cfg</code></p>
+    <p>Create a customized configuration file for YOLO model from  <code class="language-plaintext highlighter-rouge">cfg/yolov3.cfg</code></p>
 
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> cp cfg/yolov3.cfg yolov3-obj.cfg
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> cp cfg/yolov3.cfg yolov3-obj.cfg
 </code></pre></div>    </div>
 
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> yolov3-obj.cfg
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> yolov3-obj.cfg
      [net]
      # Testing
      # batch=64
@@ -262,9 +262,9 @@
 </code></pre></div>    </div>
   </li>
   <li>
-    <p>Open <code class="highlighter-rouge">yolov3-obj.cfg</code> and edit its content with the appropriate information. In this application we have only one object to detect, ‘fire’, thus, <code class="highlighter-rouge">nb_class = 1</code></p>
+    <p>Open <code class="language-plaintext highlighter-rouge">yolov3-obj.cfg</code> and edit its content with the appropriate information. In this application we have only one object to detect, ‘fire’, thus, <code class="language-plaintext highlighter-rouge">nb_class = 1</code></p>
 
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> * batch = 64
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> * batch = 64
  * subdivision=8 (increase if `Out of memory`)
  * filters = (nb_class+5)*3: filters = 255 =&gt; filter = 18
  * classes = nb_class: classes = 80  =&gt; classes = 1
@@ -274,9 +274,9 @@
 </code></pre></div>    </div>
   </li>
   <li>
-    <p>Create a file <code class="highlighter-rouge">train.txt</code> that lists paths of all annotated images (*.jpg) of the dataset <code class="highlighter-rouge">data/obj/</code></p>
+    <p>Create a file <code class="language-plaintext highlighter-rouge">train.txt</code> that lists paths of all annotated images (*.jpg) of the dataset <code class="language-plaintext highlighter-rouge">data/obj/</code></p>
 
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> train.txt
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> train.txt
      data/obj/pic (132).jpg
      data/obj/img (42).jpg
      data/obj/img (90).jpg
@@ -291,16 +291,16 @@
 </code></pre></div>    </div>
   </li>
   <li>
-    <p>Create <code class="highlighter-rouge">obj.names</code> and list the classes names</p>
+    <p>Create <code class="language-plaintext highlighter-rouge">obj.names</code> and list the classes names</p>
 
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> obj.names
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> obj.names
      fire
 </code></pre></div>    </div>
   </li>
   <li>
-    <p>Create and setup a data file <code class="highlighter-rouge">obj.data</code></p>
+    <p>Create and setup a data file <code class="language-plaintext highlighter-rouge">obj.data</code></p>
 
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> obj.data
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> obj.data
      classes = 1
      train  = train.txt
      valid  = train.txt
@@ -314,12 +314,12 @@
   <li>
     <p>Start training by using the command line</p>
 
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> ./darknet detector train yolov3-obj.cfg obj.data darknet53.conv.74
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> ./darknet detector train yolov3-obj.cfg obj.data darknet53.conv.74
 </code></pre></div>    </div>
   </li>
   <li>
     <p>test:</p>
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./darknet detector test obj.data  yolov3-obj.cfg backup/yolov3-obj_final.weights
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./darknet detector test obj.data  yolov3-obj.cfg backup/yolov3-obj_final.weights
 </code></pre></div>    </div>
   </li>
 </ol>
@@ -328,11 +328,11 @@
 
 <ol>
   <li>
-    <p>Create a customized configuration file for YOLO model from  <code class="highlighter-rouge">cfg/yolov3-tiny_obj.cfg</code></p>
+    <p>Create a customized configuration file for YOLO model from  <code class="language-plaintext highlighter-rouge">cfg/yolov3-tiny_obj.cfg</code></p>
 
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> cp cfg/yolov3.cfg yolov3-obj.cfg
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> cp cfg/yolov3.cfg yolov3-obj.cfg
 </code></pre></div>    </div>
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> yolov3-obj.cfg
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> yolov3-obj.cfg
      [net]
      # Testing
      # batch=64
@@ -353,9 +353,9 @@
 </code></pre></div>    </div>
   </li>
   <li>
-    <p>Open <code class="highlighter-rouge">yolov3-obj.cfg</code> and edit its content with the appropriate information. In this application we have only one object to detect, ‘fire’, thus, <code class="highlighter-rouge">nb_class = 1</code></p>
+    <p>Open <code class="language-plaintext highlighter-rouge">yolov3-obj.cfg</code> and edit its content with the appropriate information. In this application we have only one object to detect, ‘fire’, thus, <code class="language-plaintext highlighter-rouge">nb_class = 1</code></p>
 
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> * batch = 64
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> * batch = 64
  * subdivision=8 (increase if `Out of memory`)
  * filters = (nb_class+5)*3: filters = 255 =&gt; filter = 18
  * classes = nb_class: classes = 80  =&gt; classes = 1
@@ -365,18 +365,18 @@
 </code></pre></div>    </div>
   </li>
   <li>
-    <p>Get pre-trained weights <code class="highlighter-rouge">yolov3-tiny.conv.15</code></p>
+    <p>Get pre-trained weights <code class="language-plaintext highlighter-rouge">yolov3-tiny.conv.15</code></p>
   </li>
 </ol>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./darknet partial cfg/yolov3-tiny.cfg fire/model/yolov3-tiny.weights fire/model/yolov3-tiny.conv.15 15
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./darknet partial cfg/yolov3-tiny.cfg fire/model/yolov3-tiny.weights fire/model/yolov3-tiny.conv.15 15
 </code></pre></div></div>
 
 <ol>
   <li>Training</li>
 </ol>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./darknet detector train obj.data yolov3-tiny-obj.cfg fire/model/yolov3-tiny.conv.15
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./darknet detector train obj.data yolov3-tiny-obj.cfg fire/model/yolov3-tiny.conv.15
 </code></pre></div></div>
 
 <ol>
@@ -394,13 +394,13 @@ Saving weights to backup//yolov3-tiny-obj_final.weights
 <p><img src="./media/chart_yolo-tiny.png" alt="chart_yolo-tiny" /></p>
 
 <h2 id="test-of-the-trained-fire-detection-application">Test of the Trained Fire Detection Application</h2>
-<p>(<strong>Note</strong>: You might want to recompile the DarkNet on your computer: Edit the <code class="highlighter-rouge">Makefile.txt</code> then run <code class="highlighter-rouge">make</code>)</p>
+<p>(<strong>Note</strong>: You might want to recompile the DarkNet on your computer: Edit the <code class="language-plaintext highlighter-rouge">Makefile.txt</code> then run <code class="language-plaintext highlighter-rouge">make</code>)</p>
 
 <h3 id="image">Image</h3>
 
 <p>Detect fire in an imahge file</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>```
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>```
 ./darknet detector test fire/data/obj.data fire/cfg/yolov3-tiny-obj.cfg fire/model/yolov3-tiny-obj_final.weights fire/data/obj/img (9).jpg
 ```
 </code></pre></div></div>
@@ -413,14 +413,14 @@ Saving weights to backup//yolov3-tiny-obj_final.weights
   <li>
     <p>Detect fire in real-time video stream from webcam</p>
 
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  ./darknet detector demo fire/data/obj.data fire/cfg/yolov3-tiny-obj.cfg fire/model/yolov3-tiny-obj_final.weights
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  ./darknet detector demo fire/data/obj.data fire/cfg/yolov3-tiny-obj.cfg fire/model/yolov3-tiny-obj_final.weights
 </code></pre></div>    </div>
     <p><strong>Note</strong>: add the option to save the output video: -out_filename filename.mp4</p>
   </li>
   <li>
     <p>Test on video stream from file</p>
 
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  ./darknet detector demo fire/data/obj.data fire/cfg/yolov3-tiny-obj.cfg fire/model/yolov3-tiny-obj_final.weights fire/videos/test.mp4
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  ./darknet detector demo fire/data/obj.data fire/cfg/yolov3-tiny-obj.cfg fire/model/yolov3-tiny-obj_final.weights fire/videos/test.mp4
 </code></pre></div>    </div>
   </li>
   <li>
@@ -437,23 +437,23 @@ Saving weights to backup//yolov3-tiny-obj_final.weights
 
 <ul>
   <li>
-    <p><code class="highlighter-rouge">yolov3-openimages.cfg</code> (247 MB COCO Yolo v3) - requires 4 GB GPU-RAM: https://pjreddie.com/media/files/yolov3-openimages.weights</p>
+    <p><code class="language-plaintext highlighter-rouge">yolov3-openimages.cfg</code> (247 MB COCO Yolo v3) - requires 4 GB GPU-RAM: https://pjreddie.com/media/files/yolov3-openimages.weights</p>
   </li>
   <li>
-    <p><code class="highlighter-rouge">yolov3-spp.cfg</code> (240 MB COCO Yolo v3) - requires 4 GB GPU-RAM: https://pjreddie.com/media/files/yolov3-spp.weights</p>
+    <p><code class="language-plaintext highlighter-rouge">yolov3-spp.cfg</code> (240 MB COCO Yolo v3) - requires 4 GB GPU-RAM: https://pjreddie.com/media/files/yolov3-spp.weights</p>
   </li>
   <li>
-    <p><code class="highlighter-rouge">yolov3.cfg</code> (236 MB COCO Yolo v3) - requires 4 GB GPU-RAM: https://pjreddie.com/media/files/yolov3.weights</p>
+    <p><code class="language-plaintext highlighter-rouge">yolov3.cfg</code> (236 MB COCO Yolo v3) - requires 4 GB GPU-RAM: https://pjreddie.com/media/files/yolov3.weights</p>
   </li>
   <li>
-    <p><code class="highlighter-rouge">yolov3-tiny.cfg</code> (34 MB COCO Yolo v3 tiny) - requires 1 GB GPU-RAM: https://pjreddie.com/media/files/yolov3-tiny.weights</p>
+    <p><code class="language-plaintext highlighter-rouge">yolov3-tiny.cfg</code> (34 MB COCO Yolo v3 tiny) - requires 1 GB GPU-RAM: https://pjreddie.com/media/files/yolov3-tiny.weights</p>
   </li>
   <li>
-    <p><code class="highlighter-rouge">enet-coco.cfg</code> (EfficientNetb0-Yolo- 45.5% mAP@0.5 - 3.7 BFlops)</p>
+    <p><code class="language-plaintext highlighter-rouge">enet-coco.cfg</code> (EfficientNetb0-Yolo- 45.5% mAP@0.5 - 3.7 BFlops)</p>
   </li>
 </ul>
 
-<p><a href="https://drive.google.com/file/d/1FlHeQjWEQVJt0ay1PVsiuuMzmtNyv36m/view"><code class="highlighter-rouge">enetb0-coco_final.weights</code></a> and <code class="highlighter-rouge">yolov3-tiny-prn.cfg</code> (33.1% mAP@0.5 - 3.5 BFlops - more)</p>
+<p><a href="https://drive.google.com/file/d/1FlHeQjWEQVJt0ay1PVsiuuMzmtNyv36m/view"><code class="language-plaintext highlighter-rouge">enetb0-coco_final.weights</code></a> and <code class="language-plaintext highlighter-rouge">yolov3-tiny-prn.cfg</code> (33.1% mAP@0.5 - 3.5 BFlops - more)</p>
 
 <h1 id="reference">Reference</h1>
 
@@ -469,6 +469,8 @@ Saving weights to backup//yolov3-tiny-obj_final.weights
         
 
 
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2020-01-02T13:39:24+01:00">January 02, 2020</time></p>
         
       </footer>
 
