@@ -15,17 +15,12 @@ var store = [{
         "url": "http://localhost:4000/pensarsdk-1/",
         "teaser":"http://localhost:4000/assets/images/nature_1.jpeg"},{
         "title": "AI-lab",
-        "excerpt":"1.1. Description 1.2. Installation 1.3. Usage 1.4. Launch an IDE and Start Developing your Application 1.4.1. Jupyter notebook 1.4.2. VS Code 1.5. Display the Memory Usage of the GPU Display information about you GPU with deviceQuery Do you have any suggestions, anything to report or want to improve AI-lab? 1.1....","categories": [],
+        "excerpt":"AI-lab: The Ideal Tool for Data Scientists to Develop and Export Machine Learning Models 1.1. Description 1.2. Pre-requisites 1.3. USAGE 1.4. Launch an IDE and Start Developing 1.4.1. Jupyter notebook 1.4.2. VS Code 1.5. Display the Memory Usage of the GPU Do you have any suggestions ? 1.1. Description This...","categories": [],
         "tags": [],
         "url": "http://localhost:4000/projects/AI-lab/",
         "teaser":"http://localhost:4000/projects/AI-lab/media/AI-lab_logos.png"},{
-        "title": "InVeesion",
-        "excerpt":"Pictures of Goats section West Seattle Blog dingbat newspaper rubber cement Google+ newsroom cafe news.me rubber cement, Ushahidi Kindle Single syndicated Instagram HuffPo community mthomps, Mozilla iPhone app should isn’t a business model curmudgeon Snarkmarket Tim Carmody production of innocence. Fuego tweets community DocumentCloud metered model Gardening &amp; War section...","categories": [],
+        "title": "YOLOv3-for-custum-objects",
+        "excerpt":"Training a Fire Detector This folder illustrate the steps for training YOLOv3 and YOLOv3-tiny to detect fire in images and videos. First a fire dataset of labeled images is collected from internet. The images with their annotations have been prepared and converted into YOLO format and put into one folder...","categories": [],
         "tags": [],
-        "url": "http://localhost:4000/projects/InVeesion/",
-        "teaser":"http://localhost:4000/assets/images/foo-bar-identity-th.jpg"},{
-        "title": "PensarSDK",
-        "excerpt":"Pictures of Goats section West Seattle Blog dingbat newspaper rubber cement Google+ newsroom cafe news.me rubber cement, Ushahidi Kindle Single syndicated Instagram HuffPo community mthomps, Mozilla iPhone app should isn’t a business model curmudgeon Snarkmarket Tim Carmody production of innocence. Fuego tweets community DocumentCloud metered model Gardening &amp; War section...","categories": [],
-        "tags": [],
-        "url": "http://localhost:4000/projects/PensarSDK/",
-        "teaser":"http://localhost:4000/assets/images/desktop2.jpeg"}]
+        "url": "http://localhost:4000/projects/YOLOv3-for-custum-objects/",
+        "teaser":"http://localhost:4000/projects/YOLOv3-for-custum-objects/media/predictions.jpg"}]

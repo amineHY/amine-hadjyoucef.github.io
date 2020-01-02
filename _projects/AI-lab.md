@@ -13,30 +13,30 @@ sidebar:
     text: "Development environment to build Machine learning models"
   # - title: "Organization"
   #   text: "Drone Volt"
-gallery:
-  - url: /assets/images/unsplash-gallery-image-1.jpg
-    image_path: assets/images/unsplash-gallery-image-1-th.jpg
-    alt: "placeholder image 1"
-  - url: /assets/images/unsplash-gallery-image-2.jpg
-    image_path: assets/images/unsplash-gallery-image-2-th.jpg
-    alt: "placeholder image 2"
-  - url: /assets/images/unsplash-gallery-image-3.jpg
-    image_path: assets/images/unsplash-gallery-image-3-th.jpg
-    alt: "placeholder image 3"
+# gallery:
+#   - url: /assets/images/unsplash-gallery-image-1.jpg
+#     image_path: assets/images/unsplash-gallery-image-1-th.jpg
+#     alt: "placeholder image 1"
+#   - url: /assets/images/unsplash-gallery-image-2.jpg
+#     image_path: assets/images/unsplash-gallery-image-2-th.jpg
+#     alt: "placeholder image 2"
+#   - url: /assets/images/unsplash-gallery-image-3.jpg
+#     image_path: assets/images/unsplash-gallery-image-3-th.jpg
+#     alt: "placeholder image 3"
 ---
 
-![All in one solution for data science](./media/AI-lab_logos.png)
+![All in one solution for data science](media/AI-lab_logos.png)
 
 
-- [1.1. Description](#11-description)
-- [1.2. Installation](#12-installation)
-- [1.3. Usage](#13-usage)
-- [1.4. Launch an IDE and Start Developing your Application](#14-launch-an-ide-and-start-developing-your-application)
-  - [1.4.1. Jupyter notebook](#141-jupyter-notebook)
-  - [1.4.2. VS Code](#142-vs-code)
-- [1.5. Display the Memory Usage of the GPU](#15-display-the-memory-usage-of-the-gpu)
-- [Display information about you GPU with deviceQuery](#display-information-about-you-gpu-with-devicequery)
-- [Do you have any suggestions, anything to report or want to improve AI-lab?](#do-you-have-any-suggestions-anything-to-report-or-want-to-improve-ai-lab)
+- [AI-lab: The Ideal Tool for Data Scientists to Develop and Export Machine Learning Models](#ai-lab-the-ideal-tool-for-data-scientists-to-develop-and-export-machine-learning-models)
+  - [1.1. Description](#11-description)
+  - [1.2. Pre-requisites](#12-pre-requisites)
+  - [1.3. USAGE](#13-usage)
+  - [1.4. Launch an IDE and Start Developing](#14-launch-an-ide-and-start-developing)
+    - [1.4.1. Jupyter notebook](#141-jupyter-notebook)
+    - [1.4.2. VS Code](#142-vs-code)
+  - [1.5. Display the Memory Usage of the GPU](#15-display-the-memory-usage-of-the-gpu)
+  - [Do you have any suggestions ?](#do-you-have-any-suggestions-)
 
 
 
@@ -62,7 +62,7 @@ I hand-crafted `AI-lab` (on top of [NVIDIA Container](https://ngc.nvidia.com/cat
 - Most common AI framework:
   - TensorFlow, PyTorch, ONNX, Keras, ONNX-TensorRT, Jupyter-lab, VS Code integration with remote development, Numpy, Matplotlib, Scikit-learn, Scipy, Pandas,  TensorRT and more.
 
-## 1.2. Installation
+## 1.2. Install AI-lab
 
 Some pre-requisites need to be installed on the OS before using `AI-lab`
 
@@ -98,14 +98,14 @@ The latest image have around 9.97GB, so make sure you have enough space (and hig
 
 ``` bash
 xhost +
-docker run -it --rm
---runtime=nvidia
--v $(pwd):/workspace \
--w /workspace \
--v /tmp/.X11-unix:/tmp/.X11-unix \
--e DISPLAY=$DISPLAY \
--p 8888:8888 -p 6006:6006 aminehy/ai-lab:latest
 ```
+then
+```
+docker run -it --rm -v $(pwd):/workspace -w /workspace -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=$DISPLAY --runtime=nvidia -p 8888:8888 -p 6006:6006 aminehy/ai-lab
+```
+
+Done!
+
 
 **Install UFF converter  `convert-to-uff` (if you need it)**
 
@@ -184,5 +184,5 @@ Output for my OS:
 
 ## Do you have any suggestions, anything to report or want to improve AI-lab?
 
-- Please create an [issue on GitHub](https://github.com/amineHY/AI-LAB/issues).
+- Please create an issue on GitHub.
 - Get in touch with me on [LinkedIn](https://www.linkedin.com/in/aminehy/).
