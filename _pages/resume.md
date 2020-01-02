@@ -58,7 +58,7 @@ toc_icon: "cog"
 
 ### Technologies:
 * Python: OpenCV, Numpy, DarkNet, Caffe, Tensorflow, ...
-* Docker, Github, Gitlab, reStructeredText, MarkDown, AWS Amazon, TensorRT, CUDA
+* Docker, GitHub, GitLab, reStructeredText, MarkDown, Amazon AWS, TensorRT, CUDA
 
 ### Hardware:
 * NVIDIA Jetson TX2 Development Kit
@@ -284,7 +284,7 @@ toc_icon: "cog"
 
 *   **Hardware**: NVIDIA Jetson TX2, MIRI Imager (JWST), Multispectral Cameras.
 
-*   **Text** : LaTeX, Markdown, ReStructeredText. *
+*   **Text** : LaTeX, Markdown, ReStructeredText.
 
 # Hobbies
 
