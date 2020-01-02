@@ -37,6 +37,41 @@ toc_icon: "cog"
 
 # Professional Experience {#Professional-Experience}
 
+## Data Scientist, AI Engineer in Computer Vision
+- **Location**: [Drone Volt](https://www.dronevolt.com/en/)
+- **Dates**: 05/2019 - 11/2019
+
+### Description
+* As a technical reference in IA - Computer Vision, my contributions include:
+  - Strong international collaboration on an AI project until the commercialization of the product, resulting in a turnover > 50KE (www.pensarsdk.com).
+  - Strong involvement in redefining the project's business plan and roadmap.
+  - Agile development of the software solution of the product (Gitlab, Python, Caffe, OpenCV, ONNX, TensorRT, TensorFlow).
+  - Implementation of a development tool to facilitate the development of IA projects (Python, Docker, GitHub).
+
+* Advanced technical expertise in Computer Vision using Deep learning demonstrated by the development of an application for fire detection and localization on a video scene taken by a drone, followed by production on the multispectral camera (GPU NVIDIA Jetson).
+
+* Excellent communication skills illustrated by the training of +4 salespeople on the new product, plus demos to customers/investors.
+
+* Writing technical reports (The Startup, Toward Data Science) and technical documentation (www.pensarsdk.com/documentation).
+
+### Technologies:
+* Python: OpenCV, Numpy, DarkNet, Caffe, Tensorflow, ...
+* Docker, Github, Gitlab, reStructeredText, MarkDown, AWS Amazon, TensorRT, CUDA
+
+### Hardware:
+* NVIDIA Jetson TX2 Development Kit
+* Pensar Smart Multi-Spectral Camera
+
+### Publications:
+* The Startup (https://medium.com/swlh/pensar-sdk-1-647f778bc11)
+* Toward Data Science (https://towardsdatascience.com/have-you-optimized-your-deep-learning-model-before-deployment-cdc3aa7f413d)
+
+### Useful links:
+* https://pensarsdk.com/
+* https://medium.com/swlh/pensar-sdk-1-647f778bc11
+* https://towardsdatascience.com/have-you-optimized-your-deep-learning-model-before-deployment-cdc3aa7f413d
+
+
 * * *
 
 ## R&D Engineer in Image Processing
@@ -81,6 +116,9 @@ toc_icon: "cog"
 
     *   Python: Numpy, Scikit-learn, Matplotlib, Pandas
 
+* * *
+
+
 ## Teaching Assistant
 
 *   Location : [Ecole Polytech Paris-Sud](http://www.polytech.u-psud.fr/fr/formations/electronique-et-systemes-robotises.html), University of Paris-Sud, France.
@@ -102,6 +140,9 @@ toc_icon: "cog"
     *   Teaching contents: Fourier Transform, Linear filtering, Sampling, Applied mathematics, Deterministic random signal processing, basis in statistics, ...
 
     *   Teaching students to perform signal processing in _MATLAB_
+
+* * *
+
 
 ## Image Processing Engineer - Computer Vision
 
@@ -127,6 +168,8 @@ toc_icon: "cog"
 
     *   MATLAB
 
+* * *
+
 ## Signal and Image Processing Engineer
 
 *   Location: [The Mathematical Institue of Bordeaux](https://www.math.u-bordeaux.fr/imb/spip.php), France.
@@ -148,6 +191,9 @@ toc_icon: "cog"
     *   Linux Ubuntu 64-bit
 
     *   MATLAB
+
+* * *
+
 
 ## Machine Learning Engineer - R&D
 
