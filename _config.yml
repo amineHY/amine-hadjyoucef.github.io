@@ -25,7 +25,7 @@ url                      : "https://www.amine-hy.com"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
 teaser                   : "/assets/images/nature_1.jpeg" # path of fallback teaser image, e.g. "/assets/images/500x300.png"
-logo                     : "/assets/images/logo_ink.png"
+logo                     : "/assets/images/logo5.png"
 masthead_title           : # overrides the website title displayed in the masthead, use " " for no title
 # breadcrumbs            : false # true, false (default)
 words_per_minute         : 200
