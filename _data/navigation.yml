@@ -1,8 +1,11 @@
 # main links
 main:
 
-  - title: "Resume"
-    url: /resume/
+  - title: "🇬🇧 Resume"
+    url: /resume-en/
+
+  - title: "🇫🇷 Resume"
+    url: /resume-fr/
 
   - title: "Projects"
     url: /projects/
