@@ -108,8 +108,8 @@ analytics:
 # Site Author
 author:
   name             :  "Amine Hadj-Youcef"
-  avatar           :  "/assets/images/photo_linkedin.png"
-  bio              :  "Data scientist, Expert in Machine Learning."
+  avatar           :  "/assets/images/photo_linkedin_2020.png"
+  bio              :  "Data scientist, specialized in Machine Learning for Computer Vision."
   location         :  "Paris, France"
   email            :
   links:
