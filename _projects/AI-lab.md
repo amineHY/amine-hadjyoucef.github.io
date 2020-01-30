@@ -8,7 +8,7 @@ header:
   teaser: ./projects/AI-lab/media/AI-lab_logos.png
 sidebar:
   - title: "AI-Lab"
-    image: http://placehold.it/350x250
+    # image: http://placehold.it/350x250
     image_alt: "logo"
     text: "Development environment to build Machine learning models"
 ---
