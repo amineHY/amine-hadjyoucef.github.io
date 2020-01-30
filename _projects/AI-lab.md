@@ -1,27 +1,22 @@
 ---
 title: "AI-LAB"
+subtitle: "The Ideal Tool for Data Scientists to Develop and Export Machine Learning Models"
 excerpt: "The Ideal Tool for Data Scientists to Develop and Export Machine Learning Models"
-author_profile: false
+author_profile: true
 
 header:
-  teaser: ./projects/AI-lab/media/AI-lab_logos.png
-sidebar:
-  - title: "AI-LAB"
-    image_alt: "logo"
-    text: "A Development Tool for Building Machine Learning Models"
+  teaser: /assets/images/AI-LAB/AI-lab_teaser.png
+  # image: /assets/images/AI-LAB/AI-lab_teaser.png
+
+
+toc: true
+toc_label: "Summary"
+toc_icon: "cog"
+toc_levels: 2
+date: 2019-09-01
 ---
 
-![All in one solution for data science](media/AI-lab_logos.png)
-
-- [AI-lab: The Ideal Tool for Data Scientists to Develop and Export Machine Learning Models](#ai-lab-the-ideal-tool-for-data-scientists-to-develop-and-export-machine-learning-models)
-  - [1.1. Description](#11-description)
-  - [1.2. Pre-requisites](#12-pre-requisites)
-  - [1.3. USAGE](#13-usage)
-  - [1.4. Launch an IDE and Start Developing](#14-launch-an-ide-and-start-developing)
-    - [1.4.1. Jupyter notebook](#141-jupyter-notebook)
-    - [1.4.2. VS Code](#142-vs-code)
-  - [1.5. Display the Memory Usage of the GPU](#15-display-the-memory-usage-of-the-gpu)
-  - [Do you have any suggestions ?](#do-you-have-any-suggestions-)
+![All in one solution for data science](/assets/images/AI-LAB/AI-lab_logos.png)
 
 ## 1.1. Description
 
@@ -61,7 +56,7 @@ Some pre-requisites need to be installed on the OS before using `AI-lab`
   lsb_release -a
   ```
 
-  ![lsb_release](media/lsb_release.png)
+  ![lsb_release](/assets/images/AI-LAB/lsb_release.png)
 
 - [NVIDIA drivers](https://www.nvidia.com/Download/index.aspx) and [CUDA toolkit](https://developer.nvidia.com/cuda-downloads).
 
@@ -70,7 +65,7 @@ Some pre-requisites need to be installed on the OS before using `AI-lab`
     ```
 
     On my laptop machine I have NVIDIA Driver version 430.50 and CUDA version 10.01.
-    ![output](media/nvidia_smi.png)
+    ![output](/assets/images/AI-LAB/nvidia_smi.png)
 
 - Docker-ce must be installed on your OS. To install or reinstall docker-ce, please follow the original Docker-ce [installation guide](https://docs.docker.com/install/linux/docker-ce/ubuntu/), including the [post-installation](https://docs.docker.com/install/linux/linux-postinstall/) steps for Linux.
 
@@ -120,7 +115,7 @@ If `AI-lab` runs correctly on your machine then `Jupyter notebook` should run au
 jupyter notebook --allow-root --port=8888 --ip=0.0.0.0 --no-browser
 ```
 
-![](media/jupyter.png)
+![](/assets/images/AI-LAB/jupyter.png)
 
 ### 1.4.2. VS Code
 
@@ -153,7 +148,7 @@ and launch VS Code
 code .
 ```
 
-![vscode](media/vscode.png)
+![vscode](/assets/images/AI-LAB/vscode.png)
 
 ## 1.5. Display the Memory Usage of the GPU
 
@@ -164,7 +159,7 @@ watch -n0.5 -c gpustat --c -cupP
 ```
 
 Output for my OS:
-![gpustat](media/gpu_stat.png)
+![gpustat](/assets/images/AI-LAB/gpu_stat.png)
 
 ## Display information about you GPU with `deviceQuery`
 
@@ -175,7 +170,7 @@ in the terminal, run `deviceQuery` script (provided in this repository) to get m
 ```
 
 Output for my OS:
-![device_query](media/device_query.png)
+![device_query](/assets/images/AI-LAB/device_query.png)
 
 ## Do you have any suggestions, anything to report or want to improve AI-lab?
 

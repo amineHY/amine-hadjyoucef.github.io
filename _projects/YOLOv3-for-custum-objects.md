@@ -1,16 +1,16 @@
 ---
-title: "YOLOv3-for-custum-objects"
+title: "Train YOLOv3 for custum objects"
 excerpt: "Train YOLO obect detector on custom dataset"
-author_profile: false
+author_profile: true
 
 header:
-  teaser: ./projects/YOLOv3-for-custum-objects/media/predictions.jpg
+  teaser: /assets/images/custom_yolo/custom_yolo_teaser.png
 sidebar:
   - title: "YOLOv3-for-custum-objects"
     # image: https://placehold.it/350x250
     image_alt: "logo"
     text: "Train YOLO on custom dataset"
-
+date: 2019-08-14
 ---
 
 
