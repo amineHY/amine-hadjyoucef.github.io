@@ -8,7 +8,7 @@ header:
   teaser: ./projects/YOLOv3-for-custum-objects/media/predictions.jpg
 sidebar:
   - title: "AI-Lab"
-    image: http://placehold.it/350x250
+    # image: https://placehold.it/350x250
     image_alt: "logo"
     text: "Train YOLO obect detector on custom dataset"
 
