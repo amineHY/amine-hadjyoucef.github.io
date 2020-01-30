@@ -12,16 +12,6 @@ header:
   image: /assets/images/nature_2.jpg
   overlay_image: /assets/images/nature_2.jpg
   overlay_filter: 0.65 # same as adding an opacity of 0.5 to a black background
-  # caption: "Photo credit: [**Unsplash**](https://unsplash.com)"
-  actions:
-  # - label: "Journals"
-  #   url: "/publications/"
-
-  # - label: "International Conferences"
-  #   url: "/resume/"
-
-  # - label: "National Conferences"
-  #   url: "/projects/"
 
 toc: false
 toc_label: "Table of Contents"

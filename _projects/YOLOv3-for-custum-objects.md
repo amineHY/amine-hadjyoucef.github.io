@@ -4,13 +4,12 @@ excerpt: "Train YOLO obect detector on custom dataset"
 author_profile: false
 
 header:
-  # image: ./projects/AI-lab/media/AI-lab_logos.png
   teaser: ./projects/YOLOv3-for-custum-objects/media/predictions.jpg
 sidebar:
-  - title: "AI-Lab"
+  - title: "YOLOv3-for-custum-objects"
     # image: https://placehold.it/350x250
     image_alt: "logo"
-    text: "Train YOLO obect detector on custom dataset"
+    text: "Train YOLO on custom dataset"
 
 ---
 
@@ -22,7 +21,7 @@ First a fire dataset of labeled images is collected from internet. The images wi
 
 The annotations need to be converted into YOLO format, which is :
 
-```
+```bash
 <class_id, x_c/W, y_c/H, h/H, w/W>
 ```
 
@@ -30,17 +29,19 @@ The annotations need to be converted into YOLO format, which is :
 
 First, launch the docker image [AI-LAB](https://github.com/amineHY/AI-LAB) to start developing by pulling it from the Docker Hub registry
 
-```
+```bash
 docker pull aminehy/ai-lab
 ```
 
 Run this command to let docker transfer and access the display on the screen
-```
+
+```bash
 xhost +
 ```
 
 Finally, run the AI-lab and start your development
-```
+
+```bash
 docker run -it --rm -v $(pwd):/workspace -w /workspace -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=$DISPLAY --runtime=nvidia -p 8888:8888 -p 6006:6006 aminehy/ai-lab
 ```
 
@@ -55,11 +56,11 @@ Done !
 
 1. Create a customized configuration file for YOLO model from  `cfg/yolov3.cfg`
 
-    ```
+    ```bash
     cp cfg/yolov3.cfg yolov3-obj.cfg
     ```
 
-    ```
+    ```bash
     yolov3-obj.cfg
         [net]
         # Testing
@@ -82,19 +83,18 @@ Done !
 
 2. Open `yolov3-obj.cfg` and edit its content with the appropriate information. In this application we have only one object to detect, 'fire', thus, `nb_class = 1`
 
-    ```
+    ```txt
     * batch = 64
     * subdivision=8 (increase if `Out of memory`)
     * filters = (nb_class+5)*3: filters = 255 => filter = 18
     * classes = nb_class: classes = 80  => classes = 1
     * max_batches=classes*2000: max_batches = 2000
     * steps=80% and 90% of max_batches : steps = 1600, 1800
-
     ```
 
 3. Create a file `train.txt` that lists paths of all annotated images (*.jpg) of the dataset `data/obj/`
 
-    ```
+    ```txt
     train.txt
         data/obj/pic (132).jpg
         data/obj/img (42).jpg
@@ -109,17 +109,16 @@ Done !
 
     ```
 
-
 4. Create `obj.names` and list the classes names
 
-    ```
+    ```txt
     obj.names
         fire
     ```
 
 5. Create and setup a data file `obj.data`
 
-    ```
+    ```txt
     obj.data
         classes = 1
         train  = train.txt
@@ -132,24 +131,25 @@ Done !
 
 7. Start training by using the command line
 
-    ```
+    ```txt
     ./darknet detector train yolov3-obj.cfg obj.data darknet53.conv.74
     ```
 
 8. test:
-```
+
+```bash
 ./darknet detector test obj.data  yolov3-obj.cfg backup/yolov3-obj_final.weights
 ```
 
 ### YOLOv3-tiny
 
-
 1. Create a customized configuration file for YOLO model from  `cfg/yolov3-tiny_obj.cfg`
 
-    ```
+    ```bash
     cp cfg/yolov3.cfg yolov3-obj.cfg
     ```
-    ```
+
+    ```txt
     yolov3-obj.cfg
         [net]
         # Testing
@@ -172,24 +172,24 @@ Done !
 
 2. Open `yolov3-obj.cfg` and edit its content with the appropriate information. In this application we have only one object to detect, 'fire', thus, `nb_class = 1`
 
-    ```
+    ```txt
     * batch = 64
     * subdivision=8 (increase if `Out of memory`)
     * filters = (nb_class+5)*3: filters = 255 => filter = 18
     * classes = nb_class: classes = 80  => classes = 1
     * max_batches=classes*2000: max_batches = 2000
     * steps=80% and 90% of max_batches : steps = 1600, 1800
-
     ```
+
 3. Get pre-trained weights `yolov3-tiny.conv.15`
 
-```
+```bash
 ./darknet partial cfg/yolov3-tiny.cfg fire/model/yolov3-tiny.weights fire/model/yolov3-tiny.conv.15 15
 ```
 
 4. Training
 
-```
+```bash
 ./darknet detector train obj.data yolov3-tiny-obj.cfg fire/model/yolov3-tiny.conv.15
 ```
 
@@ -206,35 +206,36 @@ Saving weights to backup//yolov3-tiny-obj_final.weights
 
 ![chart_yolo-tiny](./media/chart_yolo-tiny.png)
 
-
 ## Test of the Trained Fire Detection Application
+
 (**Note**: You might want to recompile the DarkNet on your computer: Edit the ```Makefile.txt``` then run ```make```)
 
 ### Image
 
 Detect fire in an imahge file
 
-    ```
-    ./darknet detector test fire/data/obj.data fire/cfg/yolov3-tiny-obj.cfg fire/model/yolov3-tiny-obj_final.weights fire/data/obj/img (9).jpg
-    ```
+```bash
+./darknet detector test fire/data/obj.data fire/cfg/yolov3-tiny-obj.cfg fire/model/yolov3-tiny-obj_final.weights fire/data/obj/img (9).jpg
+```
 
 ![Results](./media/predictions.jpg)
-
 
 ### Video
 
 * Detect fire in real-time video stream from webcam
 
-    ```
+    ```bash
     ./darknet detector demo fire/data/obj.data fire/cfg/yolov3-tiny-obj.cfg fire/model/yolov3-tiny-obj_final.weights
     ```
+
    **Note**: add the option to save the output video: -out_filename filename.mp4
 
 * Test on video stream from file
 
-    ```
+    ```bash
     ./darknet detector demo fire/data/obj.data fire/cfg/yolov3-tiny-obj.cfg fire/model/yolov3-tiny-obj_final.weights fire/videos/test.mp4
     ```
+
 * Example:
 
     ```bash

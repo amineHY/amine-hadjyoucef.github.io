@@ -26,7 +26,7 @@ header:
       url: "/resume/#Tech-Skills"
 
     - label: "PDF"
-      url: "assets/pdf/2020_CV_HadjYoucef_FR (6).pdf"
+      url: "assets/pdf/CV_HadjYoucef_2020.pdf"
   #---------------------------------------------------------#
 # toc: true
 toc_label: "Sur cette page"

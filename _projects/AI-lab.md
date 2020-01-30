@@ -1,5 +1,5 @@
 ---
-title: "AI-lab"
+title: "AI-LAB"
 excerpt: "The Ideal Tool for Data Scientists to Develop and Export Machine Learning Models"
 author_profile: false
 
@@ -10,7 +10,7 @@ sidebar:
   - title: "AI-Lab"
     # image: http://placehold.it/350x250
     image_alt: "logo"
-    text: "Development environment to build Machine learning models"
+    text: "A Development Tool for Building Machine Learning Models"
 ---
 
 ![All in one solution for data science](media/AI-lab_logos.png)
