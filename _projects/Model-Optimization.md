@@ -16,7 +16,16 @@ author_profile: true
 date: 2019-07-12
 ---
 
-# Illustration on an AI-based Computer Vision application.
+## 🤖 Link to the project code
+
+- [https://gitlab.com/aminehy/YOLOv3-Darknet-ONNX-TensorRT.git](https://gitlab.com/aminehy/YOLOv3-Darknet-ONNX-TensorRT.git)
+
+- [https://gitlab.com/aminehy/yolov3-darknet](https://gitlab.com/aminehy/yolov3-darknet)
+
+- [https://gitlab.com/aminehy/YOLOv3-Caffe-TensorRT](https://gitlab.com/aminehy/YOLOv3-Caffe-TensorRT)
+
+
+# Illustration on an AI-based Computer Vision Application
 
 This article presents how to use NVIDIA TensorRT to optimize a deep learning model that you want to deploy on the edge device (mobile, camera, robot, car ….). For instance, the intelligent double spectrum camera of Aerialtronics: _Pensar_ <https://pensarsdk.com/>
 
@@ -208,7 +217,7 @@ The sample uses the following components in TensorRT to perform the above steps:
 
 Link to the project: [Amine Hy / YOLOv3-Darknet-ONNX-TensorRT](https://gitlab.com/aminehy/YOLOv3-Darknet-ONNX-TensorRT)
 
--   Get the project from GitHub and change the working directory
+-   Get the project from GitLab and change the working directory
 
     ```bash
     git clone https://gitlab.com/aminehy/YOLOv3-Darknet-ONNX-TensorRT.git

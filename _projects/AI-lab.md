@@ -18,6 +18,10 @@ date: 2019-09-01
 
 ![All in one solution for data science](/assets/images/AI-LAB/AI-lab_logos.png)
 
+## 🤖 Link to the project code
+
+- [https://github.com/amineHY/AI-LAB](https://github.com/amineHY/AI-LAB)
+
 ## 1.1. Description
 
 This project is for creating a development environment for data scientist. It helps the users developing machine learning models in a simple way,
@@ -158,7 +162,7 @@ Depending on your development, you might want to watch the memory consumption of
 watch -n0.5 -c gpustat --c -cupP
 ```
 
-Output for my OS:
+Output
 ![gpustat](/assets/images/AI-LAB/gpu_stat.png)
 
 ## Display information about you GPU with `deviceQuery`
@@ -169,7 +173,7 @@ in the terminal, run `deviceQuery` script (provided in this repository) to get m
 ./deviceQuery
 ```
 
-Output for my OS:
+Output
 ![device_query](/assets/images/AI-LAB/device_query.png)
 
 ## Do you have any suggestions, anything to report or want to improve AI-lab?

@@ -10,9 +10,16 @@ sidebar:
     # image: https://placehold.it/350x250
     image_alt: "logo"
     text: "Train YOLO on custom dataset"
+
+toc: true
+toc_label: "Summary"
+toc_icon: "cog"
+toc_levels: 2
 date: 2019-08-14
 ---
 
+## 🤖 Link to the project code
+ - [https://github.com/amineHY/YOLOv3-for-custum-objects](https://github.com/amineHY/YOLOv3-for-custum-objects)
 
 # Training a Fire Detector
 This folder illustrate the steps for training YOLOv3 and YOLOv3-tiny to detect fire in images and videos.
@@ -49,7 +56,7 @@ Done !
 
 ## Retrain YOLO on a Costum Dataset
 
-![retrain_Yolo diagram](./media/retrain_Yolo.png)
+![retrain_Yolo diagram](/assets/images/custom_yolo//retrain_Yolo.png)
 
 
 ### YOLOv3
@@ -218,7 +225,7 @@ Detect fire in an imahge file
 ./darknet detector test fire/data/obj.data fire/cfg/yolov3-tiny-obj.cfg fire/model/yolov3-tiny-obj_final.weights fire/data/obj/img (9).jpg
 ```
 
-![Results](./media/predictions.jpg)
+![Results](/assets/images/custom_yolo//predictions.jpg)
 
 ### Video
 
