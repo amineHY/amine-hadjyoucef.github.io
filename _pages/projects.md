@@ -7,7 +7,7 @@ entries_layout: grid
 classes: wide
 #---------------------------------------------------------------------#
 author_profile: true
-excerpt: "Find here a non-exhaustive list of my projects"
+excerpt: "List of projects"
 #---------------------------------------------------------------------#
 header:
 #   image: /assets/images/project.jpg
